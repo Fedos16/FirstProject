@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="box_logo">
+                <div class="logo"></div>
+            </div>
+            <div class="box_info">
+                <ul class="ul_box_info">
+                    <li>Создать</li>
+                    <li>Редактировать</li>
+                </ul>
+            </div>
+            <div class="box_user">
+                <ul class="menu_user">
+                <li><%= data.user %></li>
+                <li><div class="logo_user"></div></li>
+                <a href="/api/auth/logout"><li>Выход</li></a>
+            </ul>
+            </div>
+        </div>
+    </header>

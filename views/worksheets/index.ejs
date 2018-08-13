@@ -1,0 +1,252 @@
+<% include ../layout/header.ejs %>
+<div class="main">
+    <div class="container">
+        <div class="sidebar">
+            <div class="box">
+                <ul class="menu">
+                    <li class="item_activ">Анкеты</li>
+                    <a href="/recruiters/create"><li class="item_noactiv">Рекрутеры</li></a>
+                    <a href="/statistics"><li class="item_noactiv">Статистика</li></a>
+                    <br>
+                    <a href="/users/create"><li class="item_noactiv">Пользователи</li></a> 
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <div class="body_worksheets">
+                <table class="table_rec_edit">
+                    <thead>
+                        <tr>
+                            <th>Имя кандидата</th>
+                            <th>Место жительства</th>
+                            <th>Номер телефона</th>
+                            <th>Специальность</th>
+                            <th>Опыт</th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(var i=0;i<data.name.length;i++) {%>
+                            <tr>
+                                <td style="display: none" class="id_for_line"><%= data.id[i] %></td>
+                                <td><%= data.name[i] %></td>
+                                <td><%= data.residence[i] %></td>
+                                <td><%= data.telephone[i] %></td>
+                                <td><%= data.directions[i] %></td>
+                                <td><%= data.experience[i] %></td>
+                                <td><img src="/images/open.png" class="open_worksheets"></td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+    </div>
+</div>
+<div class="modal_back_worksheets" id="display_none">
+    <div class="modal_worksheets">
+        <img src="/images/close.png" class="close_modal_worksheets">
+        <div class="modal_worksheets_main">
+            <div class="row_candidate">
+                <div class="column_candidate">
+                    <div class="column_title">
+                        <h3>Рекрутер<span class="red_span">*</span></h3>
+                    </div>
+                    <div class="column_body">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="recruiter-c" id="recruiter-c">
+                    </div>
+                </div>
+                <div class="column_candidate">
+                    <div class="column_title">
+                        <h3>Directions<span class="red_span">*</span></h3>
+                    </div>
+                    <div class="column_body">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="directions-c" id="directions-c">
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row_candidate">
+                <div class="column_candidate">
+                    <div class="column_title">
+                        <h3>Name of the candidate<span class="red_span">*</span></h3>
+                    </div>
+                    <div class="column_body">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="name-c" id="name-c">
+                    </div>
+                </div>
+                <div class="column_candidate">
+                    <div class="column_title">
+                        <h3>E-mail of the candidate<span class="red_span">*</span></h3>
+                    </div>
+                    <div class="column_body">
+                        <input type="email" class="input_candidate" placeholder="Мой ответ" name="email-c" id="email-c">
+                    </div>
+                </div>
+            </div>
+            <div class="row_candidate">
+                <div class="column_candidate">
+                    <div class="column_title">
+                        <h3>Phone number of the candidate<span class="red_span">*</span></h3>
+                    </div>
+                    <div class="column_body">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="phone-c" id="phone-c">
+                    </div>
+                </div>
+                <div class="column_candidate">
+                    <div class="column_title">
+                        <h3>Messenger of the candidate<span class="red_span">*</span></h3>
+                    </div>
+                    <div class="column_body">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="messenger-c" id="messenger-c">
+                    </div>
+                </div>
+            </div>
+            <div class="row_candidate">
+                <div class="column_candidate">
+                    <div class="column_title">
+                        <h3>Social link of the candidate<span class="red_span">*</span></h3>
+                    </div>
+                    <div class="column_body">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="social-c" id="social-c">
+                    </div>
+                </div>
+                <div class="column_candidate">
+                    <div class="column_title">
+                        <h3>Linkedin profile of the candidate<span class="red_span">*</span></h3>
+                    </div>
+                    <div class="column_body">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="linkedin-c" id="linkedin-c">
+                    </div>
+                </div>
+            </div>
+            <div class="row_candidate">
+                <div class="column_candidate">
+                    <div class="column_title">
+                        <h3>Residence<span class="red_span">*</span><span class="span_forexample">(Country, City / Relocate to)</span></h3>
+                    </div>
+                    <div class="column_body">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="residence-c" id="residence-c">
+                    </div>
+                </div>
+                <div class="column_candidate">
+                    <div class="column_title">
+                        <h3>Level of the candidate<span class="red_span">*</span></h3>
+                    </div>
+                    <div class="column_body">
+                        <div class="column_candidate_block">
+                            <label class="level_label"><input type="checkbox" value="Middle" name="level" id="middle_level" class="level_checkbox"><span></span>Middle</label>
+                            <label class="level_label"><input type="checkbox" value="Lead" name="level" id="lead_level" class="level_checkbox">Lead</label>
+                        </div>
+                        <div class="column_candidate_block">
+                            <label class="level_label"><input type="checkbox" value="Senior" name="level" id="senior_level" class="level_checkbox">Senior</label>
+                            <label class="level_label"><input type="checkbox" value="Ready Team" name="level" id="ready_team_level" class="level_checkbox">Ready Team</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row_candidate">
+                <div class="column_candidate">
+                    <div class="column_title">
+                        <h3>Salary Expectation<span class="red_span">*</span></h3>
+                    </div>
+                    <div class="column_body">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="salary-c" id="salary-c">
+                    </div>
+                </div>
+            </div>
+            <div class="row_candidate">
+                <div class="column_candidate">
+                    <div class="column_title">
+                        <h3>Experiences<span class="red_span">*</span></h3>
+                    </div>
+                    <div class="column_body">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="experiences-c" id="experiences-c">
+                    </div>
+                </div>
+                <div class="column_candidate">
+                    <div class="column_title_sub">
+                        <h3 class="sub_title_true">Working experience<span class="red_span">*</span></h3>
+                        <span class="span_forexample">For example: Senior Java Developer (3 yars) ... etc</span>
+                    </div>
+                    <div class="column_body">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="w_experiences-c" id="w_experiences-c">
+                    </div>
+                </div>
+            </div>
+            <div class="row_candidate">
+                <div class="column_candidate_maxwidth">
+                    <div class="column_title_sub">
+                        <h3 class="sub_title_true">Best skills<span class="red_span">*</span></h3>
+                        <span class="span_forexample">Add best skills  and use "/": OOP/OOD/Linux ...etc</span>
+                    </div>
+                    <div class="column_body">
+                        <textarea class="textarea_candidate" name="best_skills-c" id="best_skills-c"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row_candidate">
+                <div class="column_candidate">
+                    <div class="column_title">
+                        <h3>Portfolio link<span class="red_span">*</span></h3>
+                    </div>
+                    <div class="column_body">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="portfolio-c" id="portfolio-c">
+                    </div>
+                </div>
+                <div class="column_candidate">
+                    <div class="column_title_sub">
+                        <h3 class="sub_title_true">Language capabilities<span class="red_span">*</span></h3>
+                        <span class="span_forexample">For example: English upper intermediate</span>
+                    </div>
+                    <div class="column_body">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="language-c" id="language-c">
+                    </div>
+                </div>
+            </div>
+            <div class="row_candidate">
+                <div class="column_candidate">
+                    <div class="column_title">
+                        <h3>Recommendations</h3>
+                    </div>
+                    <div class="column_body">
+                        <lable class="level_label"><input type="checkbox" value="yes" name="recomendations-c" id="recomendations-c" class="level_checkbox">Yes</lable>
+                    </div>
+                </div>
+                <div class="column_candidate">
+                    <div class="column_title_sub">
+                        <h3 class="sub_title_true">Additional information about candidate</h3>
+                        <span class="span_forexample">Education, Certificates, Courses, Hobbies ... etc</span>
+                    </div>
+                    <div class="column_body">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="additional-c" id="additional-c">
+                    </div>
+                </div>
+            </div>
+            <div class="row_candidate">
+                <div class="column_candidate">
+                    <div class="column_title_sub">
+                        <h3 class="sub_title_true">Download CV<span class="red_span">*</span></h3>
+                        <span class="span_forexample">Use Google Drive and share the link on your documents</span>
+                    </div>
+                    <div class="column_body">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="download-c" id="download-c">
+                    </div>
+                </div>
+            </div>
+            <div class="row_splin"> </div>
+            <div class="row_candidate">
+                <div class="column_candidate_center">
+                    <button type="submit" id="cancel_worksheets">Отклонить анкету</button>
+                </div>
+                <div class="column_candidate_center">
+                    <button type="submit" id="save_worksheets">Сохранить анкету</button>
+                </div>
+            </div>
+            <div class="row_splin" style="border: none; margin-bottom: 10px;"> </div>
+        </div>
+    </div>
+</div>
+<% include ../layout/modal.ejs %>
+<% include ../layout/footer.ejs %>

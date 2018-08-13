@@ -1,0 +1,41 @@
+<% include ../layout/header.ejs %>
+<div class="main">
+    <div class="container">
+        <div class="sidebar">
+            <div class="box">
+                <ul class="menu">
+                    <a href="/worksheets"><li class="item_noactiv">Анкеты</li></a> 
+                    <a href="/recruiters/create"><li class="item_noactiv">Рекрутеры</li></a>
+                    <a href="/statistics"><li class="item_noactiv">Статистика</li></a>
+                    <br>
+                    <li class="item_activ">Пользователи</li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <div class="center_content">
+                <form method="POST" class="register">
+                    <h2>Новый пользователь</h2>
+                    <div class="form-group">
+                        <label for="register-login">Логин</label>
+                        <input type="text" id="register-login" name="login" />
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">Пароль</label>
+                        <input type="password" id="register-password" name="password" />
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password-confirm">Повтори пароль</label>
+                        <input type="password" id="register-password-confirm" name="passwordConfirm" />
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" id="form_submit">Создать</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+</div>
+<% include ../layout/modal.ejs %>
+<% include ../layout/footer.ejs %>

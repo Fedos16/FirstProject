@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="utf-8">
+		<title>Новый кандидат</title>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+		<link rel="stylesheet" href="/stylesheets/styles.css">
+	</head>
+    
+    <body>
+        <div class="content">
+            <div class="body_new_candidate">
+                <div class="div_document">
+                    <div class="row_candidate">
+                        <div class="column_candidate">
+                            <div class="column_title">
+                                <h3>Рекрутер<span class="red_span">*</span></h3>
+                            </div>
+                            <div class="column_body">
+                                <select class="select_candidate" name="recruiter-c" id="recruiter-c">
+                                    <option value disabled selected>Выбрать</option>
+                                    <% for(var i=0;i<data.fio.length;i++) {%>
+                                        <option value=<%= data.fio[i] %>><%= data.fio[i] %></option>
+                                    <% } %>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="column_candidate">
+                            <div class="column_title">
+                                <h3>Directions<span class="red_span">*</span></h3>
+                            </div>
+                            <div class="column_body">
+                                <select class="select_candidate" name="directions-c" id="directions-c">
+                                    <option value disabled selected>Выбрать</option>
+                                    <option value="JavaScript">JavaScript</option>
+                                    <option value="Python">Python</option>
+                                    <option value="C#">C#</option>
+                                    <option value="C++">C++</option>
+                                    <option value="Java">Java</option>
+                                    <option value="ASP.NET">ASP.NET</option>
+                                    <option value="Node JS">Node JS</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row_splin"> </div>
+                    
+                    <div class="row_candidate">
+                        <div class="column_candidate">
+                            <div class="column_title">
+                                <h3>Name of the candidate<span class="red_span">*</span></h3>
+                            </div>
+                            <div class="column_body">
+                                <input type="text" class="input_candidate" placeholder="Мой ответ" name="name-c" id="name-c">
+                            </div>
+                        </div>
+                        <div class="column_candidate">
+                            <div class="column_title">
+                                <h3>E-mail of the candidate<span class="red_span">*</span></h3>
+                            </div>
+                            <div class="column_body">
+                                <input type="email" class="input_candidate" placeholder="Мой ответ" name="email-c" id="email-c">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row_candidate">
+                        <div class="column_candidate">
+                            <div class="column_title">
+                                <h3>Phone number of the candidate<span class="red_span">*</span></h3>
+                            </div>
+                            <div class="column_body">
+                                <input type="text" class="input_candidate" placeholder="Мой ответ" name="phone-c" id="phone-c">
+                            </div>
+                        </div>
+                        <div class="column_candidate">
+                            <div class="column_title">
+                                <h3>Messenger of the candidate<span class="red_span">*</span></h3>
+                            </div>
+                            <div class="column_body">
+                                <input type="text" class="input_candidate" placeholder="Мой ответ" name="messenger-c" id="messenger-c">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row_candidate">
+                        <div class="column_candidate">
+                            <div class="column_title">
+                                <h3>Social link of the candidate<span class="red_span">*</span></h3>
+                            </div>
+                            <div class="column_body">
+                                <input type="text" class="input_candidate" placeholder="Мой ответ" name="social-c" id="social-c">
+                            </div>
+                        </div>
+                        <div class="column_candidate">
+                            <div class="column_title">
+                                <h3>Linkedin profile of the candidate<span class="red_span">*</span></h3>
+                            </div>
+                            <div class="column_body">
+                                <input type="text" class="input_candidate" placeholder="Мой ответ" name="linkedin-c" id="linkedin-c">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row_candidate">
+                        <div class="column_candidate">
+                            <div class="column_title">
+                                <h3>Residence<span class="red_span">*</span><span class="span_forexample">(Country, City / Relocate to)</span></h3>
+                            </div>
+                            <div class="column_body">
+                                <input type="text" class="input_candidate" placeholder="Мой ответ" name="residence-c" id="residence-c">
+                            </div>
+                        </div>
+                        <div class="column_candidate">
+                            <div class="column_title">
+                                <h3>Level of the candidate<span class="red_span">*</span></h3>
+                            </div>
+                            <div class="column_body">
+                                <div class="column_candidate_block">
+                                    <label class="level_label"><input type="checkbox" value="Middle" name="level" id="middle_level" class="level_checkbox"><span></span>Middle</label>
+                                    <label class="level_label"><input type="checkbox" value="Lead" name="level" id="lead_level" class="level_checkbox">Lead</label>
+                                </div>
+                                <div class="column_candidate_block">
+                                    <label class="level_label"><input type="checkbox" value="Senior" name="level" id="senior_level" class="level_checkbox">Senior</label>
+                                    <label class="level_label"><input type="checkbox" value="Ready Team" name="level" id="ready_team_level" class="level_checkbox">Ready Team</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row_candidate">
+                        <div class="column_candidate">
+                            <div class="column_title">
+                                <h3>Salary Expectation<span class="red_span">*</span></h3>
+                            </div>
+                            <div class="column_body">
+                                <input type="text" class="input_candidate" placeholder="Мой ответ" name="salary-c" id="salary-c">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row_candidate">
+                        <div class="column_candidate">
+                            <div class="column_title">
+                                <h3>Experiences<span class="red_span">*</span></h3>
+                            </div>
+                            <div class="column_body">
+                                <select class="select_candidate" id="experiences-c" name="experiences-c">
+                                    <option value disabled selected>Выбрать</option>
+                                    <option value="Без опыта">Без опыта</option>
+                                    <option value="Менее 1 года">Менее 1 года</option>
+                                    <option value="1 - 3 года">1 - 3 года</option>
+                                    <option value="3 - 5 лет">3 - 5 лет</option>
+                                    <option value="5 - 10 лет">5 - 10 лет</option>
+                                    <option value="Более 10 лет">Более 10 лет</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="column_candidate">
+                            <div class="column_title_sub">
+                                <h3 class="sub_title_true">Working experience<span class="red_span">*</span></h3>
+                                <span class="span_forexample">For example: Senior Java Developer (3 yars) ... etc</span>
+                            </div>
+                            <div class="column_body">
+                                <input type="text" class="input_candidate" placeholder="Мой ответ" name="w_experiences-c" id="w_experiences-c">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row_candidate">
+                        <div class="column_candidate_maxwidth">
+                            <div class="column_title_sub">
+                                <h3 class="sub_title_true">Best skills<span class="red_span">*</span></h3>
+                                <span class="span_forexample">Add best skills  and use "/": OOP/OOD/Linux ...etc</span>
+                            </div>
+                            <div class="column_body">
+                                <textarea class="textarea_candidate" name="best_skills-c" id="best_skills-c"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row_candidate">
+                        <div class="column_candidate">
+                            <div class="column_title">
+                                <h3>Portfolio link<span class="red_span">*</span></h3>
+                            </div>
+                            <div class="column_body">
+                                <input type="text" class="input_candidate" placeholder="Мой ответ" name="portfolio-c" id="portfolio-c">
+                            </div>
+                        </div>
+                        <div class="column_candidate">
+                            <div class="column_title_sub">
+                                <h3 class="sub_title_true">Language capabilities<span class="red_span">*</span></h3>
+                                <span class="span_forexample">For example: English upper intermediate</span>
+                            </div>
+                            <div class="column_body">
+                                <input type="text" class="input_candidate" placeholder="Мой ответ" name="language-c" id="language-c">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row_candidate">
+                        <div class="column_candidate">
+                            <div class="column_title">
+                                <h3>Recommendations</h3>
+                            </div>
+                            <div class="column_body">
+                                <lable class="level_label"><input type="checkbox" value="yes" name="recomendations-c" id="recomendations-c" class="level_checkbox">Yes</lable>
+                            </div>
+                        </div>
+                        <div class="column_candidate">
+                            <div class="column_title_sub">
+                                <h3 class="sub_title_true">Additional information about candidate</h3>
+                                <span class="span_forexample">Education, Certificates, Courses, Hobbies ... etc</span>
+                            </div>
+                            <div class="column_body">
+                                <input type="text" class="input_candidate" placeholder="Мой ответ" name="additional-c" id="additional-c">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row_candidate">
+                        <div class="column_candidate">
+                            <div class="column_title_sub">
+                                <h3 class="sub_title_true">Download CV<span class="red_span">*</span></h3>
+                                <span class="span_forexample">Use Google Drive and share the link on your documents</span>
+                            </div>
+                            <div class="column_body">
+                                <input type="text" class="input_candidate" placeholder="Мой ответ" name="download-c" id="download-c">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row_splin"> </div>
+                    <div class="row_candidate">
+                        <div class="column_candidate_center">
+                            <button type="submit" class="button_candidate" id="save_new_candidate">Внести кандидата</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% include ../layout/modal.ejs %>
+        <script src="/javascripts/jquery.min.js"></script>
+        <script src="/javascripts/scripts.js"></script>
+    </body>
+    
+</html>
