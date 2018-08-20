@@ -1,0 +1,53 @@
+<% include ../layout/header.ejs %>
+<div class="main">
+    <div class="container">
+        <div class="sidebar">
+            <div class="box">
+                <ul class="menu">
+                    <a href="/worksheets"><li class="item_noactiv">Анкеты</li></a> 
+                    <a href="/recruiters/moderation"><li class="item_noactiv">Рекрутеры</li></a>
+                    <a href="/statistics"><li class="item_noactiv">Статистика</li></a>
+                    <br>
+                    <li class="item_activ">Пользователи</li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <div class="center_content">
+                <div class="rec_row">
+                    <div class="form-group">
+                        <label for="new-email">Новый E-mail</label>
+                        <input type="email" id="new-email" name="email" />
+                    </div>
+                    <div class="form-group"></div>
+                </div>
+                <div class="rec_row">
+                    <div class="form-group">
+                        <label for="old-password">Старый пароль<span class="red_span">*</span></label>
+                        <input type="password" id="old-password" name="old-password"/>
+                    </div>
+                    <div class="form-group"></div>
+                </div>
+                <div class="rec_row">
+                    <div class="form-group">
+                        <label for="new-password">Новый пароль<span class="red_span">*</span></label>
+                        <input type="password" id="new-password" name="new-password"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Подтверждение нового пароля<span class="red_span">*</span></label>
+                        <input type="password" id="confirm-password" name="confirm-password"/>
+                    </div>
+                </div>
+                <div class="row_splin"> </div>
+                <div class="rec_row" style="padding-bottom: 10px;">
+                    <div class="form-group">
+                        <button type="submit" id="save_editing_user">Сохранить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+<% include ../layout/modal.ejs %>
+<% include ../layout/footer.ejs %>

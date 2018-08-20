@@ -1,0 +1,255 @@
+<% include ../layout/header.ejs %>
+<div class="main">
+    <div class="container">
+        <div class="sidebar">
+            <div class="box">
+                <ul class="menu">
+                    <a href="/worksheets"><li class="item_noactiv">Анкеты</li></a>
+                    <li class="item_activ">Рекрутеры</li>
+                    <a href="/statistics"><li class="item_noactiv">Статистика</li></a>
+                    <br>
+                    <a href="/users/settings"><li class="item_noactiv">Пользователи</li></a> 
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <div class="rec_bloc_edit">
+                <table class="table_rec_edit">
+                    <thead>
+                        <tr>
+                            <th>Ф. И. О</th>
+                            <th>Место жительства</th>
+                            <th>Номер телефона</th>
+                            <th>Направления работы</th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(var i=0;i<data.fio.length;i++) {%>
+                            <tr>
+                                <td style="display: none" class="id_for_line"><%= data.id[i] %></td>
+                                <td><%= data.fio[i] %></td>
+                                <td><%= data.location[i] %></td>
+                                <td><%= data.telephone[i] %></td>
+                                <td><%= data.directions[i] %></td>
+                                <td><img src="/images/open.png" class="open_recruiter"></td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal_back_edit" id="display_none">
+    <div class="modal_edit">
+        <img src="/images/close.png" class="close_modal_edit">
+        <div class="modal_edit_main">
+            <div class="rec_row">
+                <div class="rec_column">
+                    <div class="column_title">
+                        <h3>Ф. И. О.<span class="red_span">*</span></h3>
+                    </div>
+                    <div class="column_body">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="fio" id="fio" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="rec_row">
+                <div class="rec_column">
+                    <div class="column_title">
+                        <h3>Дата рождения<span class="red_span">*</span></h3>
+                    </div>
+                    <div class="column_body">
+                        <input type="date" class="input_candidate" name="birthday" id="birthday" readonly>
+                    </div>
+                </div>
+                <div class="rec_column">
+                    <div class="column_title_sub">
+                        <h3 class="sub_title_true">Место жительства<span class="red_span">*</span></h3>
+                        <span class="span_forexample">Пример: Россия, Москва</span>
+                    </div>
+                    <div class="column_body">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="location" id="location" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="rec_row">
+                <div class="rec_column">
+                    <div class="column_title_sub">
+                        <h3>Учебное заведение / Дата окончания</h3>
+                        <span class="span_forexample">Пример: МГУ / июль 2015</span>
+                    </div>
+                    <div class="column_body">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="education" id="education" readonly>
+                    </div>
+                </div>
+                <div class="rec_column">
+                    <div class="column_title_sub">
+                        <h3 class="sub_title_true">Владение языками<span class="red_span">*</span></h3>
+                        <span class="span_forexample">Пример: Русский (родной), Английский (технический)</span>
+                    </div>
+                    <div class="column_body">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="languages" id="languages" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="row_splin" style="border: none; margin-bottom: 10px;"> </div>
+
+            <div class="rec_row">
+                <div class="rec_column">
+                    <div class="column_title">
+                        <h3>Номер телефона<span class="red_span">*</span></h3>
+                    </div>
+                    <div class="column_body">
+                        <input type="tel" class="input_candidate" placeholder="Мой ответ" name="telephone" id="telephone" readonly>
+                    </div>
+                </div>
+                <div class="rec_column">
+                    <div class="column_title_sub">
+                        <h3 class="sub_title_true">E-mail<span class="red_span">*</span></h3>
+                        <span class="span_forexample">Для работы используем только @gmail.com</span>
+                    </div>
+                    <div class="column_body">
+                        <input type="email" class="input_candidate" placeholder="Мой ответ" name="email" id="email" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="rec_row">
+                <div class="rec_column">
+                    <div class="column_title_sub">
+                        <h3 class="sub_title_true">Профиль Linkedin<span class="red_span">*</span></h3>
+                        <span class="span_forexample">Пример: https://www.linkedin.com/in/globalhrsystem</span>
+                    </div>
+                    <div class="column_body">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="linkedin" id="linkedin" readonly>
+                    </div>
+                </div>
+                <div class="rec_column">
+                    <div class="column_title">
+                        <h3>Skype<span class="red_span">*</span></h3>
+                    </div>
+                    <div class="column_body">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="skype" id="skype" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="row_splin" style="border: none; margin-bottom: 10px;"> </div>
+
+            <div class="rec_row">
+                <div class="rec_column">
+                    <div class="column_title_sub">
+                        <h3 class="sub_title_true">Как долго вы работаете в IT сфере<span class="red_span">*</span></h3>
+                        <span class="span_forexample">Пример: С января 2016 года</span>
+                    </div>
+                    <div class="column_body">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="it_work" id="it_work" readonly>
+                    </div>
+                </div>
+                <div class="rec_column">
+                    <div class="column_title_sub">
+                        <h3 class="sub_title_true">Последнее место работы / Период<span class="red_span">*</span></h3>
+                        <span class="span_forexample">Пример: Microsoft / январь 2016 - февраль 2018</span>
+                    </div>
+                    <div class="column_body">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="last_work" id="last_work" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="rec_row">
+                <div class="rec_column">
+                    <div class="column_title">
+                        <h3 class="sub_title_true">Удобные направления для работы<span class="red_span">*</span></h3>
+                    </div>
+                    <div class="column_body">
+                        <div class="column_candidate_block">
+                            <label class="level_label"><input type="checkbox" name="checkBox" value="Java" class="level_checkbox" disabled><span></span>Java</label>
+                            <label class="level_label"><input type="checkbox" name="checkBox" value="Python" class="level_checkbox" disabled>Python</label>
+                            <label class="level_label"><input type="checkbox" name="checkBox" value="Ruby" class="level_checkbox" disabled><span></span>Ruby</label>
+                            <label class="level_label"><input type="checkbox" name="checkBox" value=".NET" class="level_checkbox" disabled>.NET</label>
+                            <label class="level_label"><input type="checkbox" name="checkBox" value="PHP" class="level_checkbox" disabled>PHP</label>
+                            <label class="level_label"><input type="checkbox" name="checkBox" value="iOS/Mac" class="level_checkbox" disabled><span></span>iOS/Mac</label>
+                            <label class="level_label"><input type="checkbox" name="checkBox" value="C++" class="level_checkbox" disabled>C++</label>
+                        </div>
+                        <div class="column_candidate_block">
+                            <label class="level_label"><input type="checkbox" name="checkBox" value="Android" class="level_checkbox" disabled>Android</label>
+                            <label class="level_label"><input type="checkbox" name="checkBox" value="QA" class="level_checkbox" disabled>QA</label>
+                            <label class="level_label"><input type="checkbox" name="checkBox" value="FrontEnd" class="level_checkbox" disabled><span></span>FrontEnd</label>
+                            <label class="level_label"><input type="checkbox" name="checkBox" value="Delphi" class="level_checkbox" disabled>Delphi</label>
+                            <label class="level_label"><input type="checkbox" name="checkBox" value="Perl" class="level_checkbox" disabled>Perl</label>
+                            <label class="level_label"><input type="checkbox" name="checkBox" value="1C" class="level_checkbox" disabled><span></span>1C</label>
+                            <label class="level_label"><input type="checkbox" name="checkBox" value="Project Manager" class="level_checkbox" disabled>Project Manager</label>
+                        </div>
+                        <div class="column_candidate_block">
+                            <label class="level_label"><input type="checkbox" name="checkBox" value="DevOps" class="level_checkbox" disabled>DevOps</label>
+                            <label class="level_label"><input type="checkbox" name="checkBox" value="Design" class="level_checkbox" disabled>Design</label>
+                            <label class="level_label"><input type="checkbox" name="checkBox" value="System Admin" class="level_checkbox" disabled><span></span>System Admin</label>
+                            <label class="level_label"><input type="checkbox" name="checkBox" value="Flash/Flex" class="level_checkbox" disabled>Flash/Flex</label>
+                            <label class="level_label"><input type="checkbox" name="checkBox" value="Sales" class="level_checkbox" disabled>Sales</label>
+                            <label class="level_label"><input type="checkbox" name="checkBox" value="Analyst" class="level_checkbox" disabled><span></span>Analyst</label>
+                            <label class="level_label"><input type="checkbox" name="checkBox" value="Support" class="level_checkbox" disabled>Support</label>
+                        </div>
+                        <div class="column_candidate_block">
+                            <label class="level_label"><input type="checkbox" name="checkBox" value="Node.js" class="level_checkbox" disabled>Node.js</label>
+                            <label class="level_label"><input type="checkbox" name="checkBox" value="HR" class="level_checkbox" disabled>HR</label>
+                            <label class="level_label"><input type="checkbox" name="checkBox" value="Technical Writer" class="level_checkbox" disabled><span></span>Technical Writer</label>
+                            <label class="level_label"><input type="checkbox" name="checkBox" value="DBA" class="level_checkbox" disabled>DBA</label>
+                            <label class="level_label"><input type="checkbox" name="checkBox" value="Scala" class="level_checkbox" disabled>Scala</label>
+                            <label class="level_label"><input type="checkbox" name="checkBox" valeu="Product Manager" class="level_checkbox" disabled><span></span>Product Manager</label>
+                            <label class="level_label"><input type="checkbox" name="checkBox" value="ERP/CRM" class="level_checkbox" disabled>ERP/CRM</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row_splin" style="border: none; margin-bottom: 10px;"> </div>
+
+            <div class="rec_row">
+                <div class="rec_column">
+                    <div class="column_title_sub">
+                        <h3 class="sub_title_true">Ваши источники по подбору кандидатов<span class="red_span">*</span></h3>
+                        <span class="span_forexample">Пример: hh.ru, yodoo.com, freelance.com</span>
+                    </div>
+                    <div class="column_body">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="source" id="source" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="rec_row">
+                <div class="rec_column">
+                    <div class="column_title_sub">
+                        <h3 class="sub_title_true">Компании, с которыми сотрудничали, есть ли их рекомендации<span class="red_span">*</span></h3>
+                        <span class="span_forexample">Пример: Yandex - Нет, Microsoft - Да, Mail Group - Да</span>
+                    </div>
+                    <div class="column_body">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="recommendations" id="recommendations" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="rec_row">
+                <div class="rec_column">
+                    <div class="column_title_sub">
+                        <h3 class="sub_title_true">Реквизиты для оплаты</h3>
+                        <span class="span_forexample">Пример: Yandex Money - 410011654706463</span>
+                    </div>
+                    <div class="column_body">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="requisites" id="requisites" readonly>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row_splin"> </div>
+
+            <div class="row_candidate">
+                <div class="column_candidate_center">
+                    <button type="submit" id="cancel_recruiter">Отклонить рекрутера</button>
+                </div>
+                <div class="column_candidate_center">
+                    <button type="submit" id="save_recruiter">Допустить к работе</button>
+                </div>
+            </div>
+            <div class="row_splin" style="border: none; margin-bottom: 10px;"> </div>
+        </div>
+    </div>
+</div>
+<% include ../layout/modal.ejs %>
+<% include ../layout/footer.ejs %>

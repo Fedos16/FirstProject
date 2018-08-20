@@ -1,60 +1,21 @@
 $(function(){
 
-    // ДЕЙСТВИЯ С ДОКУМЕНТОМ ПРИ ОТКРЫТИИ
-    $(document).ready(function() {
-
-        var item = $('.item_activ').text();
-        
-        if (item == "Пользователи" || item == "Рекрутеры"){
-            $('.ul_box_info').attr('id', '');
-            if(String(window.location).indexOf('recruiters/create') != -1){
-                $('.ul_box_info li:first-child').attr('id', 'sm_item_act');
-            }
-            else if(String(window.location).indexOf('recruiters/edit') != -1){
-                $('.ul_box_info li:last-child').attr('id', 'sm_item_act');
-            }
-            else if(String(window.location).indexOf('users/create') != -1){
-                $('.ul_box_info li:first-child').attr('id', 'sm_item_act');
-            }
-        }
-        else{
-            $('.ul_box_info').attr('id', 'display_none');
-        }
-    
-    });
-
     $('input').on('focus', function(){
         $('p.error').remove();
         $('input').removeClass('error');
-    });
-
-    $('.ul_box_info').on('click', (e) => {
-        var top_name = e.target.textContent;
-        var left_name = $('.item_activ').text();
-
-        if (left_name == 'Рекрутеры'){
-            if (top_name == 'Создать'){
-                $(location).attr('href', '/recruiters/create');
-            }
-            else{
-                $(location).attr('href', '/recruiters/edit');
-            }
-        }
-        else if(left_name == 'Пользователи'){
-
-        }
     });
     
 
     // СОЗДАНИЕ НОВОГО ПОЛЬЗОВАТЕЛЯ ДЛЯ АВТОРИЗАЦИИ В СИСТЕМЕ
     $('#form_submit').on('click', function(e){
-        
         e.preventDefault();
     
         var data = {
             login: $('#register-login').val(),
             password: $('#register-password').val(),
-            passwordConfirm: $('#register-password-confirm').val()
+            passwordConfirm: $('#register-password-confirm').val(),
+            typeUser: 'user',
+            email: $('#register-email').val()
         };
     
         $.ajax({
@@ -65,7 +26,9 @@ $(function(){
         }).done(function(data){
             if (!data.ok){
 
-                $('#form_submit').before('<p class="error">' + data.error + '</p>');
+                if (!$('p.error').text()){
+                    $('#form_submit').before('<p class="error">' + data.error + '</p>');
+                }
                 if (data.fields){
                     data.fields.forEach(function(item){
                         $('input[name=' + item + ']').addClass('error');
@@ -75,6 +38,7 @@ $(function(){
                 $('#register-login').val('');
                 $('#register-password').val('')
                 $('#register-password-confirm').val('')
+                $('#register-email').val('')
 
                 $('#form_submit').before('<p class="success">Успешно!</p>');
             }
@@ -145,7 +109,7 @@ $(function(){
             url: '/api/savedata/recruries'
         }).done(function(data){
             if(!data.ok){
-
+                $('html, body').animate({scrollTop: 0},500);
                 $('.modal_back').attr('id', '');
                 $('#modal_line').attr('class', 'modal_line_error');
                 $('#modal_line').text(data.error);
@@ -158,6 +122,7 @@ $(function(){
                     });
                 }
             }else{
+                $('html, body').animate({scrollTop: 0},500);
                 $('.modal_back').attr('id', '');
                 $('#modal_line').attr('class', 'modal_line_success');
                 $('#modal_line').text("Данные успешно сохранены");
@@ -170,6 +135,16 @@ $(function(){
     $('#modal_button').on('click', ()=>{
         $('.modal_back').attr('id', 'display_none');
         $('.modal_back_edit').attr('id', 'display_none');
+        var status = sessionStorage.getItem('refresh');
+        var logout = sessionStorage.getItem('logout');
+        if (status) {
+            sessionStorage.removeItem('refresh');
+            location.reload();
+        }
+        else if (logout){
+            sessionStorage.removeItem('logout');
+            $(location).attr('href', '/api/auth/logout');
+        }
     });
 
 
@@ -184,6 +159,7 @@ $(function(){
 
         var data = {
             recruiter: $('#recruiter-c option:selected').text(),
+            recruiter_id: $('#recruiter-c').val(),
             directions: $('#directions-c option:selected').text(),
             name: $('#name-c').val(),
             email: $('#email-c').val(),
@@ -240,7 +216,6 @@ $(function(){
     // ОТОБРАЖЕНИЕ ОКНА РЕДАКТИРОВАНИЕ РЕКРУТЕРА И ДАННЫХ ДЛЯ РЕКРУТЕРА
     $('.icon_edit').on('click', (e) => {
         var id = e.target.parentElement.parentElement.getElementsByClassName('id_for_line')[0].textContent;
-        $('.modal_back_edit').removeAttr('id');
 
         sessionStorage.setItem('activ_id_recruiter', id);
 
@@ -255,9 +230,14 @@ $(function(){
             url: '/recruiters/findrecruiter'
         }).done(function(data){
             if (!data){
-                console.log('error');
+                $('.modal_back').attr('id', '');
+                $('#modal_line').attr('class', 'modal_line_error');
+                $('#modal_line').text(data.error);
+                $('#modal_button').text('Плохо');
+                $('#modal_button').attr('class', 'modal_button_e');
             }
             else{
+                $('.modal_back_edit').removeAttr('id');
                 if (data.ok){
                     $('#fio').val(data.data.fio);
                     $('#birthday').val(data.data.birthday);
@@ -289,7 +269,60 @@ $(function(){
 
     $('.close_modal_edit').on('click', () => {
         $('.modal_back_edit').attr('id', 'display_none');
+        sessionStorage.setItem('refresh', 'true');
     })
+
+    $('.open_recruiter').on('click', (e) => {
+        var id = e.target.parentElement.parentElement.getElementsByClassName('id_for_line')[0].textContent;
+
+        sessionStorage.setItem('activ_id_recruiter', id);
+
+        var data = {
+            id: id
+        };
+
+        $.ajax({
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            url: '/recruiters/findrecruiter'
+        }).done(function(data){
+            if (!data){
+                $('.modal_back').attr('id', '');
+                $('#modal_line').attr('class', 'modal_line_error');
+                $('#modal_line').text(data.error);
+                $('#modal_button').text('Плохо');
+                $('#modal_button').attr('class', 'modal_button_e');
+            }
+            else{
+                $('.modal_back_edit').removeAttr('id');
+                if (data.ok){
+                    $('#fio').val(data.data.fio);
+                    $('#birthday').val(data.data.birthday);
+                    $('#location').val(data.data.location);
+                    $('#education').val(data.data.education);
+                    $('#languages').val(data.data.languages);
+                    $('#telephone').val(data.data.telephone);
+                    $('#email').val(data.data.email);
+                    $('#skype').val(data.data.skype);
+                    $('#linkedin').val(data.data.linkedin);
+                    $('#it_work').val(data.data.it_work);
+                    $('#last_work').val(data.data.last_work);
+                    $('#source').val(data.data.source);
+                    $('#recommendations').val(data.data.recommendations);
+                    $('#requisites').val(data.data.requisites);
+
+                    var directions = data.data.directions.split(', ');
+
+                    $('.level_checkbox').prop('checked', false);
+
+                    for (var i=0; i < directions.length; i++){
+                        $('.level_checkbox[value="'+directions[i]+'"]').prop('checked', true);
+                    }
+                }
+            }
+        });
+    });
 
     // ОБНОВЛЕНИЕ ДАННЫХ О РЕКРУТЕРЕ В БАЗЕ ДАННЫХ
     $('#save_edit_rec').on('click', (e) => {
@@ -343,9 +376,46 @@ $(function(){
                 $('#modal_line').text("Данные успешно сохранены");
                 $('#modal_button').text('Хорошо')
                 $('#modal_button').attr('class', 'modal_button_s')
+                sessionStorage.setItem('refresh', 'true');
             }
         });
     });
+
+    $('#cancel_recruiter').on('click', (e) => {
+        alert('Пока не известно что делать! Удалять или заносить в базу как неактивного рекрутера');
+        $('.modal_back_edit').attr('id', 'display_none')
+
+    });
+
+    $('#save_recruiter').on('click', (e) => {
+
+        var data = {
+            id: sessionStorage.getItem('activ_id_recruiter')
+        }
+
+        $.ajax({
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            url: '/api/updatedata/recruitermoderation'
+        }).done(function(data){
+            if(!data.ok){
+                $('.modal_back').attr('id', '');
+                $('#modal_line').attr('class', 'modal_line_error');
+                $('#modal_line').text(data.error);
+                $('#modal_button').text('Плохо');
+                $('#modal_button').attr('class', 'modal_button_e');
+            } else{
+                $('.modal_back').attr('id', '');
+                $('#modal_line').attr('class', 'modal_line_success');
+                $('#modal_line').text("Данные успешно сохранены");
+                $('#modal_button').text('Хорошо');
+                $('#modal_button').attr('class', 'modal_button_s');
+                sessionStorage.setItem('refresh', 'true');
+            }
+        });
+
+    })
 
     // ВСЕ, ЧТО КАСАЕТСЯ УДАЛЕНИЕ (СТАВИТСЯ СТАТУС False) РЕКРУТЕРА ИЗ БАЗЫ ДАННЫХ
 
@@ -355,15 +425,35 @@ $(function(){
 
     $('.icon_delete').on('click', (e) => {
         var id = e.target.parentElement.parentElement.getElementsByClassName('id_for_line')[0].textContent;
-        $('.modla_back_remove').removeAttr('id');
+        $('#warning_text').text('Уверены, что хотетие удалить рекрутера?');
+        $('#warning_text').attr('class', 'modal_line_error');
         sessionStorage.setItem('id_remove_recruiter', id);
+        sessionStorage.setItem('type_update', false);
+
+        $('#modal_button_remove_no').attr('class', 'modal_button_remove_s');
+        $('#modal_button_remove_yes').attr('class', 'modal_button_remove_e');
+
+        $('.modla_back_remove').removeAttr('id');
+    });
+    $('.icon_cancel').on('click', (e) => {
+        var id = e.target.parentElement.parentElement.getElementsByClassName('id_for_line')[0].textContent;
+        $('#warning_text').text('Уверены, что хотетие вернуть рекрутера?');
+        $('#warning_text').attr('class', 'modal_line_success');
+        sessionStorage.setItem('id_remove_recruiter', id);
+        sessionStorage.setItem('type_update', true);
+
+        $('#modal_button_remove_no').attr('class', 'modal_button_remove_e');
+        $('#modal_button_remove_yes').attr('class', 'modal_button_remove_s');
+
+        $('.modla_back_remove').removeAttr('id');
     });
 
     $('#modal_button_remove_yes').on('click', () => {
         
 
         var data = {
-            id: sessionStorage.getItem('id_remove_recruiter')
+            id: sessionStorage.getItem('id_remove_recruiter'),
+            status: sessionStorage.getItem('type_update')
         }
 
         $.ajax({
@@ -388,6 +478,7 @@ $(function(){
                 $('#modal_line').text("Данные успешно сохранены");
                 $('#modal_button').text('Хорошо')
                 $('#modal_button').attr('class', 'modal_button_s')
+                sessionStorage.setItem('refresh', 'true');
             }
         });
     });
@@ -413,7 +504,11 @@ $(function(){
             url: '/worksheets/findworksheets'
         }).done(function(data){
             if (!data){
-                console.log('error');
+                $('.modal_back').attr('id', '');
+                $('#modal_line').attr('class', 'modal_line_error');
+                $('#modal_line').text(data.error);
+                $('#modal_button').text('Плохо');
+                $('#modal_button').attr('class', 'modal_button_e');
             }
             else{
                 if (data.ok){
@@ -486,6 +581,7 @@ $(function(){
                 $('#modal_line').text("Данные успешно сохранены");
                 $('#modal_button').text('Хорошо')
                 $('#modal_button').attr('class', 'modal_button_s')
+                sessionStorage.setItem('refresh', 'true');
             }
         });
     });
@@ -521,6 +617,7 @@ $(function(){
                 $('#modal_line').text("Данные успешно сохранены");
                 $('#modal_button').text('Хорошо')
                 $('#modal_button').attr('class', 'modal_button_s')
+                sessionStorage.setItem('refresh', 'true');
             }
         });
     });
@@ -609,6 +706,439 @@ $(function(){
         */
 
 
+    });
+
+    // СОХРАНЕНИЕ ИЗМЕНЕНИЙ ДАННЫХ О ПОЛЬЗОВАТЕЛЕ
+    $('#save_editing_user').on('click', (e) => {
+
+        var data = {
+            old_password: $('#old-password').val(),
+            new_password: $('#new-password').val(),
+            confirm_password: $('#confirm-password').val(),
+            email: $('#new-email').val(),
+        }
+
+        $.ajax({
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            url: '/api/updatedata/user'
+        }).done(function(data){
+            if (!data.ok){
+
+                if (!$('p.error').text()){
+                    $('#save_editing_user').before('<p class="error">' + data.error + '</p>');
+                }
+                
+                if (data.fields){
+                    data.fields.forEach(function(item){
+                        $('input[name=' + item + ']').addClass('error');
+                    });
+                }
+            }
+            else{
+                $('.modal_back').attr('id', '');
+                $('#modal_line').attr('class', 'modal_line_success');
+                $('#modal_line').text("Данные успешно сохранены");
+                $('#modal_button').text('Хорошо')
+                $('#modal_button').attr('class', 'modal_button_s')
+                sessionStorage.setItem('logout', 'true');
+            }
+        });
+
+    });
+
+    // ИЗМЕНЕНИЕ СТАТУСА ПОЛЬЗОВАТЕЛЯ
+    $('.status_for_user_td_true').on('click', (e) => {
+        var left = $(e.target).offset().left;
+        var top = $(e.target).offset().top;
+
+        $('.status_for_user').css({
+            'left': left,
+            'top': top
+        });
+        $('.status_for_user').removeAttr('id');
+
+        e.target.id = 'input_new_text';
+
+        var id = e.target.parentElement.children[0].textContent
+        sessionStorage.setItem('edit_status_user_id', id);
+    });
+    $('.status_for_user_td_false').on('click', (e) => {
+        var left = $(e.target).offset().left;
+        var top = $(e.target).offset().top;
+
+        $('.status_for_user').css({
+            'left': left,
+            'top': top
+        });
+        $('.status_for_user').removeAttr('id');
+
+        e.target.id = 'input_new_text';
+
+        var id = e.target.parentElement.children[0].textContent
+        sessionStorage.setItem('edit_status_user_id', id);
+    });
+
+    $('.status_for_user').on('click', (e) => {
+        var text = e.target.textContent;
+
+
+        $('#input_new_text').text(text);
+
+        if (text == "Активен"){
+            var data = {
+                status: true,
+                id: sessionStorage.getItem('edit_status_user_id')
+            }
+            $('#input_new_text').attr('class', 'status_for_user_td_true');
+        } else{
+            var data = {
+                status: false,
+                id: sessionStorage.getItem('edit_status_user_id')
+            }
+            $('#input_new_text').attr('class', 'status_for_user_td_false');
+        }
+
+        
+        $.ajax({
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            url: '/api/updatedata/userstatus'
+        }).done(function(data){
+            if (!data.ok){
+                $('.modal_back').attr('id', '');
+                $('#modal_line').attr('class', 'modal_line_error');
+                $('#modal_line').text(data.error);
+                $('#modal_button').text('Плохо');
+                $('#modal_button').attr('class', 'modal_button_e');
+                $('.status_for_user').attr('id', 'display_none');
+
+            } else{
+                sessionStorage.setItem('refresh', 'true');
+                $('.status_for_user').attr('id', 'display_none');
+            }
+        });
+
+        $('#input_new_text').removeAttr('id');
+        
+
+
+
+    });
+
+    $('.status_for_user').on('mouseleave', (e) => {
+        $('.status_for_user').attr('id', 'display_none');
+    })
+
+    // УДАЛЕНИЕ ПОЛЬЗОВАТЕЛЯ
+    $('.icon_delete_user').on('click', (e) => {
+        var id = e.target.parentElement.parentElement.children[0].textContent;
+        
+        var data = {
+            id: id
+        }
+
+        $.ajax({
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            url: '/api/removedata/user'
+        }).done(function(data){
+            if (!data.ok){
+                $('.modal_back').attr('id', '');
+                $('#modal_line').attr('class', 'modal_line_error');
+                $('#modal_line').text(data.error);
+                $('#modal_button').text('Плохо');
+                $('#modal_button').attr('class', 'modal_button_e');
+            }else{
+                $('.modal_back').attr('id', '');
+                $('#modal_line').attr('class', 'modal_line_success');
+                $('#modal_line').text("Данные успешно сохранены");
+                $('#modal_button').text('Хорошо');
+                $('#modal_button').attr('class', 'modal_button_s');
+                sessionStorage.setItem('refresh', 'true');
+            }
+        });
+
+    });
+
+    // РАЗДЕЛ TOOLTIP СТАТИСТИКА
+    //---- Для первой диаграммы
+    //месяц
+    $('#tooltip_month_one').on('click', (e) => {
+        var text = e.target.textContent;
+        var date = new Date();
+        $('#title_month_stat_one').text(text);
+        $('#tooltip_month_one').css('display', 'none');
+        if ($('#title_year_stat_one').text() == 'Год'){
+            $('#title_year_stat_one').text(date.getFullYear());
+        }
+
+        var data = {
+            month: text,
+            year: $('#title_year_stat_one').text()
+        }
+
+        $.ajax({
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            url: '/statistics/searchdata'
+        }).done(function(data){
+            if(!data.ok){
+                console.log('Error!');
+            }
+            else{
+
+                var arr = [['Day', 'Новые']];
+
+
+                for (i=1; i < data.data.count+1; i++){
+                    arr.push([String(i), data.data[i].length]);
+                }
+
+                if(document.URL.indexOf('statistics') != -1) {
+                    // МОЯ ПЕРВАЯ ДИАГРАММА
+                    google.charts.load('current', {'packages':['corechart', 'bar']});
+                    google.charts.setOnLoadCallback(drawChart);
+            
+                    function drawChart() {
+                        var data = google.visualization.arrayToDataTable(arr);
+            
+                        var options = {
+                            curveType: 'function',
+                            legend: { position: 'none' }
+                        };
+            
+                        var chart = new google.visualization.AreaChart(document.getElementById('curve_chart_one'));
+            
+                        chart.draw(data, options);
+                    }
+                }
+            }
+        });
+
+    });
+    $('#tooltip_month_one').on('mouseleave', (e) => {
+        $('#tooltip_month_one').css('display', 'none');
+    });
+    $('#title_month_stat_one').on('mouseenter', (e) => {
+        $('#tooltip_month_one').css({
+            'display':'flex',
+            'top': $('#title_month_stat_one').position().top+30
+        });
+
+        $('#tooltip_year_one').css('display', 'none');
+    });
+    $('#tooltip_month_one').on('mouseenter', (e) => {
+        $('#tooltip_month_one').css('display', 'flex');
+    });
+    $('#title_month_stat_one').on('mouseleave', (e) => {
+        $('#tooltip_month_one').css('display', 'none');
+    });
+    //год
+    $('#tooltip_year_one').on('click', (e) => {
+        var text = e.target.textContent;
+        $('#title_year_stat_one').text(text);
+        $('#tooltip_year_one').css('display', 'none');
+
+        var data = {
+            year: text
+        }
+
+        $('#first_d_month ul').remove();
+
+        $.ajax({
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            url: '/statistics/searchmonth'
+        }).done(function(data){
+            if(!data.ok){
+                console.log('Error!');
+            }
+            else{
+                $('#first_d_month').append('<ul></ul>')
+
+                for (x=0; x < data.data.month.length; x++){
+                    $('#first_d_month ul').append('<li>' + data.data.month[x] + '</li>')
+                }
+
+                $('#title_month_stat_one').text('Месяц');
+            }
+        });
+
+    });
+    $('#tooltip_year_one').on('mouseleave', (e) => {
+        $('#tooltip_year_one').css('display', 'none');
+    });
+    $('#title_year_stat_one').on('mouseenter', (e) => {
+        $('#tooltip_year_one').css({
+            'display': 'flex',
+            'top': $('#title_year_stat_one').position().top+30
+        });
+        $('#tooltip_month_one').css('display', 'none');
+    });
+    $('#tooltip_year_one').on('mouseenter', (e) => {
+        $('#tooltip_year_one').css('display', 'flex');
+    });
+    $('#title_year_stat_one').on('mouseleave', (e) => {
+        $('#tooltip_year_one').css('display', 'none');
+    });
+
+    //---- Для второй диаграммы
+    //месяц
+    $('#tooltip_month').on('click', (e) => {
+        var text = e.target.textContent;
+        var date = new Date();
+        $('#title_month_stat').text(text);
+        $('#tooltip_month').css('display', 'none');
+        if ($('#title_year_stat').text() == 'Год'){
+            $('#title_year_stat').text(date.getFullYear());
+        }
+
+        var data = {
+            year: $('#title_year_stat').text(),
+            month: text
+        }
+
+        $('.table_rec_edit tbody').remove();
+
+        $.ajax({
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            url: '/statistics/searcdatatwo'
+        }).done(function(data){
+            if(!data.ok){
+                console.log('Error!');
+            }
+            else{
+                $('.table_rec_edit').append('<tbody></tbody>');
+
+                var arr = [['Рекрутер', 'Анкет', { role: 'style' } ]]
+
+                for (var x=0; x < data.data.fio.length; x++){
+
+                    $('.table_rec_edit tbody').append('<tr></tr>');
+                    $('.table_rec_edit tbody tr:last-child').append('<td>' + String(Number(x)+1) + '</td>');
+                    $('.table_rec_edit tbody tr:last-child').append('<td>' + data.data.fio[x] + '</td>');
+                    $('.table_rec_edit tbody tr:last-child').append('<td>' + data.data.skype[x] + '</td>');
+                    $('.table_rec_edit tbody tr:last-child').append('<td>' + data.data.email[x] + '</td>');
+                    $('.table_rec_edit tbody tr:last-child').append('<td>' + data.data.telephone[x] + '</td>');
+                    $('.table_rec_edit tbody tr:last-child').append('<td>' + data.data.count[x].length + '</td>');
+
+                    arr.push([ 
+                        data.data.fio[x].split(' ')[0] +' '+ data.data.fio[x].split(' ')[1].charAt(0)+ '. ' + data.data.fio[x].split(' ')[2].charAt(0) + '.', 
+                        data.data.count[x].length,  
+                        'color: #76A7FA'
+                    ])
+                }
+
+                google.charts.load('current', {packages: ['corechart', 'bar']});
+                google.charts.setOnLoadCallback(drawBasic);
+
+                function drawBasic() {
+
+                    var data = google.visualization.arrayToDataTable(arr);
+
+                    var chart = new google.visualization.ColumnChart(
+                        document.getElementById('curve_chart_two'));
+
+                    chart.draw(data);
+                }
+            }
+        });
+
+    });
+    $('#tooltip_month').on('mouseleave', (e) => {
+        $('#tooltip_month').css('display', 'none');
+    });
+    $('#title_month_stat').on('mouseenter', (e) => {
+        $('#tooltip_month').css({
+            'display':'flex',
+            'top': $('#title_month_stat').position().top+30
+        });
+
+        $('#tooltip_year').css('display', 'none');
+    });
+    $('#tooltip_month').on('mouseenter', (e) => {
+        $('#tooltip_month').css('display', 'flex');
+    });
+    $('#title_month_stat').on('mouseleave', (e) => {
+        $('#tooltip_month').css('display', 'none');
+    });
+    //год
+    $('#tooltip_year').on('click', (e) => {
+        var text = e.target.textContent;
+        $('#title_year_stat').text(text);
+        $('#tooltip_year').css('display', 'none');
+
+        var data = {
+            year: text
+        }
+
+        $('#second_d_month ul').remove();
+
+        $.ajax({
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            url: '/statistics/searchmonth'
+        }).done(function(data){
+            if(!data.ok){
+                console.log('Error!');
+            }
+            else{
+                $('#second_d_month').append('<ul></ul>')
+
+                for (x=0; x < data.data.month.length; x++){
+                    $('#second_d_month ul').append('<li>' + data.data.month[x] + '</li>')
+                }
+
+                $('#title_month_stat').text('Месяц');
+            }
+        });
+    });
+    $('#tooltip_year').on('mouseleave', (e) => {
+        $('#tooltip_year').css('display', 'none');
+    });
+    $('#title_year_stat').on('mouseenter', (e) => {
+        $('#tooltip_year').css({
+            'display': 'flex',
+            'top': $('#title_year_stat').position().top+30
+        });
+        $('#tooltip_month').css('display', 'none');
+    });
+    $('#tooltip_year').on('mouseenter', (e) => {
+        $('#tooltip_year').css('display', 'flex');
+    });
+    $('#title_year_stat').on('mouseleave', (e) => {
+        $('#tooltip_year').css('display', 'none');
+    });
+
+    // Отображение, скрытие диаграмм
+    $('#first_hh_stat').on('click', (e) => {
+        var display = $('#curve_chart_one').css('display');
+        if (display == 'none'){
+            $('#curve_chart_one').removeAttr('style');
+        }
+        else{
+            $('#curve_chart_one').css('display', 'none');
+        }
+    });
+    $('#second_hh_stat').on('click', (e) => {
+        var display = $('#curve_chart_two').css('display');
+        if (display == 'none'){
+            $('#curve_chart_two').removeAttr('style');
+            $('.table_rec_edit').removeAttr('style');
+        }
+        else{
+            $('#curve_chart_two').css('display', 'none');
+            $('.table_rec_edit').css('display', 'none');
+        }
     });
 
 });  

@@ -6,12 +6,19 @@ const models = require('../models');
 router.get('/', (req, res) => {
 
     const login = req.session.userLogin;
+    const userType = req.session.userType;
+    const page = {
+        main: 'worksheets',
+        submain: 'none'
+    }
     if (login){
 
         models.Worksheets.find((err, worksheets) => {
 
             const data = {
                 user: login,
+                typeUser: userType,
+                page: page,
                 name: [],
                 residence: [],
                 telephone: [],
@@ -48,18 +55,19 @@ router.get('/new', (req, res) => {
 
     if (login){
 
-        models.Recruiter.find((err, recruiter) => {
+        models.Recruiter.find({ status: 'true' }, (err, recruiter) => {
 
             const data = {
-                fio: []
+                fio: [],
+                id: []
             }
 
             if (err) res.render('./worksheets/new_candidate', { data });
 
             for (var i = 0; i < recruiter.length; i++){
-                if (recruiter[i].status){
-                    data.fio.push(recruiter[i].fio);
-                }
+                data.fio.push(recruiter[i].fio);
+                data.id.push(recruiter[i]._id);
+                
 
             }
 
@@ -77,7 +85,7 @@ router.post('/findworksheets', (req, res) => {
     const id = req.body.id;
     
     models.Worksheets.findById(id, (err, worksheets) => {
-        if (err) res.json({ ok: false, error: 'Попробуйте позжу' });
+        if (err) res.json({ ok: false, error: 'Попробуйте позже' });
 
         res.json({ ok: true, data: worksheets });
     })

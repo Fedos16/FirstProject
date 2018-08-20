@@ -7,6 +7,10 @@ const schema = new Schema(
         type: String,
         required: true
     },
+    recruiter_id: {
+        type: String,
+        required: true
+    },
     directions: {
         type: String,
         required: true

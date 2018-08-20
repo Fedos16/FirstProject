@@ -20,7 +20,7 @@ router.post('/recruries', (req, res) => {
     const recommendations = req.body.recommendations;
     const requisites = req.body.requisites;
     const directions = req.body.directions;
-    const status = true;
+    const status = "Модерация";
 
     if (!fio || !birthday || !location || !languages || !telephone || !email || !skype || !linkedin || !it_work || !last_work || !source || !recommendations || !directions){
 
@@ -84,6 +84,7 @@ router.post('/recruries', (req, res) => {
 // СОХРАНЕНИЕ АНКЕТЫ КАНДИДАТА
 router.post('/worksheets', (req, res) => {
     const recruiter = req.body.recruiter;
+    const recruiter_id = req.body.recruiter_id;
     const directions = req.body.directions;
     const name = req.body.name;
     const email = req.body.email;
@@ -135,6 +136,7 @@ router.post('/worksheets', (req, res) => {
 
         models.Worksheets.create({
             recruiter,
+            recruiter_id,
             directions,
             name,
             email,

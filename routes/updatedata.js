@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+const bcrypt = require('bcrypt-nodejs');
+
 const models = require('../models');
 
 router.post('/recruiters', (req, res) => {
@@ -95,6 +97,92 @@ router.post('/worksheets', (req, res) => {
 
     });
 
+});
+
+router.post('/user', (req, res) => {
+
+    const login = req.session.userLogin;
+    const old_password = req.body.old_password;
+    const new_password = req.body.new_password;
+    const confirm_password = req.body.confirm_password;
+    const email = req.body.email;
+
+    var fields = []
+
+    if (!new_password || !confirm_password || !old_password){
+        if (!new_password) fields.push('new-password');
+        if (!confirm_password) fields.push('confirm-password');
+        if (!old_password) fields.push('old-password');
+
+        res.json( {ok: false, error: 'Заполнены не все обязательные поля', fields});
+    }
+    else if (new_password != confirm_password){
+
+        fields = ['new-password', 'confirm-password'];
+        res.json( {ok: false, error: 'Пароли не совпадают', fields });
+    }
+    else if(email && !/^[0-9a-z-.]+@[0-9a-z-]{2,}\.[a-z]{2,}$/.test(email)){
+
+        fields = ['email'];
+        res.json( {ok: false, error: 'E-mail имеет не верный формат', fields });
+    }
+    else if (new_password.length < 4){
+        fields = ['new-password', 'confirm-password'];
+        res.json( {ok: false, error: 'Длинна пароля не менее 5 символов', fields });
+    }
+    else{
+
+        models.User.findOne({ login: login }, (error, user) => {
+            if (error) res.json( {ok: false, error: 'Пользователь не найден'} );
+
+            bcrypt.compare(old_password, user.password, function(err, result) {
+                if (!result) {
+                res.json({
+                    ok: false,
+                    error: 'Старый пароль введен не верно!',
+                    fields: ['old-password']
+                });
+                } else {
+
+                    bcrypt.hash(new_password, null, null, (err, hash) => {
+                        if (err) res.json( { ok: false, error: 'Неизвестная ошибка' } );
+                        if (email){
+                            user.email = email;
+                        }
+                        user.password = hash;
+                        user.save((errs) => {
+                            if (errs) res.json({ ok: false, error: 'Попробуйте позже' });
+                            
+                            res.json({ ok: true });
+                        });
+                    })
+
+                }
+            });
+        });
+    }
+
+});
+
+router.post('/userstatus', (req, res) => {
+
+    const id = req.body.id;
+    const status = req.body.status;
+
+    models.User.findByIdAndUpdate(id, {status: status }, (errs) => {
+        if (errs) res.json( {ok: false, error: 'Попробуйте позже'} );
+        res.json({ok: true});
+    });
+});
+
+router.post('/recruitermoderation', (req, res) => {
+    const id = req.body.id;
+    const status = true;
+
+    models.Recruiter.findByIdAndUpdate(id, { status: status }, (errs) => {
+        if (errs) res.json( {ok: false, error: 'Попробуйте позже'} );
+        res.json({ok: true});
+    });
 });
 
 module.exports = router;

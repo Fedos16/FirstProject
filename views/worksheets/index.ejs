@@ -5,10 +5,10 @@
             <div class="box">
                 <ul class="menu">
                     <li class="item_activ">Анкеты</li>
-                    <a href="/recruiters/create"><li class="item_noactiv">Рекрутеры</li></a>
+                    <a href="/recruiters/moderation"><li class="item_noactiv">Рекрутеры</li></a>
                     <a href="/statistics"><li class="item_noactiv">Статистика</li></a>
                     <br>
-                    <a href="/users/create"><li class="item_noactiv">Пользователи</li></a> 
+                    <a href="/users/settings"><li class="item_noactiv">Пользователи</li></a> 
                 </ul>
             </div>
         </div>
@@ -54,7 +54,7 @@
                         <h3>Рекрутер<span class="red_span">*</span></h3>
                     </div>
                     <div class="column_body">
-                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="recruiter-c" id="recruiter-c">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="recruiter-c" id="recruiter-c" readonly>
                     </div>
                 </div>
                 <div class="column_candidate">
@@ -62,7 +62,7 @@
                         <h3>Directions<span class="red_span">*</span></h3>
                     </div>
                     <div class="column_body">
-                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="directions-c" id="directions-c">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="directions-c" id="directions-c" readonly>
                     </div>
                 </div>
             </div>
@@ -73,7 +73,7 @@
                         <h3>Name of the candidate<span class="red_span">*</span></h3>
                     </div>
                     <div class="column_body">
-                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="name-c" id="name-c">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="name-c" id="name-c" readonly>
                     </div>
                 </div>
                 <div class="column_candidate">
@@ -81,7 +81,7 @@
                         <h3>E-mail of the candidate<span class="red_span">*</span></h3>
                     </div>
                     <div class="column_body">
-                        <input type="email" class="input_candidate" placeholder="Мой ответ" name="email-c" id="email-c">
+                        <input type="email" class="input_candidate" placeholder="Мой ответ" name="email-c" id="email-c" readonly>
                     </div>
                 </div>
             </div>
@@ -91,7 +91,7 @@
                         <h3>Phone number of the candidate<span class="red_span">*</span></h3>
                     </div>
                     <div class="column_body">
-                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="phone-c" id="phone-c">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="phone-c" id="phone-c" readonly>
                     </div>
                 </div>
                 <div class="column_candidate">
@@ -99,7 +99,7 @@
                         <h3>Messenger of the candidate<span class="red_span">*</span></h3>
                     </div>
                     <div class="column_body">
-                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="messenger-c" id="messenger-c">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="messenger-c" id="messenger-c" readonly>
                     </div>
                 </div>
             </div>
@@ -109,7 +109,7 @@
                         <h3>Social link of the candidate<span class="red_span">*</span></h3>
                     </div>
                     <div class="column_body">
-                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="social-c" id="social-c">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="social-c" id="social-c" readonly>
                     </div>
                 </div>
                 <div class="column_candidate">
@@ -117,7 +117,7 @@
                         <h3>Linkedin profile of the candidate<span class="red_span">*</span></h3>
                     </div>
                     <div class="column_body">
-                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="linkedin-c" id="linkedin-c">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="linkedin-c" id="linkedin-c" readonly>
                     </div>
                 </div>
             </div>
@@ -127,7 +127,7 @@
                         <h3>Residence<span class="red_span">*</span><span class="span_forexample">(Country, City / Relocate to)</span></h3>
                     </div>
                     <div class="column_body">
-                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="residence-c" id="residence-c">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="residence-c" id="residence-c" readonly>
                     </div>
                 </div>
                 <div class="column_candidate">
@@ -136,12 +136,12 @@
                     </div>
                     <div class="column_body">
                         <div class="column_candidate_block">
-                            <label class="level_label"><input type="checkbox" value="Middle" name="level" id="middle_level" class="level_checkbox"><span></span>Middle</label>
-                            <label class="level_label"><input type="checkbox" value="Lead" name="level" id="lead_level" class="level_checkbox">Lead</label>
+                            <label class="level_label"><input type="checkbox" value="Middle" name="level" id="middle_level" class="level_checkbox" disabled><span></span>Middle</label>
+                            <label class="level_label"><input type="checkbox" value="Lead" name="level" id="lead_level" class="level_checkbox" disabled>Lead</label>
                         </div>
                         <div class="column_candidate_block">
-                            <label class="level_label"><input type="checkbox" value="Senior" name="level" id="senior_level" class="level_checkbox">Senior</label>
-                            <label class="level_label"><input type="checkbox" value="Ready Team" name="level" id="ready_team_level" class="level_checkbox">Ready Team</label>
+                            <label class="level_label"><input type="checkbox" value="Senior" name="level" id="senior_level" class="level_checkbox" disabled>Senior</label>
+                            <label class="level_label"><input type="checkbox" value="Ready Team" name="level" id="ready_team_level" class="level_checkbox" disabled>Ready Team</label>
                         </div>
                     </div>
                 </div>
@@ -152,7 +152,7 @@
                         <h3>Salary Expectation<span class="red_span">*</span></h3>
                     </div>
                     <div class="column_body">
-                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="salary-c" id="salary-c">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="salary-c" id="salary-c" readonly>
                     </div>
                 </div>
             </div>
@@ -162,7 +162,7 @@
                         <h3>Experiences<span class="red_span">*</span></h3>
                     </div>
                     <div class="column_body">
-                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="experiences-c" id="experiences-c">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="experiences-c" id="experiences-c" readonly>
                     </div>
                 </div>
                 <div class="column_candidate">
@@ -171,7 +171,7 @@
                         <span class="span_forexample">For example: Senior Java Developer (3 yars) ... etc</span>
                     </div>
                     <div class="column_body">
-                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="w_experiences-c" id="w_experiences-c">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="w_experiences-c" id="w_experiences-c" readonly>
                     </div>
                 </div>
             </div>
@@ -182,7 +182,7 @@
                         <span class="span_forexample">Add best skills  and use "/": OOP/OOD/Linux ...etc</span>
                     </div>
                     <div class="column_body">
-                        <textarea class="textarea_candidate" name="best_skills-c" id="best_skills-c"></textarea>
+                        <textarea class="textarea_candidate" name="best_skills-c" id="best_skills-c" readonly></textarea>
                     </div>
                 </div>
             </div>
@@ -192,7 +192,7 @@
                         <h3>Portfolio link<span class="red_span">*</span></h3>
                     </div>
                     <div class="column_body">
-                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="portfolio-c" id="portfolio-c">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="portfolio-c" id="portfolio-c" readonly>
                     </div>
                 </div>
                 <div class="column_candidate">
@@ -201,7 +201,7 @@
                         <span class="span_forexample">For example: English upper intermediate</span>
                     </div>
                     <div class="column_body">
-                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="language-c" id="language-c">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="language-c" id="language-c" readonly>
                     </div>
                 </div>
             </div>
@@ -211,7 +211,7 @@
                         <h3>Recommendations</h3>
                     </div>
                     <div class="column_body">
-                        <lable class="level_label"><input type="checkbox" value="yes" name="recomendations-c" id="recomendations-c" class="level_checkbox">Yes</lable>
+                        <label class="level_label"><input type="checkbox" value="yes" name="recomendations-c" id="recomendations-c" class="level_checkbox" disabled>Yes</label>
                     </div>
                 </div>
                 <div class="column_candidate">
@@ -220,7 +220,7 @@
                         <span class="span_forexample">Education, Certificates, Courses, Hobbies ... etc</span>
                     </div>
                     <div class="column_body">
-                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="additional-c" id="additional-c">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="additional-c" id="additional-c" readonly>
                     </div>
                 </div>
             </div>
@@ -231,7 +231,7 @@
                         <span class="span_forexample">Use Google Drive and share the link on your documents</span>
                     </div>
                     <div class="column_body">
-                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="download-c" id="download-c">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" name="download-c" id="download-c" readonly>
                     </div>
                 </div>
             </div>

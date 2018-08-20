@@ -5,6 +5,8 @@ const updatedata = require('./updatedata');
 const removedata = require('./removedata');
 const worksheets = require('./worksheets');
 const inputdata = require('./inputdata');
+const users = require('./users');
+const statistics = require('./statistics');
 
 module.exports = {
     auth,
@@ -13,5 +15,7 @@ module.exports = {
     updatedata,
     removedata,
     worksheets,
-    inputdata
+    inputdata,
+    users,
+    statistics
 };

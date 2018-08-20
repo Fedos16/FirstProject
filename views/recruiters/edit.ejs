@@ -8,7 +8,7 @@
                     <li class="item_activ">Рекрутеры</li>
                     <a href="/statistics"><li class="item_noactiv">Статистика</li></a>
                     <br>
-                    <a href="/users/create"><li class="item_noactiv">Пользователи</li></a> 
+                    <a href="/users/settings"><li class="item_noactiv">Пользователи</li></a> 
                 </ul>
             </div>
         </div>
@@ -27,15 +27,41 @@
                     </thead>
                     <tbody>
                         <% for(var i=0;i<data.fio.length;i++) {%>
-                            <tr>
-                                <td style="display: none" class="id_for_line"><%= data.id[i] %></td>
-                                <td><%= data.fio[i] %></td>
-                                <td><%= data.location[i] %></td>
-                                <td><%= data.telephone[i] %></td>
-                                <td><%= data.directions[i] %></td>
-                                <td><img src="/images/pencil.png" class="icon_edit"></td>
-                                <td><img src="/images/basket.png" class="icon_delete"></td>
-                            </tr>
+                            <% if (data.typeUser == 'user') { %>
+                                <% if (data.status[i] == 'true') { %>
+                                    <tr>
+                                        <td style="display: none" class="id_for_line"><%= data.id[i] %></td>
+                                        <td><%= data.fio[i] %></td>
+                                        <td><%= data.location[i] %></td>
+                                        <td><%= data.telephone[i] %></td>
+                                        <td><%= data.directions[i] %></td>
+                                        <td><img src="/images/pencil.png" class="icon_edit"></td>
+                                        <td><img src="/images/basket.png" class="icon_delete"></td>
+                                    </tr>
+                                <% } %>
+                            <% } else {%>
+                                <% if (data.status[i] == 'false') { %>
+                                    <tr class="false_status_row">
+                                        <td style="display: none" class="id_for_line"><%= data.id[i] %></td>
+                                        <td><%= data.fio[i] %></td>
+                                        <td><%= data.location[i] %></td>
+                                        <td><%= data.telephone[i] %></td>
+                                        <td><%= data.directions[i] %></td>
+                                        <td><img src="/images/pencil.png" class="icon_edit"></td>
+                                        <td><img src="/images/cancel.png" class="icon_cancel"></td>
+                                    </tr>
+                                <% } else if (data.status[i] == 'true') { %>
+                                    <tr class="true_status_row">
+                                        <td style="display: none" class="id_for_line"><%= data.id[i] %></td>
+                                        <td><%= data.fio[i] %></td>
+                                        <td><%= data.location[i] %></td>
+                                        <td><%= data.telephone[i] %></td>
+                                        <td><%= data.directions[i] %></td>
+                                        <td><img src="/images/pencil.png" class="icon_edit"></td>
+                                        <td><img src="/images/basket.png" class="icon_delete"></td>
+                                    </tr>
+                                <% } %>
+                            <% } %>
                         <% } %>
                     </tbody>
                 </table>
@@ -47,8 +73,8 @@
 <div class="modla_back_remove" id="display_none">
     <div class="modal_remove">
             <div class="modal_line_title"><h3>ВНИМАНИЕ!</h3></div>
-            <div class="modal_line_error">
-                Уверены, что хотетие удалить рекрутера?
+            <div class="modal_line_error" id="warning_text">
+                
             </div>
             <div class="modal_remove_line">
                 <button type="button" class="modal_button_remove_s" id="modal_button_remove_no">Нет</button>

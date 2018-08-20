@@ -52,46 +52,14 @@ app.use(
 
 app.get('/', (req, res) => {
   const login = req.session.userLogin;
-  const data = {
-    user: login
-  };
+
   if (login){
-    res.render('./worksheets/index', {data});
+    res.redirect('/worksheets');
   }
   else{
     res.render('./login');
   }
 })
-
-app.get('/statistics', (req, res) => {
-
-  const login = req.session.userLogin;
-  const data = {
-    user: login
-  };
-  if (login){
-    res.render('./statistics/index', {data});
-  }
-  else{
-    res.redirect('/');
-  }
-
-});
-
-app.get('/users/create', (req, res) => {
-  
-  const login = req.session.userLogin;
-  const data = {
-    user: login
-  };
-  if (login){
-    res.render('./users/create', {data});
-  }
-  else{
-    res.redirect('/');
-  }
-
-});
 
 
 app.use('/api/auth', routes.auth);
@@ -102,6 +70,8 @@ app.use('/api/inputdata', routes.inputdata);
 
 app.use('/worksheets', routes.worksheets);
 app.use('/recruiters', routes.recruiters);
+app.use('/statistics', routes.statistics);
+app.use('/users', routes.users);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

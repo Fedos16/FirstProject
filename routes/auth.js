@@ -9,12 +9,16 @@ router.post('/register', (req, res) => {
   const login = req.body.login;
   const password = req.body.password;
   const passwordConfirm = req.body.passwordConfirm;
+  const typeUser = req.body.typeUser;
+  const email = req.body.email;
+  const status = true;
 
   if (!login || !password || !passwordConfirm) {
     const fields = [];
     if (!login) fields.push('login');
     if (!password) fields.push('password');
     if (!passwordConfirm) fields.push('passwordConfirm');
+    if (!email) fields.push('email');
 
     res.json({
       ok: false,
@@ -45,6 +49,12 @@ router.post('/register', (req, res) => {
       error: 'Минимальная длина пароля 5 символов!',
       fields: ['password']
     });
+  } else if (!/^[0-9a-z-.]+@[0-9a-z-]{2,}\.[a-z]{2,}$/.test(email)){
+    res.json({
+      ok: false,
+      error: 'Не верная структура email!',
+      fields: ['email']
+    });
   } else {
     models.User.findOne({
       login
@@ -53,7 +63,10 @@ router.post('/register', (req, res) => {
         bcrypt.hash(password, null, null, (err, hash) => {
           models.User.create({
             login,
-            password: hash
+            password: hash,
+            typeUser,
+            email,
+            status
           })
             .then(user => {
               console.log(user);
@@ -115,11 +128,21 @@ router.post('/login', (req, res) => {
                 fields: ['login', 'password']
               });
             } else {
-              req.session.userId = user.id;
-              req.session.userLogin = user.login;
-              res.json({
-                ok: true
-              });
+              if (user.status){
+                req.session.userId = user.id;
+                req.session.userLogin = user.login;
+                req.session.userType = user.typeUser;
+
+                res.json({
+                  ok: true
+                });
+              }
+              else{
+                res.json({
+                  ok: false,
+                  error: 'Пользователь временно не доступен!'
+                });
+              }
             }
           });
         }
@@ -135,7 +158,6 @@ router.post('/login', (req, res) => {
 });
 
 // GET for logout
-
 router.get('/logout', (req, res) => {
   if (req.session) {
     // delete session object

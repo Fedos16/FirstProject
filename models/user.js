@@ -10,6 +10,15 @@ const schema = new Schema(
     password: {
       type: String,
       required: true
+    },
+    typeUser: {
+      type: String
+    },
+    email: {
+      type: String
+    },
+    status: {
+      type: Boolean
     }
   },
   {

@@ -1,0 +1,55 @@
+<% include ../layout/header.ejs %>
+<div class="main">
+    <div class="container">
+        <div class="sidebar">
+            <div class="box">
+                <ul class="menu">
+                    <a href="/worksheets"><li class="item_noactiv">Анкеты</li></a> 
+                    <a href="/recruiters/moderation"><li class="item_noactiv">Рекрутеры</li></a>
+                    <a href="/statistics"><li class="item_noactiv">Статистика</li></a>
+                    <br>
+                    <li class="item_activ">Пользователи</li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <div class="center_content">
+                <div class="rec_bloc_edit">
+                    <table class="table_rec_edit">
+                        <thead>
+                            <tr>
+                                <th>Логин</th>
+                                <th>E-mail</th>
+                                <th>Статус</th>
+                                <th> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(var i=0;i<data.login.length;i++) {%>
+                                <tr>
+                                    <td style="display: none" class="id_for_line"><%= data.id[i] %></td>
+                                    <td><%= data.login[i] %></td>
+                                    <td><%= data.email[i] %></td>
+                                    <% if (data.status[i]) { %>
+                                        <td class="status_for_user_td_true">Активен</td>
+                                    <% } else {%>
+                                        <td class="status_for_user_td_false">Неактивен</td>
+                                    <% } %>
+                                    <td><img src="/images/basket.png" class="icon_delete_user"></td>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="status_for_user" id="display_none">
+            <ul>
+                <li>Активен</li>
+                <li>Неактивен</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<% include ../layout/modal.ejs %>
+<% include ../layout/footer.ejs %>
