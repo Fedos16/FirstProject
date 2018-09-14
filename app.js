@@ -50,16 +50,20 @@ app.use(
 
 // routers
 
-app.get('/', (req, res) => {
+app.get('/administration/', (req, res) => {
   const login = req.session.userLogin;
 
   if (login){
-    res.redirect('/worksheets');
+    res.redirect('/administration/worksheets/moderation');
   }
   else{
     res.render('./login');
   }
-})
+});
+
+app.get('/', (req, res) => {
+  res.render('./landing/index');
+});
 
 
 app.use('/api/auth', routes.auth);
@@ -68,10 +72,10 @@ app.use('/api/updatedata', routes.updatedata);
 app.use('/api/removedata', routes.removedata);
 app.use('/api/inputdata', routes.inputdata);
 
-app.use('/worksheets', routes.worksheets);
-app.use('/recruiters', routes.recruiters);
-app.use('/statistics', routes.statistics);
-app.use('/users', routes.users);
+app.use('/administration/worksheets', routes.worksheets);
+app.use('/administration/recruiters', routes.recruiters);
+app.use('/administration/statistics', routes.statistics);
+app.use('/administration/users', routes.users);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

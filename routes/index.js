@@ -7,6 +7,7 @@ const worksheets = require('./worksheets');
 const inputdata = require('./inputdata');
 const users = require('./users');
 const statistics = require('./statistics');
+const main_page = require('./main_page');
 
 module.exports = {
     auth,
@@ -17,5 +18,6 @@ module.exports = {
     worksheets,
     inputdata,
     users,
-    statistics
+    statistics,
+    main_page
 };

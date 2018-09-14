@@ -4,64 +4,62 @@
         <div class="sidebar">
             <div class="box">
                 <ul class="menu">
-                    <a href="/worksheets"><li class="item_noactiv">Анкеты</li></a>
-                    <a href="/recruiters/moderation"><li class="item_noactiv">Рекрутеры</li></a>
+                    <a href="/administration/worksheets/moderation"><li class="item_noactiv">Анкеты</li></a>
+                    <a href="/administration/recruiters/moderation"><li class="item_noactiv">Рекрутеры</li></a>
                     <li class="item_activ">Статистика</li>
                     <br>
-                    <a href="/users/settings"><li class="item_noactiv">Пользователи</li></a> 
+                    <a href="/administration/users/settings"><li class="item_noactiv">Пользователи</li></a> 
                 </ul>
             </div>
         </div>
         <div class="content">
             <div class="main_stat">
-                    <div class="title_stat">
-                        <div class="left_title_stat">
-                            <h2 id="second_hh_stat">Количество анкет у рекрутера</h2>
-                        </div>
-                        <div class="right_title_stat">
-                            <div class="div_after_tooltip">
-                                <button class="parametr_stat" id="title_year_stat">Год</button>
-                                <div class="tooltip" id="tooltip_year">
-                                    <div class="tooltip_left">
-                                        <ul>
-                                            <% for(var i=0;i<data.year.length;i++) {%>
-    
-                                                <li><%= data.year[i] %></li>
-    
-                                            <% } %>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="div_after_tooltip">
-                                <button class="parametr_stat" id="title_month_stat">Месяц</button>
-                                <div class="tooltip" id="tooltip_month"> 
-                                    <div class="tooltip_right" id="second_d_month"> 
-    
-                                    </div> 
+                <div class="title_stat">
+                    <div class="left_title_stat">
+                        <h2 id="second_hh_stat">Количество анкет у рекрутера</h2>
+                    </div>
+                    <div class="right_title_stat">
+                        <div class="div_after_tooltip">
+                            <button class="parametr_stat" id="title_year_stat">Год</button>
+                            <div class="tooltip" id="tooltip_year">
+                                <div class="tooltip_left">
+                                    <ul>
+                                        <% for(var i=0;i<data.year.length;i++) {%>
+
+                                            <li><%= data.year[i] %></li>
+
+                                        <% } %>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
+                        <div class="div_after_tooltip">
+                            <button class="parametr_stat" id="title_month_stat">Месяц</button>
+                            <div class="tooltip" id="tooltip_month"> 
+                                <div class="tooltip_right" id="second_d_month"> 
+
+                                </div> 
+                            </div>
+                        </div>
                     </div>
-                    <div class="first_diagramm" id="curve_chart_two">
-    
-                    </div>
-                    <table class="table_rec_edit">
-                        <thead>
-                            <tr>
-                                <th> # </th>
-                                <th>Ф. И. О.</th>
-                                <th>Skype ID</th>
-                                <th>E-mail</th>
-                                <th>Номер телефона</th>
-                                <th>Количество анкет</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            
-                        </tbody>
-                    </table>
                 </div>
+                <div class="first_diagramm" id="curve_chart_two"> </div>
+                <table class="table_rec_edit">
+                    <thead>
+                        <tr>
+                            <th> # </th>
+                            <th>Ф. И. О.</th>
+                            <th>Skype ID</th>
+                            <th>E-mail</th>
+                            <th>Номер телефона</th>
+                            <th>Количество анкет</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+                    
                 <div class="title_stat">
                     <div class="left_title_stat">
                         <h2 id="first_hh_stat">Количесто новых анкет</h2>
@@ -90,11 +88,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="first_diagramm" id="curve_chart_one">
-
-                </div>
+                <div class="first_diagramm" id="curve_chart_one"> </div>
+            </div>
         </div>
-
     </div>
 </div>
 <% include ../layout/footer.ejs %>

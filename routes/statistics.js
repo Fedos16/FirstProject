@@ -67,7 +67,6 @@ router.post('/searchmonth', (req, res) => {
         res.json({ok: true, data: data});
     });
 });
-
 router.post('/searchdata', (req, res) => {
     const year = req.body.year;
     const month = req.body.month;
@@ -97,7 +96,6 @@ router.post('/searchdata', (req, res) => {
         res.json({ok: true, data: data});
     });
 });
-
 router.post('/searcdatatwo', (req, res) => {
     const year = req.body.year;
     const month = req.body.month;

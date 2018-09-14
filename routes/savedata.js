@@ -80,7 +80,6 @@ router.post('/recruries', (req, res) => {
         });
     }
 });
-
 // СОХРАНЕНИЕ АНКЕТЫ КАНДИДАТА
 router.post('/worksheets', (req, res) => {
     const recruiter = req.body.recruiter;

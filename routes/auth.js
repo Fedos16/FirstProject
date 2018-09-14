@@ -92,7 +92,6 @@ router.post('/register', (req, res) => {
     });
   }
 });
-
 // POST is LogIn
 router.post('/login', (req, res) => {
   const login = req.body.login;
@@ -156,16 +155,15 @@ router.post('/login', (req, res) => {
       });
   }
 });
-
 // GET for logout
 router.get('/logout', (req, res) => {
   if (req.session) {
     // delete session object
     req.session.destroy(() => {
-      res.redirect('/');
+      res.redirect('/administration/');
     });
   } else {
-    res.redirect('/');
+    res.redirect('/administration/');
   }
 });
 

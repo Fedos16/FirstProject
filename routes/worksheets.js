@@ -3,7 +3,7 @@ const router = express.Router();
 
 const models = require('../models');
 
-router.get('/', (req, res) => {
+router.get('/moderation', (req, res) => {
 
     const login = req.session.userLogin;
     const userType = req.session.userType;
@@ -45,7 +45,7 @@ router.get('/', (req, res) => {
         });
     }
     else{
-        res.redirect('/');
+        res.redirect('/administration/');
     }
 });
 

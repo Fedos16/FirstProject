@@ -24,7 +24,6 @@ router.post('/recruiters', (req, res) => {
         })
     }
 });
-
 router.post('/user', (req, res) => {
     const id = req.body.id;
 

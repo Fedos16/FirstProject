@@ -70,7 +70,7 @@ $(function(){
                     });
                 }
             }else{
-                $(location).attr('href', '/worksheets');
+                $(location).attr('href', '/administration/worksheets/moderation');
             }
         });
     });
@@ -227,7 +227,7 @@ $(function(){
             type: 'POST',
             data: JSON.stringify(data),
             contentType: 'application/json',
-            url: '/recruiters/findrecruiter'
+            url: '/administration/recruiters/findrecruiter' // Вот эту штуку перенести в API
         }).done(function(data){
             if (!data){
                 $('.modal_back').attr('id', '');
@@ -285,7 +285,7 @@ $(function(){
             type: 'POST',
             data: JSON.stringify(data),
             contentType: 'application/json',
-            url: '/recruiters/findrecruiter'
+            url: '/administration/recruiters/findrecruiter' // Вот эту штуку перенести в API
         }).done(function(data){
             if (!data){
                 $('.modal_back').attr('id', '');
@@ -501,7 +501,7 @@ $(function(){
             type: 'POST',
             data: JSON.stringify(data),
             contentType: 'application/json',
-            url: '/worksheets/findworksheets'
+            url: '/worksheets/findworksheets' // ВОТ ЭТУ ШТУКУ ПЕРЕНЕСТИ В API
         }).done(function(data){
             if (!data){
                 $('.modal_back').attr('id', '');
@@ -885,7 +885,7 @@ $(function(){
             type: 'POST',
             data: JSON.stringify(data),
             contentType: 'application/json',
-            url: '/statistics/searchdata'
+            url: '/administration/statistics/searchdata'
         }).done(function(data){
             if(!data.ok){
                 console.log('Error!');
@@ -954,7 +954,7 @@ $(function(){
             type: 'POST',
             data: JSON.stringify(data),
             contentType: 'application/json',
-            url: '/statistics/searchmonth'
+            url: '/administration/statistics/searchmonth'
         }).done(function(data){
             if(!data.ok){
                 console.log('Error!');
@@ -1010,7 +1010,7 @@ $(function(){
             type: 'POST',
             data: JSON.stringify(data),
             contentType: 'application/json',
-            url: '/statistics/searcdatatwo'
+            url: '/administration/statistics/searcdatatwo'
         }).done(function(data){
             if(!data.ok){
                 console.log('Error!');
@@ -1086,7 +1086,7 @@ $(function(){
             type: 'POST',
             data: JSON.stringify(data),
             contentType: 'application/json',
-            url: '/statistics/searchmonth'
+            url: '/administration/statistics/searchmonth'
         }).done(function(data){
             if(!data.ok){
                 console.log('Error!');
@@ -1138,6 +1138,30 @@ $(function(){
         else{
             $('#curve_chart_two').css('display', 'none');
             $('.table_rec_edit').css('display', 'none');
+        }
+    });
+
+    // Фильтрация кандидатов, которые на модерации
+    $('#rec_filter').on('change', (e) => {
+        var row = document.getElementsByClassName('table_rec_edit')[0].rows
+        var recFilter = $('#rec_filter').val();
+
+        for (var i=1; i < row.length; i++){
+            row[i].removeAttribute('style');
+        }
+
+        if (recFilter == 'true') {
+            for (var i=1; i < row.length; i++){
+                if (row[i].cells[7].textContent == 'false'){
+                    row[i].setAttribute('style', 'display: none;');
+                }
+            }
+        } else if (recFilter == 'false') {
+            for (var i=1; i < row.length; i++){
+                if (row[i].cells[7].textContent == 'true'){
+                    row[i].setAttribute('style', 'display: none;');
+                }
+            }
         }
     });
 

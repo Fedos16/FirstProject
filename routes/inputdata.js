@@ -32,7 +32,6 @@ router.get('/filter', (req, res) => {
     }
     
 });
-
 router.post('/search', (req, res) => {
     var experience = req.body.experince;
     var direction = req.body.direction;
@@ -120,8 +119,6 @@ router.post('/search', (req, res) => {
         }
     }
 });
-
-
 router.post('/filter', (req, res) => {
 
     const data = req.body.data;

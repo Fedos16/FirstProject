@@ -24,6 +24,7 @@ router.get('/edit', (req, res) => {
                 location: [],
                 telephone: [],
                 directions: [],
+                directions_short: [],
                 id: [],
                 status: []
             }
@@ -38,6 +39,16 @@ router.get('/edit', (req, res) => {
                 data.directions.push(recruiter[i].directions);
                 data.id.push(recruiter[i]._id);
                 data.status.push(recruiter[i].status);
+
+                var arr_directions = recruiter[i].directions.split(', ');
+                if (arr_directions.length > 3){
+                    arr_directions = arr_directions.slice(0, 3);
+                    data.directions_short.push(arr_directions.join(', ') + ' ...');
+                    arr_directions = [];
+                } else {
+                    data.directions_short.push(recruiter[i].directions);
+                }
+
                 
             }
 
@@ -48,7 +59,7 @@ router.get('/edit', (req, res) => {
     else{
         res.redirect('/');
     }
-})
+});
 
 router.get('/moderation', (req, res) => {
     const login = req.session.userLogin;
@@ -103,7 +114,20 @@ router.get('/new', (req, res) => {
 
 });
 
+router.get('/r:id', (req, res) => {
 
+    const id = req.params.id;
+
+    models.Recruiter.findOne( {_id: id, status: 'Редактирование'}, (errs, recruiter) => {
+        if (errs) {
+            res.send('ERROR!');
+        }else{
+            var fio = recruiter.fio;
+            console.log(fio);
+            res.render('./recruiters/editing_user', {fio});
+        }
+    });
+});
 
 router.post('/findrecruiter', (req, res) => {
     
