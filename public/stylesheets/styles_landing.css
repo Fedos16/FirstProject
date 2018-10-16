@@ -249,7 +249,7 @@ a{
         left: 800px;
         top: 300px;
         opacity: 1;
-        border: 35px solid rgba(255, 255, 255, 0.6);
+        border: 20px solid rgba(255, 255, 255, 0.6);
     }
     30%{
         border: 2px solid rgba(255, 255, 255, 0.05);
