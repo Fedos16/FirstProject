@@ -509,7 +509,7 @@ span.span_forexample{
     width: 100%;
     height: 150px;
     resize: none;
-    font-size: 19px;
+    font-size: 17px;
     padding: 10px 10px 10px 20px;
     border-radius: 3px;
     border: 1px solid #d6d6d6;
@@ -716,12 +716,12 @@ span.span_forexample{
 .true_status_row{
     background-color: rgba(200, 248, 178, 0.459);
 }
-.open_recruiter{
+.open_recruiter, .open_rewiew, .open_worksheets{
     width: 30px;
     cursor: pointer;
     transition: 0.5s;
 }
-.open_recruiter:hover{
+.open_recruiter:hover, .open_rewiew:hover, .open_worksheets:hover{
     transform: scale(1.3)
 }
 
@@ -748,7 +748,7 @@ span.span_forexample{
     display: flex;
     flex-direction: column;
 }
-#save_recruiter{
+#save_recruiter, #save_rewiew{
     margin-top: 30px;
     height: 50px;
     width: 90%;
@@ -761,7 +761,7 @@ span.span_forexample{
     margin-left: 5%;
     margin-right: 5%;
 }
-#cancel_recruiter{
+#cancel_recruiter, #cancel_rewiew{
     margin-top: 30px;
     height: 50px;
     width: 90%;
@@ -774,10 +774,10 @@ span.span_forexample{
     margin-left: 5%;
     margin-right: 5%;
 }
-#save_recruiter:hover{
+#save_recruiter:hover, #save_rewiew:hover{
     background-color: #86bf0a;
 }
-#cancel_recruiter:hover{
+#cancel_recruiter:hover, #cancel_rewiew:hover{
     background-color: #e82d0c;
 }
 
@@ -843,15 +843,6 @@ span.span_forexample{
     display: flex;
     flex-direction: column;
 }
-.open_worksheets{
-    width: 30px;
-    cursor: pointer;
-    transition: 0.5s;
-}
-.open_worksheets:hover{
-    transform: scale(1.3)
-}
-
 /* МОДАЛЬНОЕ ОКНО ДЛЯ ПРОСМОТРА АНКЕТЫ КАНДИДАТА */
 .modal_back_worksheets{
     position: absolute;
@@ -1109,7 +1100,95 @@ span.span_forexample{
 .main_stat table th:last-child{
     text-align: center;
 }
-
 h2{
     cursor: pointer;
+}
+.additionaly_block_main{
+    width: 100%;
+    height: 95%;
+    display: flex;
+    margin: 0px auto;
+}
+.additionaly_block{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-right: 1px solid lightgrey;
+}
+.additionaly_block:last-child{
+    border: none;
+}
+.additionaly_title{
+    font-size: 18px;
+    font-weight: bold;
+    width: 80%;
+    height: 115px;
+    margin: 20px auto;
+    border-bottom: 1px solid lightgray;
+    text-align: left;
+}
+.additionaly_body{
+    width: 80%;
+    margin: 0px auto;
+    overflow-y: auto;
+}
+.additional_new{
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    align-items: center;
+    margin-top: 15px;
+}
+.image_new_doc{
+    margin-left: 20px;
+    cursor: pointer;
+}
+.image_new_doc:hover{
+    filter: brightness();
+}
+.addytional_item{
+    width: 100%;
+    height: 50px;
+    border: 1px solid lightgray;
+    background-color: rgba(121, 121, 121, 0.1);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: default;
+}
+.addytional_item:hover{
+    background-color: transparent;
+}
+.addytional_item p{
+    width: 80%;
+    text-align: center;
+}
+input[type='file']{
+    display: none;
+}
+
+::-webkit-scrollbar{ width:6px; height:9px; }
+::-webkit-scrollbar-button:start:decrement, 
+::-webkit-scrollbar-button:end:increment{ 
+  display:block;
+  height:0;
+  background-color:transparent;
+}
+::-webkit-scrollbar-track-piece{
+  background-color:rgb(185, 185, 185);
+  -webkit-border-radius:0;
+  -webkit-border-bottom-right-radius:15px;
+  -webkit-border-bottom-left-radius:15px;
+}
+::-webkit-scrollbar-thumb:vertical{
+  height:50px;
+  background-color:rgb(100, 100, 100, 0.9);
+  -webkit-border-radius:15px;
+}
+::-webkit-scrollbar-thumb:horizontal{
+  width:50px;
+  background-color:rgba(100, 100, 100, 0.9);
+  -webkit-border-radius:15px;
 }

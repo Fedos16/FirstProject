@@ -1,0 +1,29 @@
+<% include ../layout/header.ejs %>
+<div class="main">
+    <div class="container">
+        <div class="sidebar">
+            <div class="box">
+                <ul class="menu">
+                    <a href="/administration/worksheets/moderation"><li class="item_noactiv">Анкеты</li></a>
+                    <a href="/administration/recruiters/moderation"><li class="item_noactiv">Рекрутеры</li></a>
+                    <a href="/administration/statistics"><li class="item_noactiv">Статистика</li></a>
+                    <br>
+                    <li class="item_activ">Отзывы</li>
+                    <a href="/administration/additionaly"><li class="item_noactiv">Дополнительные поля</li></a>
+                    <br>
+                    <a href="/administration/users/settings"><li class="item_noactiv">Пользователи</li></a> 
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <div class="body_worksheets">
+                
+            </div>
+        </div>
+        
+    </div>
+</div>
+<div class="modal_back_worksheets" id="display_none">
+</div>
+<% include ../layout/modal.ejs %>
+<% include ../layout/footer.ejs %>

@@ -4,62 +4,55 @@ const Schema = mongoose.Schema;
 const schema = new Schema(
   {
     fio: {
-        type: String,
-        required: true
-    },
-    birthday: {
-        type: String,
-        required: true
-    },
-    location: {
-        type: String,
-        required: true
-    },
-    education: {
         type: String
     },
-    languages: {
-        type: String,
-        required: true
+    birthday: {
+        type: String
+    },
+    residence: {
+        type: String
     },
     telephone: {
-        type: String,
-        required: true
-    },
-    email: {
-        type: String,
-        required: true
+        type: String
     },
     skype: {
-        type: String,
-        required: true
+        type: String
     },
     linkedin: {
-        type: String,
-        required: true
+        type: String
     },
-    it_work: {
-        type: String,
-        required: true
+    place_work: {
+        type: String
     },
-    last_work: {
-        type: String,
-        required: true
+    time_work_it: {
+        type: String
     },
-    source: {
-        type: String,
-        required: true
+    email: {
+        type: String
     },
-    recommendations: {
-        type: String,
-        required: true
-    },
-    requisites: {
+    password: {
         type: String
     },
     directions: {
-        type: String,
-        required: true
+        type: String
+    },
+    source: {
+        type: String
+    },
+    coop_com: {
+        type: String
+    },
+    school: {
+        type: String
+    },
+    language: {
+        type: String
+    },
+    pay_details: {
+        type: String
+    },
+    divugle: {
+        type: String
     },
     status: {
         type: String,

@@ -8,6 +8,9 @@
                     <li class="item_activ">Рекрутеры</li>
                     <a href="/administration/statistics"><li class="item_noactiv">Статистика</li></a>
                     <br>
+                    <a href="/administration/rewiews/moderation"><li class="item_noactiv">Отзывы</li></a>
+                    <a href="/administration/additionaly"><li class="item_noactiv">Дополнительные поля</li></a>
+                    <br>
                     <a href="/administration/users/settings"><li class="item_noactiv">Пользователи</li></a> 
                 </ul>
             </div>
@@ -25,13 +28,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <% for(var i=0;i<data.fio.length;i++) {%>
+                        <% for(var i=0;i<data.recruiter.length;i++) {%>
                             <tr>
-                                <td style="display: none" class="id_for_line"><%= data.id[i] %></td>
-                                <td><%= data.fio[i] %></td>
-                                <td><%= data.location[i] %></td>
-                                <td><%= data.telephone[i] %></td>
-                                <td><%= data.directions[i] %></td>
+                                <td style="display: none" class="id_for_line"><%= data.recruiter[i]._id %></td>
+                                <td><%= data.recruiter[i].fio %></td>
+                                <td><%= data.recruiter[i].residence %></td>
+                                <td>+<%= data.recruiter[i].telephone %></td>
+                                <td><%= data.recruiter[i].directions %></td>
                                 <td><img src="/images/open.png" class="open_recruiter"></td>
                             </tr>
                         <% } %>

@@ -4,16 +4,13 @@ const Schema = mongoose.Schema;
 const schema = new Schema(
   {
     recruiter: {
-        type: String,
-        required: true
+        type: String
     },
     recruiter_id: {
-        type: String,
-        required: true
+        type: String
     },
     directions: {
-        type: String,
-        required: true
+        type: String
     },
     name: {
         type: String,
@@ -27,47 +24,46 @@ const schema = new Schema(
         required: true
     },
     messenger: {
-        type: String,
-        required: true
+        type: String
+    },
+    data_messenger: {
+        type: String
     },
     social: {
-        type: String,
-        required: true
+        type: String
     },
     linkedin: {
-        type: String,
-        required: true
+        type: String
     },
-    residence: {
-        type: String,
-        required: true
+    residence_country: {
+        type: String
+    },
+    residence_city: {
+        type: String
+    },
+    flag_path: {
+        type: String
     },
     level: {
-        type: String,
-        required: true
+        type: String
     },
     salary: {
-        type: String,
-        required: true
+        type: String
     },
     experiences: {
-        type: String,
-        required: true
+        type: String
     },
     w_experiences: {
-        type: String,
-        required: true
+        type: String
     },
     best_skills: {
         type: String
     },
     portfolio: {
-        type: String,
-        required: true
+        type: String
     },
     language: {
-        type: String,
-        required: true
+        type: String
     },
     recommendations: {
         type: String
@@ -76,8 +72,7 @@ const schema = new Schema(
         type: String
     },
     download: {
-        type: String,
-        required: true
+        type: String
     },
     status: {
         type: String,

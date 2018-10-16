@@ -1,13 +1,18 @@
-const auth = require('./auth');
-const savedata = require('./savedata');
-const recruiters = require('./recruiters');
-const updatedata = require('./updatedata');
-const removedata = require('./removedata');
-const worksheets = require('./worksheets');
+const auth = require('./api/auth');
+const savedata = require('./api/savedata');
+const updatedata = require('./api/updatedata');
+const removedata = require('./api/removedata');
+const finddata = require('./api/finddata');
+
+const recruiters = require('./admin_panel/recruiters');
+const worksheets = require('./admin_panel/worksheets');
+const users = require('./admin_panel/users');
+const statistics = require('./admin_panel/statistics');
+const rewiews = require('./admin_panel/rewiews');
+const additionaly = require('./admin_panel/additionaly');
+
 const inputdata = require('./inputdata');
-const users = require('./users');
-const statistics = require('./statistics');
-const main_page = require('./main_page');
+const main_page = require('./landing/main_page');
 
 module.exports = {
     auth,
@@ -17,7 +22,10 @@ module.exports = {
     removedata,
     worksheets,
     inputdata,
+    finddata,
     users,
     statistics,
-    main_page
+    main_page,
+    rewiews,
+    additionaly
 };

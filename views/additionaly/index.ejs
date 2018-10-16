@@ -1,0 +1,84 @@
+<% include ../layout/header.ejs %>
+<div class="main">
+    <div class="container">
+        <div class="sidebar">
+            <div class="box">
+                <ul class="menu">
+                    <a href="/administration/worksheets/moderation"><li class="item_noactiv">Анкеты</li></a>
+                    <a href="/administration/recruiters/moderation"><li class="item_noactiv">Рекрутеры</li></a>
+                    <a href="/administration/statistics"><li class="item_noactiv">Статистика</li></a>
+                    <br>
+                    <a href="/administration/rewiews/moderation"><li class="item_noactiv">Отзывы</li></a>
+                    <li class="item_activ">Дополнительные поля</li>
+                    <br>
+                    <a href="/administration/users/settings"><li class="item_noactiv">Пользователи</li></a> 
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <div class="additionaly_block_main">
+                <div class="additionaly_block">
+                    <div class="additionaly_title">
+                        <p>Специальность</p>
+                        <div class="additional_new">
+                            <input type="text" class="input_candidate" id="direction_data">
+                            <img src="/images/new_doc.png" alt="" width="45" height="45" class="image_new_doc" id="new_direction">
+                        </div>
+                    </div>
+                    <div class="additionaly_body">
+                        <% for(var i=0;i<data.directions.id.length;i++) {%>
+                            <div class="addytional_item">
+                                <p><%= data.directions.name[i]%></p>
+                                <p hidden><%= data.directions.id[i]%></p>
+                                <p hidden>Directions</p>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+                <div class="additionaly_block">
+                    <div class="additionaly_title">
+                        <p>Локация (Страна)</p>
+                        <div class="additional_new">
+                            <input type="text" class="input_candidate" id="location_data">
+                            <label for="upload_foto_node" class="modal_upload_foto">
+                                <img src="/images/new_doc.png" alt="" width="45" height="45" class="image_new_doc" id="new_location">
+                                <input type="file" id="upload_foto_node" id="file" name="file" accept="image/x-png,image/jpeg">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="additionaly_body">
+                        <% for(var i=0;i<data.locations.id.length;i++) {%>
+                            <div class="addytional_item">
+                                <img src="/uploads<%=data.locations.flag_path[i] %>" alt="" width="43" height="29">
+                                <p><%= data.locations.name[i]%></p>
+                                <p hidden><%= data.locations.id[i]%></p>
+                                <p hidden class="path_file_del"><%=data.locations.flag_path[i] %></p>
+                                <p hidden>Locations</p>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+                <div class="additionaly_block">
+                    <div class="additionaly_title">
+                        <p>Мессенджер</p>
+                        <div class="additional_new">
+                            <input type="text" class="input_candidate" id="messenger_data">
+                            <img src="/images/new_doc.png" alt="" width="45" height="45" class="image_new_doc" id="new_messenger">
+                        </div>
+                    </div>
+                    <div class="additionaly_body">
+                        <% for(var i=0;i<data.messengers.id.length;i++) {%>
+                            <div class="addytional_item">
+                                <p><%= data.messengers.name[i]%></p>
+                                <p hidden><%= data.messengers.id[i]%></p>
+                                <p hidden>Messengers</p>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% include ../layout/modal.ejs %>
+<% include ../layout/footer.ejs %>

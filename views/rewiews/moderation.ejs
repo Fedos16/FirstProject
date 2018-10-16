@@ -1,0 +1,113 @@
+<% include ../layout/header.ejs %>
+<div class="main">
+    <div class="container">
+        <div class="sidebar">
+            <div class="box">
+                <ul class="menu">
+                    <a href="/administration/worksheets/moderation"><li class="item_noactiv">Анкеты</li></a>
+                    <a href="/administration/recruiters/moderation"><li class="item_noactiv">Рекрутеры</li></a>
+                    <a href="/administration/statistics"><li class="item_noactiv">Статистика</li></a>
+                    <br>
+                    <li class="item_activ">Отзывы</li>
+                    <a href="/administration/additionaly"><li class="item_noactiv">Дополнительные поля</li></a>
+                    <br>
+                    <a href="/administration/users/settings"><li class="item_noactiv">Пользователи</li></a> 
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <div class="body_worksheets">
+                <table class="table_rec_edit">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 200px;">Имя</th>
+                            <th style="min-width: 200px;">Компания</th>
+                            <th style="min-width: 200px;">Должность</th>
+                            <th>Текст отзыва</th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(var i=0;i<data.fio.length;i++) {%>
+                            <tr>
+                                <td style="display: none" class="id_for_line"><%= data.id[i] %></td>
+                                <td><%= data.fio[i] %></td>
+                                <td><%= data.company[i] %></td>
+                                <td><%= data.position[i] %></td>
+                                <td><%= data.rewiew[i] %></td>
+                                <td><img src="/images/open.png" class="open_rewiew"></td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+    </div>
+</div>
+<div class="modal_back_edit" id="display_none">
+    <div class="modal_edit">
+        <img src="/images/close.png" class="close_modal_edit">
+        <div class="modal_edit_main">
+                <div class="rec_row">
+                    <div class="rec_column">
+                        <div class="column_title">
+                            <h3>Фото представителя компании</h3>
+                        </div>
+                        <div class="column_body" id="company_people_image">
+                            
+                        </div>
+                    </div>
+                </div>
+            <div class="rec_row">
+                <div class="rec_column">
+                    <div class="column_title">
+                        <h3>Ф. И. О.</h3>
+                    </div>
+                    <div class="column_body">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" id="fio" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="rec_row">
+                <div class="rec_column">
+                    <div class="column_title">
+                        <h3>Компания</h3>
+                    </div>
+                    <div class="column_body">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ"  id="company" readonly>
+                    </div>
+                </div>
+                <div class="rec_column">
+                    <div class="column_title">
+                        <h3>Должность</h3>
+                    </div>
+                    <div class="column_body">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" id="position" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="rec_row">
+                <div class="rec_column">
+                    <div class="column_title">
+                        <h3>Отзыв</h3>
+                    </div>
+                    <div class="column_body">
+                        <textarea class="textarea_candidate"  placeholder="Мой ответ" id="rewiew" readonly></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row_candidate">
+                <div class="column_candidate_center">
+                    <button type="submit" id="cancel_rewiew">Не сохранять</button>
+                </div>
+                <div class="column_candidate_center">
+                    <button type="submit" id="save_rewiew">Сохранить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% include ../layout/modal.ejs %>
+<% include ../layout/footer.ejs %>

@@ -299,18 +299,18 @@ $(function(){
                 if (data.ok){
                     $('#fio').val(data.data.fio);
                     $('#birthday').val(data.data.birthday);
-                    $('#location').val(data.data.location);
-                    $('#education').val(data.data.education);
-                    $('#languages').val(data.data.languages);
-                    $('#telephone').val(data.data.telephone);
+                    $('#location').val(data.data.residence);
+                    $('#education').val(data.data.school);
+                    $('#languages').val(data.data.language);
+                    $('#telephone').val('+' + data.data.telephone);
                     $('#email').val(data.data.email);
                     $('#skype').val(data.data.skype);
                     $('#linkedin').val(data.data.linkedin);
-                    $('#it_work').val(data.data.it_work);
-                    $('#last_work').val(data.data.last_work);
+                    $('#it_work').val(data.data.time_work_it);
+                    $('#last_work').val(data.data.place_work);
                     $('#source').val(data.data.source);
-                    $('#recommendations').val(data.data.recommendations);
-                    $('#requisites').val(data.data.requisites);
+                    $('#recommendations').val(data.data.coop_com);
+                    $('#requisites').val(data.data.pay_details);
 
                     var directions = data.data.directions.split(', ');
 
@@ -418,7 +418,6 @@ $(function(){
     })
 
     // ВСЕ, ЧТО КАСАЕТСЯ УДАЛЕНИЕ (СТАВИТСЯ СТАТУС False) РЕКРУТЕРА ИЗ БАЗЫ ДАННЫХ
-
     $('#modal_button_remove_no').on('click', () => {
         $('.modla_back_remove').attr('id', 'display_none');
     });
@@ -491,7 +490,7 @@ $(function(){
     $('.open_worksheets').on('click', (e)=> {
 
         var id = e.target.parentElement.parentElement.getElementsByClassName('id_for_line')[0].textContent;
-        sessionStorage.setItem('worksheets_id', id);
+        sessionStorage.setItem('worksheets_id', id); // Зачем записываем это сюда???
 
         var data = {
             id: id
@@ -501,7 +500,7 @@ $(function(){
             type: 'POST',
             data: JSON.stringify(data),
             contentType: 'application/json',
-            url: '/worksheets/findworksheets' // ВОТ ЭТУ ШТУКУ ПЕРЕНЕСТИ В API
+            url: '/administration/worksheets/findworksheets' // ВОТ ЭТУ ШТУКУ ПЕРЕНЕСТИ В API
         }).done(function(data){
             if (!data){
                 $('.modal_back').attr('id', '');
@@ -520,7 +519,7 @@ $(function(){
                     $('#messenger-c').val(data.data.messenger);
                     $('#social-c').val(data.data.social);
                     $('#linkedin-c').val(data.data.linkedin);
-                    $('#residence-c').val(data.data.residence);
+                    $('#residence-c').val(data.data.residence_country +', '+ data.data.residence_city);
                     $('#salary-c').val(data.data.salary);
                     $('#experiences-c').val(data.data.experiences);
                     $('#w_experiences-c').val(data.data.w_experiences);
@@ -1165,4 +1164,234 @@ $(function(){
         }
     });
 
+    // ОТЗЫВЫ И ВСЕ ЧТО С НИМИ СВЯЗАНО!!!
+    $('.open_rewiew').on('click', (e) => {
+        var id = e.target.parentElement.parentElement.getElementsByClassName('id_for_line')[0].textContent;
+        sessionStorage.setItem('rewiew_id', id); // Зачем записываем это сюда??? - Чтобы сохранить изменения по этому ID
+
+        var data = {
+            id: id
+        };
+
+        $.ajax({
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            url: '/administration/rewiews/findrewiew' // ВОТ ЭТУ ШТУКУ ПЕРЕНЕСТИ В API
+        }).done(function(data){
+            if (data.ok){
+                $('.modal_back_edit').removeAttr('id');
+                $('#fio').val(data.data.fio);
+                $('#company').val(data.data.company);
+                $('#position').val(data.data.position);
+                $('#rewiew').val(data.data.rewiew);
+                $('#company_people_image').html('<img src="../../uploads' + data.data.image_path + '" alt="">');
+            } else{
+                $('.modal_back').attr('id', '');
+                $('#modal_line').attr('class', 'modal_line_error');
+                $('#modal_line').text(data.error);
+                $('#modal_button').text('Плохо');
+                $('#modal_button').attr('class', 'modal_button_e');
+            }
+        });
+    });
+    $('#cancel_rewiew').on('click', () => {
+        var data = {
+            id: sessionStorage.getItem('rewiew_id')
+        };
+
+        $.ajax({
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            url: '/api/removedata/rewiew'
+        }).done(function(data){
+            if (!data.ok){
+                $('.modal_back').attr('id', '');
+                $('#modal_line').attr('class', 'modal_line_error');
+                $('#modal_line').text(data.error);
+                $('#modal_button').text('Плохо');
+                $('#modal_button').attr('class', 'modal_button_e');
+            }else{
+                $('.modal_back').attr('id', '');
+                $('#modal_line').attr('class', 'modal_line_success');
+                $('#modal_line').text("Отзыв удален из БД");
+                $('#modal_button').text('Хорошо');
+                $('#modal_button').attr('class', 'modal_button_s');
+                sessionStorage.setItem('refresh', 'true');
+            }
+        });
+    });
+    $('#save_rewiew').on('click', () => {
+        var data = {
+            id: sessionStorage.getItem('rewiew_id')
+        };
+
+        $.ajax({
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            url: '/api/updatedata/rewiew'
+        }).done(function(data){
+            if (!data.ok){
+                $('.modal_back').attr('id', '');
+                $('#modal_line').attr('class', 'modal_line_error');
+                $('#modal_line').text(data.error);
+                $('#modal_button').text('Плохо');
+                $('#modal_button').attr('class', 'modal_button_e');
+            }else{
+                $('.modal_back').attr('id', '');
+                $('#modal_line').attr('class', 'modal_line_success');
+                $('#modal_line').text("Данные успешно сохранены!");
+                $('#modal_button').text('Хорошо');
+                $('#modal_button').attr('class', 'modal_button_s');
+                sessionStorage.setItem('refresh', 'true');
+            }
+        });
+    });
+    
+    $('.addytional_item').on('mouseenter', (e) => {
+
+        var text = $(e.target).find('p:last').text();
+
+        if (text != 'Locations'){
+            $(e.target.children[0]).after('<img src="/images/basket.png" alt="" id="additional_remove" style="cursor: pointer;" title="Для удаления сделайте двойной клик">');
+            $(e.target.children[0]).before('<img src="/images/basket.png" alt="" class="additional_edit" style="opacity:0;">');
+        } else {
+            $(e.target.children[1]).after('<img src="/images/basket.png" alt="" id="additional_remove" style="cursor: pointer; position: absolute; margin-left: 9%;" title="Для удаления сделайте двойной клик">');
+        }
+
+    });
+    $('.addytional_item').on('mouseleave', (e) => {
+        $('.additional_edit').remove();
+        $('#additional_remove').remove();
+    });
+
+    $('#new_direction').on('click', () => {
+        var data = {
+            text: $('#direction_data').val()
+        }
+        $.ajax({
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            url: '/api/savedata/directionitem'
+        }).done(function(data){
+            if (!data.ok){
+                $('.modal_back').attr('id', '');
+                $('#modal_line').attr('class', 'modal_line_error');
+                $('#modal_line').text(data.text);
+                $('#modal_button').text('Понял');
+                $('#modal_button').attr('class', 'modal_button_e');
+            }else{
+                location.reload();
+            }
+        });
+    });
+    $('#new_messenger').on('click', () => {
+        var data = {
+            text: $('#messenger_data').val()
+        }
+        $.ajax({
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            url: '/api/savedata/messengeritem'
+        }).done(function(data){
+            if (!data.ok){
+                $('.modal_back').attr('id', '');
+                $('#modal_line').attr('class', 'modal_line_error');
+                $('#modal_line').text(data.text);
+                $('#modal_button').text('Понял');
+                $('#modal_button').attr('class', 'modal_button_e');
+            }else{
+                location.reload();
+            }
+        });
+    });
+    $('.addytional_item').on('dblclick', (e) => {
+        try{
+            var data = {
+                id: e.target.parentElement.children[3].textContent,
+                type_model: e.target.parentElement.children[5].textContent,
+                pathFile: e.target.parentElement.children[e.target.parentElement.children.length-2].textContent
+            }
+            
+        }catch {
+            var data = {
+                id: e.target.parentElement.children[3].textContent,
+                type_model: e.target.parentElement.children[4].textContent,
+                pathFile: ""
+            }
+        }
+
+        $.ajax({
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            url: '/api/removedata/additional'
+        }).done(function(data){
+            if (!data.ok){
+                $('.modal_back').attr('id', '');
+                $('#modal_line').attr('class', 'modal_line_error');
+                $('#modal_line').text(data.text);
+                $('#modal_button').text('Понял');
+                $('#modal_button').attr('class', 'modal_button_e');
+            }else{
+                location.reload();
+            }
+        });
+
+    });
+
+    // Загрузка картинок
+    $('#upload_foto_node').on('change', function() {
+
+        if ($('#location_data').val()){
+    
+            var formData = new FormData();
+            formData.append('file', $('#upload_foto_node')[0].files[0]);
+        
+            $.ajax({
+                type: 'POST',
+                url: '/api/savedata/saveimage',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(data_s) {
+                    var data = {
+                        text: $('#location_data').val(),
+                        path: data_s.path
+                    }
+                    $.ajax({
+                        type: 'POST',
+                        data: JSON.stringify(data),
+                        contentType: 'application/json',
+                        url: '/api/savedata/locationitem'
+                    }).done(function(data){
+                        if (!data.ok){
+                            $('.modal_back').attr('id', '');
+                            $('#modal_line').attr('class', 'modal_line_error');
+                            $('#modal_line').text(data.text);
+                            $('#modal_button').text('Понял');
+                            $('#modal_button').attr('class', 'modal_button_e');
+                            
+                        }else{
+                            location.reload();
+                        }
+                    });
+                },
+                error: function(e) {
+                    console.log('ERROR!');
+                }
+            });
+        } else {
+            $('.modal_back').attr('id', '');
+            $('#modal_line').attr('class', 'modal_line_error');
+            $('#modal_line').text('Сначала введите название страны!');
+            $('#modal_button').text('Понял');
+            $('#modal_button').attr('class', 'modal_button_e');
+        }
+
+    });
 });  

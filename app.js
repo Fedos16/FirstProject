@@ -20,7 +20,7 @@ mongoose.connection
     const info = mongoose.connections[0];
     console.log(`Connected to ${info.host}:${info.port}/${info.name}`);
   });
-mongoose.connect(config.MONGO_URL, { useMongoClient: true });
+mongoose.connect(config.MONGO_URL); 
 
 // express
 const app = express();
@@ -43,6 +43,7 @@ app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(staticAsset(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/uploads', express.static(path.join(__dirname, config.DESTINATION)));
 app.use(
   '/javascripts',
   express.static(path.join(__dirname, 'node_modules', 'jquery', 'dist'))
@@ -61,21 +62,21 @@ app.get('/administration/', (req, res) => {
   }
 });
 
-app.get('/', (req, res) => {
-  res.render('./landing/index');
-});
-
-
 app.use('/api/auth', routes.auth);
 app.use('/api/savedata', routes.savedata);
 app.use('/api/updatedata', routes.updatedata);
 app.use('/api/removedata', routes.removedata);
 app.use('/api/inputdata', routes.inputdata);
 
+app.use('/api/landing', routes.main_page);
+
+app.use('/', routes.main_page);
 app.use('/administration/worksheets', routes.worksheets);
 app.use('/administration/recruiters', routes.recruiters);
 app.use('/administration/statistics', routes.statistics);
+app.use('/administration/rewiews', routes.rewiews);
 app.use('/administration/users', routes.users);
+app.use('/administration/additionaly', routes.additionaly);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
