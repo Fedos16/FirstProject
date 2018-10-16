@@ -393,15 +393,6 @@ input.error{
     background-color: rgb(100, 149, 237, 0.8);
 }
 
-
-/* НОВЫЙ КАНДИДАТ - В ПОСЛЕДСТВИИ, СКОРЕЕ ВСЕГО НЕ ПРИГОДИТСЯ*/
-.body_new_candidate{
-    font-family: 'Montserrat', sans-serif;
-    background-color: #fcfcfc;
-    display: flex;
-    justify-content: center;
-    height: auto;
-}
 .div_document{
     width: 50%;
     min-width: 920px;

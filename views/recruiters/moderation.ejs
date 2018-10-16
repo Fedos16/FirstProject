@@ -28,13 +28,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <% for(var i=0;i<data.recruiter.length;i++) {%>
+                        <% for(var i=0;i<data.rec.length;i++) {%>
                             <tr>
-                                <td style="display: none" class="id_for_line"><%= data.recruiter[i]._id %></td>
-                                <td><%= data.recruiter[i].fio %></td>
-                                <td><%= data.recruiter[i].residence %></td>
-                                <td>+<%= data.recruiter[i].telephone %></td>
-                                <td><%= data.recruiter[i].directions %></td>
+                                <td style="display: none" class="id_for_line"><%= data.rec[i]._id %></td>
+                                <td><%= data.rec[i].fio %></td>
+                                <td><%= data.rec[i].residence %></td>
+                                <td>+<%= data.rec[i].telephone %></td>
+                                <% if (data.rec[i].directions.length > 0) { %>
+                                    <td><%= data.rec[i].directions.split(', ').slice(0, 3).join(', ') %>...</td>
+                                <% } else { %>
+                                    <td><%= data.rec[i].directions %></td>
+                                <% } %>
                                 <td><img src="/images/open.png" class="open_recruiter"></td>
                             </tr>
                         <% } %>

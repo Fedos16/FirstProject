@@ -42,38 +42,38 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <% for(var i=0;i<data.fio.length;i++) {%>
+                        <% for(var i=0;i<data.rec.length;i++) {%>
                             <% if (data.typeUser == 'user') { %>
-                                <% if (data.status[i] == 'true') { %>
+                                <% if (data.rec[i].status == 'true') { %>
                                     <tr>
-                                        <td style="display: none" class="id_for_line"><%= data.id[i] %></td>
-                                        <td><%= data.fio[i] %></td>
-                                        <td><%= data.location[i] %></td>
-                                        <td><%= data.telephone[i] %></td>
-                                        <td><%= data.directions_short[i] %></td>
+                                        <td style="display: none" class="id_for_line"><%= data.rec[i]._id %></td>
+                                        <td><%= data.rec[i].fio %></td>
+                                        <td><%= data.rec[i].residence %></td>
+                                        <td><%= data.rec[i].telephone %></td>
+                                        <td><%= data.rec[i].directions.split(', ').slice(0, 3).join(', ') %>...</td>
                                         <td><img src="/images/pencil.png" class="icon_edit"></td>
                                         <td><img src="/images/basket.png" class="icon_delete"></td>
                                     </tr>
                                 <% } %>
                             <% } else {%>
-                                <% if (data.status[i] == 'false') { %>
+                                <% if (data.rec[i].status == 'false') { %>
                                     <tr class="false_status_row">
-                                        <td style="display: none" class="id_for_line"><%= data.id[i] %></td>
-                                        <td><%= data.fio[i] %></td>
-                                        <td><%= data.location[i] %></td>
-                                        <td><%= data.telephone[i] %></td>
-                                        <td><%= data.directions_short[i] %></td>
+                                        <td style="display: none" class="id_for_line"><%= data.rec[i]._id %></td>
+                                        <td><%= data.rec[i].fio %></td>
+                                        <td><%= data.rec[i].residence %></td>
+                                        <td><%= data.rec[i].telephone %></td>
+                                        <td><%= data.rec[i].directions.split(', ').slice(0, 3).join(', ') %>...</td>
                                         <td><img src="/images/pencil.png" class="icon_edit"></td>
                                         <td><img src="/images/cancel.png" class="icon_cancel"></td>
                                         <td style="display: none">false</td>
                                     </tr>
-                                <% } else if (data.status[i] == 'true') { %>
+                                <% } else if (data.rec[i].status == 'true') { %>
                                     <tr class="true_status_row">
-                                        <td style="display: none" class="id_for_line"><%= data.id[i] %></td>
-                                        <td><%= data.fio[i] %></td>
-                                        <td><%= data.location[i] %></td>
-                                        <td><%= data.telephone[i] %></td>
-                                        <td><%= data.directions_short[i] %></td>
+                                        <td style="display: none" class="id_for_line"><%= data.rec[i]._id %></td>
+                                        <td><%= data.rec[i].fio %></td>
+                                        <td><%= data.rec[i].residence %></td>
+                                        <td><%= data.rec[i].telephone %></td>
+                                        <td><%= data.rec[i].directions.split(', ').slice(0, 3).join(', ') %>...</td>
                                         <td><img src="/images/pencil.png" class="icon_edit"></td>
                                         <td><img src="/images/basket.png" class="icon_delete"></td>
                                         <td style="display: none">true</td>

@@ -156,14 +156,14 @@ a{
     height: 400px;
     left: 800px;
     top: 300px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
-    border: 5px solid #FFFFFF;
-    box-sizing: border-box;
     border-radius: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+    border: 1px solid #FFFFFF;
+    box-sizing: border-box;
 }
 .ellips_two{
     position: absolute;
@@ -171,11 +171,13 @@ a{
     height: 550px;
     left: 725px;
     top: 225px;
-    box-sizing: border-box;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-sizing: border-box;
 }
 .ellips_three{
     position: absolute;
@@ -183,11 +185,13 @@ a{
     height: 700px;
     left: 650px;
     top: 150px;
-    box-sizing: border-box;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-sizing: border-box;
 }
 .ellips_four{
     z-index: 1;
@@ -196,11 +200,13 @@ a{
     height: 850px;
     left: 575px;
     top: 75px;
-    box-sizing: border-box;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-sizing: border-box;
 }
 .ellips_five{
     z-index: 1;
@@ -209,12 +215,14 @@ a{
     height: 1200px;
     left: 400px;
     top: -100px;
-    opacity: 0.06;
-    box-sizing: border-box;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    background: linear-gradient(0deg, #FFFFFF, #FFFFFF);
+    opacity: 0.05;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-sizing: border-box;
 }
 
 .ellips_wave{
@@ -224,63 +232,16 @@ a{
     height: 400px;
     left: 800px;
     top: 300px;
-    border: 5px solid #FFFFFF;
-    box-sizing: border-box;
-    border-radius: 50%;
-    opacity: 0;
-}
-.ellips_wave_2{
-    z-index: 1;
-    position: absolute;
-    width: 400px;
-    height: 400px;
-    left: 800px;
-    top: 300px;
-    border: 2px solid #FFFFFF;
-    box-sizing: border-box;
-    border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.336);
+    box-sizing: border-box;
+    border-radius: 50%;
     opacity: 0;
+    border: 1px solid rgba(255, 255, 255, 0.15);
 }
 #one_wave{
-    border-color: transparent #fff transparent #fff;
-    animation: vawe 15s linear infinite;
+    animation: vawe 5s linear infinite;
 }
-#two_wave{
-    border-color: transparent #fff transparent #fff;
-    animation: vawe 15s linear infinite;
-    animation-delay: 3s;
-}
-#three_wave{
-    border-color: transparent #fff transparent #fff;
-    animation: vawe 15s linear infinite;
-    animation-delay: 6.5s;
-}
-#four_wave{
-    border-color: transparent #fff transparent #fff;
-    animation: vawe 15s linear infinite;
-    animation-delay: 10s;
-}
-#o_wave{
-    border-color: #fff transparent #fff transparent;
-    animation: vawe_two 15s linear infinite;
-    animation-delay: 0.5s;
-}
-#t_wave{
-    border-color: #fff transparent #fff transparent;
-    animation: vawe_two 15s linear infinite;
-    animation-delay: 3.5s;
-}
-#th_wave{
-    border-color: #fff transparent #fff transparent;
-    animation: vawe_two 15s linear infinite;
-    animation-delay: 7s;
-}
-#f_wave{
-    border-color: #fff transparent #fff transparent;
-    animation: vawe_two 15s linear infinite;
-    animation-delay: 10.5s;
-}
+
 @keyframes vawe{
     0%{
         width: 400px;
@@ -288,35 +249,17 @@ a{
         left: 800px;
         top: 300px;
         opacity: 1;
-        border: 10px solid linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.3) 100%);
-        transform: rotate(0deg);
+        border: 35px solid rgba(255, 255, 255, 0.6);
+    }
+    30%{
+        border: 2px solid rgba(255, 255, 255, 0.05);
     }
     100%{
-        width: 1200px;
-        height: 1200px;
-        left: 400px;
-        top: -100px;
-        opacity: 0;
-        transform: rotate(360deg);
-    }
-}
-@keyframes vawe_two{
-    0%{
-        width: 400px;
-        height: 400px;
-        left: 800px;
-        top: 300px;
-        opacity: 1;
-        border: 10px solid linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.3) 100%);
-        transform: rotate(0deg);
-    }
-    100%{
-        width: 1200px;
-        height: 1200px;
-        left: 400px;
-        top: -100px;
-        opacity: 0;
-        transform: rotate(-360deg);
+        width: 1350px;
+        height: 1350px;
+        left: 325px;
+        top: -175px;
+        opacity: 0.3;
     }
 }
 /* ВТОРОЙ БЛОК - ФИЛЬТР АНКЕТ */
