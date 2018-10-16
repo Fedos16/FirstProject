@@ -243,15 +243,18 @@ a{
 }
 
 @keyframes vawe{
-    0%{
+    29%{
+        border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+    30%{
         width: 400px;
         height: 400px;
         left: 800px;
         top: 300px;
         opacity: 1;
-        border: 20px solid rgba(255, 255, 255, 0.6);
+        border: 15px solid rgba(255, 255, 255, 0.6);
     }
-    30%{
+    50%{
         border: 2px solid rgba(255, 255, 255, 0.05);
     }
     100%{
@@ -259,7 +262,7 @@ a{
         height: 1350px;
         left: 325px;
         top: -175px;
-        opacity: 0.3;
+        opacity: 0;
     }
 }
 /* ВТОРОЙ БЛОК - ФИЛЬТР АНКЕТ */
