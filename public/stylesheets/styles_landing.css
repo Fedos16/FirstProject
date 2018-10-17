@@ -31,20 +31,17 @@ a{
 }
 .container{
     width: 100%;
-    min-width: 480px;
     height: auto;
 }
 /* ПЕРВЫЙ БЛОК - ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ */
 .block_one{
     width: 100%;
-    min-width: 1200px;
     height: 990px;
     background: linear-gradient(69.25deg, #0031E0 0%, #07BDE3 53.04%, #00E887 100%);
     z-index: 1000;
 }
 .header{
     width: 100%;
-    min-width: 1300px;
     position: absolute;
     display: flex;
     padding-top: 60px;
@@ -52,14 +49,12 @@ a{
 }
 .header_left{
     width: 30%;
-    min-width: 400px;
     display: flex;
     justify-content: center;
     align-self: center;
 }
 .header_right_menu{
     width: 57%;
-    min-width: 750px;
     display: flex;
     justify-content: center;
     padding-right: 3%;
@@ -113,7 +108,6 @@ a{
 /*БЛОК С ТЕКСТОМ И КНОПКОЙ*/
 .consult{
     width: 25%;
-    min-width: 480px;
     display: flex;
     flex-direction: column;
     align-self: center;
@@ -1137,6 +1131,35 @@ a{
     display: flex;
     flex-direction: row;
 }
+/*
+.block_seven_carousel:hover .carousel_item:nth-child(1){
+   animation: karousel_one 6s linear infinite;
+}
+.block_seven_carousel:hover .carousel_item:nth-child(2){
+    animation: karousel_two 4s linear infinite;
+}
+.block_seven_carousel:hover .carousel_item:nth-child(3){
+    animation: karousel 4.5s linear infinite;
+}
+@keyframes karousel_one {
+    0%{opacity: 1;}
+    9.4%{transform: translateX(-12%); opacity: 0}
+    30.4%{transform: translateX(230%); opacity: 0;}
+    30.5%{opacity: 1;}
+    100%{transform: translateX(0%); opacity: 1;}
+}
+@keyframes karousel_two {
+    40%{opacity: 1;transform: translateX(-108%)}
+    50%{transform: translateX(-120%); opacity: 0;}
+    50.1%{transform: translateX(120%);}
+    52%{opacity: 1;}
+    100%{transform: translateX(0%); opacity: 1;}
+}
+@keyframes karousel {
+    0%{transform: translateX(0%);}
+    90%{transform: translateX(-228%); opacity: 1;}
+    100%{transform: translateX(-240%); opacity: 0;}
+}*/
 .carousel_item{
     width: 33%;
     margin: 0px 40px;
@@ -2411,4 +2434,42 @@ input[type='file']{
 }
 .modal_menu_item ul li:hover {
     color: rgba(255, 255, 255, 0.642);
+}
+
+/* АДАПТИВНАЯ ВЕРСТКА */
+@media screen and (max-width: 767px) {
+    .block_one{
+        height: 682px;
+        padding: 5.55%;
+        padding-left: 0%;
+    }
+    .header_right_menu{
+        display: none;
+    }
+    .header_right_lang{
+        display: none;
+    }
+    .header{
+        padding-top: 14px;
+        width: 100%;
+    }
+    .header_left{
+        width: 200px;
+    }
+    .header_left img{
+        height: 50px;
+        width: 160px;
+    }
+    .consult{
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+        align-items: center;
+    }
+    .consult h1{
+        margin-top: 25%;
+        margin-bottom: 20%;
+        font-size: 45px;
+        text-align: center;
+    }
 }
