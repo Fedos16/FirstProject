@@ -2437,7 +2437,7 @@ input[type='file']{
 }
 
 /* АДАПТИВНАЯ ВЕРСТКА */
-@media screen and (max-width: 767px) {
+@media (max-width: 780px) {
     .block_one{
         height: 682px;
         padding: 5.55%;
