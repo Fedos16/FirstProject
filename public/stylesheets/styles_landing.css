@@ -370,7 +370,7 @@ a{
 }
 /* ВТОРОЙ БЛОК - ФИЛЬТР АНКЕТ */
 .block_two{
-    width: 1800px;
+    width: 93%;
     margin: auto;
     border-bottom: none;
     height: auto;
@@ -454,8 +454,7 @@ a{
     margin-left: 70px;
 }
 .block_two_title{
-    margin-left: 146px;
-    margin-top: 60px;
+    margin: 4% 10%;
     font-size: 50px;
     color: #363636;
 }
@@ -464,7 +463,7 @@ a{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    width: 1400px;
+    width: 78%;
     height: 200px;
     background: #FFFFFF;
     border: 1px solid #E5E5E5;
@@ -498,7 +497,6 @@ a{
     transition: 0.3s;
     color: rgb(54, 54, 54, 1);
 }
-
 .block_worksheets{
     display: flex;
     flex-direction: column;
@@ -509,7 +507,7 @@ a{
     display: flex;
     flex-direction: row;
     margin: 15px auto;
-    width: 1400px;
+    width: 78%;
     background: #FFFFFF;
     box-shadow: 0px 4px 100px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
@@ -536,7 +534,7 @@ a{
     flex-direction: column;
     justify-content: flex-start;
     align-self: center;
-    width: 600px;
+    width: 46%;
 }
 .mini_worksheet_two_title{
     font-weight: bold;
@@ -683,7 +681,7 @@ a{
     padding-top: 20px;
     padding-bottom: 50px;
     border-top: none;
-    width: 1800px;
+    width: 93.75%;
     margin: auto;
     border-bottom: none;
     height: 929px;
@@ -692,7 +690,7 @@ a{
     box-shadow: 0px 40px 60px rgba(0, 0, 0, 0.1);
 }
 .universal_content_for_block{
-    width: 1400px;
+    width: 78%;
     margin: 80px auto;
     display: flex;
     flex-direction: column;
@@ -771,10 +769,11 @@ a{
     padding-top: 20px;
     padding-bottom: 50px;
     border-top: none;
-    width: 1800px;
+    width: 93.75%;
     margin: auto;
     border-bottom: none;
-    height: 1191px;
+    height: auto;
+    min-height: 1191px;
     margin-top: -50px;
     background-color: white;
     box-shadow: 0px 40px 60px rgba(0, 0, 0, 0.1);
@@ -867,6 +866,7 @@ a{
 }
 .universal_step_ellips_three{
     width: 51px;
+    min-width: 51px;
     height: 51px;
     background-color: rgba(44, 152, 241, 0.15);
     border-radius: 50%;
@@ -899,11 +899,12 @@ a{
 /* ПЯТЫЙ БЛОК - АКЦИЯ*/
 .block_five{
     width: 100%;
-    height: 936px;
+    height: auto;
+    min-height: 936px;
     background: linear-gradient(90deg, #F0F0F0 0%, #F1F1F1 6.52%, #EDEDED 21.31%, #EDEDED 52.17%);
 }
 .block_per_block{
-    width: 1800px;
+    width: 93.75%;
     height: 60px;
     margin: -80px auto;
     background-color: #fff;
@@ -2440,8 +2441,8 @@ input[type='file']{
 @media (max-width: 780px) {
     .block_one{
         height: 682px;
+        width: 88.9%;
         padding: 5.55%;
-        padding-left: 0%;
     }
     .header_right_menu{
         display: none;
@@ -2471,5 +2472,217 @@ input[type='file']{
         margin-bottom: 20%;
         font-size: 45px;
         text-align: center;
+    }
+
+    .block_two_title{
+        font-size: 22px;
+    }
+    .block_two_filter{
+        flex-direction: column;
+        width: 85%;
+        border: none;
+        margin: 0px auto;
+        padding: 0px;
+    }
+    .filter_item {
+        display: none;
+    }
+    .filter_item:first-child{
+        display: flex;
+    }
+    .mini_worksheet{
+        flex-direction: column;
+        height: 500px;
+    }
+    .mini_worksheet_one{
+        width: 100%;
+        height: 30%;
+    }
+    .icon_user{
+        width: 50px;
+        height: 50px;
+    }
+    .icon_user img{
+        width: 20px;
+        height: 20px;
+    }
+    .mini_worksheet_two{
+        width: 100%;
+        align-items: center;
+    }
+    .mini_worksheet_two_title{
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .mini_worksheet_three{
+        flex-direction: row;
+        justify-content: center;
+    }
+    .blue_money{
+        margin-right: 10px;
+        font-size: 28px;
+    }
+    .mini_worksheet_splin{
+        height: 2px;
+        width: 30%;
+        margin: 35px auto;
+        border: none;
+        border-bottom: 1px solid rgba(196, 196, 196, 0.3);;
+    }
+    .mini_worksheet_two_social{
+        margin-bottom: 35px;
+    }
+    .mini_worksheet_two_social ul li{
+        display: none;
+    }
+    .mini_worksheet_two_social ul li:nth-child(1),
+    .mini_worksheet_two_social ul li:nth-child(2){
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .mini_worksheet_two_social ul li:first-child img{
+        width: 36px;
+        height: 20px;
+    }
+    .mini_worksheet_button_line{
+        flex-direction: column;
+        height: 250px;
+        width: 100%;
+        align-items: center;
+        padding: 0px;
+        margin: 0px;
+        margin-bottom: 50px;
+    }
+    .mini_worksheet_button_line button{
+        width: 80%;
+        height: 60px;
+        font-size: 10px;
+        flex-flow: wrap;
+    }
+    .mini_worksheet_button_line button:first-child{
+        order: 1;
+        margin: 20px 0px;
+    }
+    .mini_worksheet_button_line button:last-child{
+        order: 2;
+    }
+    #view_plus_mini{
+        margin: 0px;
+        font-size: 10px;
+    }
+
+    .block_three{
+        height: auto;
+    }
+    .universal_content_for_block{
+        margin: 20px auto; 
+    }
+    .universal_left_right{
+        width: 100%;
+        flex-direction: column;
+    }
+    .universal_left{
+        width: 100%;
+    }
+    .universal_title{
+        width: 100%;
+    }
+    .universal_left_right{
+        flex-direction: column-reverse;
+    }
+    .universal_right{
+        width: 100%;
+        margin: 0px;
+        margin-top: 40px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    .universal_right img{
+        width: 95%;
+        height: auto;
+    }
+    .universal_title{
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    .universal_text{
+        font-size: 15px;
+    }
+    .text_video_instruction{
+        font-size: 10px;
+        margin-top: 18px;
+    }
+    .universal_bottom{
+        margin-top: 20px;
+    }
+
+    .block_four .universal_content_for_block .universal_left_right{
+        flex-direction: column-reverse;
+    }
+    .block_four .universal_content_for_block .universal_left_right .universal_left{
+        width: 100%;
+    }
+    .block_four .universal_content_for_block .universal_left_right .universal_right{
+        width: 100%;
+        margin: 0px;
+        margin-top: 40px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    .block_four .universal_content_for_block .universal_left_right .universal_right img{
+        width: 95%;
+        height: auto;
+    }
+    .block_four .universal_content_for_block .universal_left_right .universal_title{
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    .block_four .universal_content_for_block .universal_left_right .universal_text{
+        font-size: 15px;
+    }
+    .block_four .universal_content_for_block .universal_left_right .text_video_instruction{
+        font-size: 10px;
+        margin-top: 18px;
+    }
+    .block_four .universal_content_for_block .universal_left_right .universal_bottom{
+        margin-top: 20px;
+    }
+    .universal_step{
+        flex-direction: column;
+    }
+    .universal_step_item{
+        width: 100%;
+        flex-direction: row;
+    }
+    .step_item_body{
+        margin-left: 5px;
+        margin-top: 15px;
+    }
+    .step_item_body p{
+        margin-bottom: 15px;
+    }
+    .universal_step_splin{
+        height: 2px;
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid #EDEDED;
+        margin: 30px 0px;
+    }
+
+    .block_five_universal{
+        width: 100%;
+        flex-direction: column-reverse;
+    }
+    .five_universal_left{
+        width: 100%;
+    }
+    .five_universal_left img {
+        width: 133%;
+        height: auto;
+    }
+    .five_universal_right{
+        width: 90%;
+        margin: 0px auto;
     }
 }
