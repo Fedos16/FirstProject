@@ -1126,7 +1126,7 @@ a{
     margin-left: 146px;
 }
 .block_seven_carousel{
-    width: 1600px;
+    width: 83.3%;
     height: 310px;
     margin: 125px auto;
     display: flex;
@@ -1247,8 +1247,17 @@ a{
 .carousel_item:nth-child(2):hover img{
     animation: file_up 2.5s infinite;
 }
-.carousel_item:nth-child(3):hover img{
+.carousel_item:nth-child(4):hover img{
     animation: microphone 2.5s infinite;
+}
+.carousel_item:nth-child(5) .carousel_ellips_two{
+    background: linear-gradient(34.16deg, #2C98F0 0%, #2CD8F0 59.57%);
+}
+.dot_ell{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: linear-gradient(34.16deg, #2C98F0 0%, #2CD8F0 59.57%);
 }
 @keyframes hands {   
     0%{
@@ -1424,7 +1433,7 @@ a{
 }
 .eaght_button_line{
     text-align: center;
-    width: 1550px;
+    width: 80.7%;
     margin: 50px auto;
 }
 .eaght_block_company_rewiews{
@@ -2681,6 +2690,351 @@ input[type='file']{
         width: 133%;
         height: auto;
     }
-    
+    .five_universal_right{
+        width: 90%;
+        margin: 0px auto;
+    }
+    .block_six_title{
+        flex-direction: column;
+        width: 78%;
+        margin: 0px auto;
+    }
+    .six_title_left{
+        margin: 20px 0px;
+        font-size: 24px;
+    }
+    .six_title_right{
+        width: 100%;
+        font-size: 16px;
+        line-height: 150%;
+    }
+    .six_line_one{
+        margin: 0px auto;
+        width: 78%;
+        flex-direction: column;
+    }
+    .six_line_one_item{
+        width: 100%;
+        margin: 0px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.5);
+    }
+    .six_line_one_item p{
+        font-size: 16px;
+        line-height: 150%;
+    }
+    .six_line_one_item p:first-child{
+        margin-bottom: 15px;
+    }
+    .six_splin{
+        width: 100%;
+        margin-top: 0px;
+        margin-bottom: 20px;
+    }
+    .six_line_two{
+        width: 78%;
+        margin: 0px auto;
+    }
+    .six_line_two_left{
+        display: none;
+    }
+    .six_line_two_right{
+        font-size: 16px;
+        line-height: 150%;
+    }
+    .six_line_two_right br{
+        display: none;
+    }
+    .six_white_block{
+        width: 93%;
+        margin: 0px auto;
+        margin-top: 20px;
+        height: auto;
+        min-height: 980px;
+    }
+    .six_white_block_table{
+        margin: 0px 30px;
+        flex-direction: column-reverse;
+    }
+    .six_white_block_table_bottom{
+        margin: 0px;
+        padding: auto;
+    }
+    .six_white_block_table_bottom img:last-child{
+        display: none;
+    }
+    .six_white_block_table_bottom img:first-child{
+        position: inherit;
+        width: 100%;
+        height: auto;
+    }
+    .six_white_block_table_bottom p{
+        display: none;
+    }
+    .six_white_block_table_left .white_table_item {
+        margin: 0px;
+        height: auto;
+    }
+    .white_table_horizontal_splin{
+        margin-bottom: 20px;
+    }
+    .six_white_block_table_left{
+        width: 100%;
+        border: none;
+    }
+    .six_white_block_table_right{
+        display: none;
+    }
 
+    .block_seven{
+        width: 84%;
+        margin: 0px auto;
+        height: auto;
+    }
+    .block_seven .block_two_title{
+        margin-left: 0px;
+    }
+    .block_seven_second_title{
+        margin: 0px;
+        font-size: 14px;
+    }
+    .block_seven_second_title p{
+        line-height: 150%;
+    }
+    .block_seven_carousel{
+        width: 100%;
+        flex-direction: column;
+        margin: 0px;
+        height: auto;
+    }
+    .carousel_item{
+        width: 100%;
+        margin: 0px;
+    }
+    .carousel_number{
+        display: none;
+    }
+    .carousel_ellips_two{
+        position: inherit;
+        margin: 0px;
+        margin-right: 20px;
+        min-width: 60px;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .carousel_ellips_one{
+        position: inherit;
+        width: 40px;
+        height: 40px;
+    }
+    .carousel_text{
+        margin: 0px;
+    }
+    .carousel_text p{
+        font-size: 12px;
+    }
+    .carousel_text p:first-child{
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+    .carousel_item:nth-child(1) .carousel_ellips_two .carousel_ellips_one img{
+        width: 30px;
+        height: 20px;
+    }
+    .carousel_item:nth-child(2) .carousel_ellips_two .carousel_ellips_one img{
+        width: 20px;
+        height: 24px;
+    }
+    .carousel_item:nth-child(3) .carousel_ellips_two .carousel_ellips_one img{
+        width: 24px;
+        height: 26px;
+    }
+    .carousel_item:nth-child(4) .carousel_ellips_two .carousel_ellips_one img{
+        width: 14px;
+        height: 26px;
+    }
+    .dot_ell{
+        width: 20px;
+        height: 20px;
+    }
+
+    .block_eaght{
+        width: 85%;
+        margin: 0px auto;
+        margin-top: 20px;
+        height: auto;
+    }
+    .eaght_statusbar{
+        display: none;
+    }
+    .arrow_left,
+    .arrow_right{
+        display: none;
+    }
+    .block_reviews{
+        margin: 0px;
+        margin-top: 60px;
+        height: auto;
+    }
+    .rewiew_icon_ellips{
+        width: 70px;
+        height: 70px;
+        margin-left: 10px;
+        margin-top: -55px;
+    }
+    .rewiew_icon_ellips img {
+        width: 65px;
+        height: 65px;
+    }
+    .rewiew_name_company{
+        margin: 0px;
+        margin-top: 40px;
+        margin-bottom: 10px;
+    }
+    .rewiew_name_company p{
+        margin: 0px;
+        margin-bottom: 5px;
+        font-weight: bold;
+        font-size: 18px;
+    }
+    .rewiew_name_company span{
+        margin: 0px;
+        font-size: 14px;
+    }
+    .block_rewiews_rewiew{
+        width: 250px;
+        min-width: 250px;
+        padding: 20px;
+        min-height: 150px;
+        height: auto;
+        z-index: 10;
+    }
+    .rewiew_text{
+        margin: 0px;
+        font-size: 14px;
+    }
+    .block_rewiews_item{
+        min-width: 300px;
+        width: 300px;
+        z-index: 1;
+        margin: 0px;
+    }
+    .rewiew_name{
+        display: none;
+    }
+    .rewiews_item_ellips{
+        width: 55px;
+        height: 55px;
+        margin-top: -290px;
+    }
+    .rewiews_item_ellips img{
+        width: 50px;
+        height: 50px;
+    }
+    .block_rewiews_item{
+        display: none;
+    }
+
+    .block_nine{
+        width: 80%;
+        padding: 0px 10%;
+        padding-top: 20px;
+        flex-direction: column;
+    }
+    .block_nine_left{
+        width: 100%;
+        margin: 0px;
+    }
+    .block_nine_left .block_two_title{
+        width: 100%;
+        font-size: 24px;
+    }
+    .block_nine_left .block_seven_second_title{
+        width: 100%;
+        margin: 0px;
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+    .block_nine_contacts{
+        flex-direction: column;
+        width: 100%;
+        align-items: flex-start;
+        margin: 0px;
+        font-size: 13px;
+    }
+    .block_nine_contacts ul{
+        margin-top: 20px;
+    }
+    .block_nine_contacts ul li:first-child{
+        margin-left: 0px;
+    }
+    .news_subscription_title{
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    .news_subscription{
+        margin-top: 60px;
+    }
+    .news_subscription_form{
+        width: 100%;
+    }
+    .news_subscription_form input{
+        width: 60%;
+        height: 40px;
+        font-size: 12px;
+        padding-left: 10px;
+        padding-right: 20px;
+    }
+    .news_subscription_form button{
+        width: 40%;
+        height: 44px;
+        margin-left: -40px;
+        font-size: 12px;
+    }
+    .block_nine_right{
+        margin: 0px;
+        width: 100%;
+        margin-top: 50px;
+        border-radius: 20px;
+        margin-bottom: 40px;
+    }
+    .nine_right_title{
+        font-size: 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .block_nine_right input{
+        width: 80%;
+        height: 40px;
+        font-size: 12px;
+    }
+    .block_nine_right button{
+        width: 80%;
+        height: 40px;
+        font-size: 12px;
+    }
+    .footer{
+        flex-direction: column;
+        height: auto;
+        padding: 20px 0px;
+    }
+    .footer_one{
+        margin: 0px;
+        order: 2;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+    .footer_two{
+        margin: 0px;
+        order: 0;
+    }
+    .footer_three{
+        margin: 0px;
+        order: 3;
+        font-size: 14px;
+    }
 }

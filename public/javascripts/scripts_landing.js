@@ -1,4 +1,81 @@
 $(document).ready(function(){
+
+    // Мобильная верста якобы
+    $(() => {
+        var width = $(window).width();
+        if (width < 780) {
+
+            $('body, html').css({'overflow-x':'hidden'});
+
+            $('.carousel_item').show();
+
+            $('.six_white_block_table_left .white_table_item').remove();
+            $('.six_white_block_table_left .white_table_horizontal_splin').remove();
+
+            var splin = '<div class="white_table_horizontal_splin"></div>'
+
+            $('.six_white_block_table_left').append(`
+                <div class="white_table_item">
+                    <p>Research</p>
+                    <p>We do fast and efficient market research and pre-selection</p>
+                </div>
+            `);
+            $('.six_white_block_table_left').append(splin);
+            $('.six_white_block_table_left').append(`
+                <div class="white_table_item">
+                    <p>Primal Interview</p>
+                    <p>We do screening of the Candidates and evaluation for relevancy and risk analysis purposes</p>
+                </div>
+            `);
+            $('.six_white_block_table_left').append(splin);
+            $('.six_white_block_table_left').append(`
+                <div class="white_table_item">
+                    <p>Cross Posting</p>
+                    <p>We do Cross Posting of your Vacancy in our Social Network: Twitter, Facebook, Telegram</p>
+                </div>
+            `);
+            $('.six_white_block_table_left').append(splin);
+            $('.six_white_block_table_left').append(`
+                <div class="white_table_item">
+                    <p>E-mail blasting</p>
+                    <p>We send away e-mails to relevant contacts within our expert database</p>
+                </div>
+            `);
+            $('.six_white_block_table_left').append(splin);
+            $('.six_white_block_table_left').append(`
+                <div class="white_table_item">
+                    <p>Database</p>
+                    <p>You may also use our existing expert Database (test mode)</p>
+                </div>
+            `);
+            $('.six_white_block_table_left').append(splin);
+            $('.six_white_block_table_left').append(`
+                <div class="white_table_item">
+                    <p>Presentation</p>
+                    <p>We act as your Ambassador, presenting your vacancy and project. We excite the people!</p>
+                </div>
+            `);
+            $('.six_white_block_table_left').append(splin);
+            $('.six_white_block_table_left').append(`
+                <div class="white_table_item">
+                    <p> </p>
+                    <p>For our clients we intent to be more than just a Recruitment. Together with HR Services we provide with Complimentary Marketing to strengthen an Employer Brand.</p>
+                </div>
+            `);
+
+            var len = $('.block_rewiews_item').length
+            var left = -250
+            var z= 5;
+            for (i=0; i < len; i++){
+                $('.block_rewiews_item:eq('+i+')').css({'margin-left':`${left}px`, 'z-index': z});
+                z-=1;
+                left += 20;
+            }
+            
+        } else {
+            
+        }
+    });
     
     // Выпадающий многостроковый список! - Собственная разработка 
     $('.select_modal_button').on('click', (e) => {
