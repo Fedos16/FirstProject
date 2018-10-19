@@ -201,7 +201,7 @@ $(document).ready(function(){
 
     // Открытие меню!
     $('.block_two_menu').on('click', (e) => {
-        $('.block_two_menu').hide();
+        /*$('.block_two_menu').hide();
         $('.modal_menu_back').show();
         $('.modal_menu_back').css('opacity', '0');
         $('.modal_menu_back').animate({opacity: 1}, 500);
@@ -209,7 +209,22 @@ $(document).ready(function(){
         $('.modal_menu').show();
         $('.modal_menu').css('width','0px');
         $('.modal_menu').animate({width: '400px'}, 500);
-        $('body, html').css({'overflow-y':'hidden','overflow-x':'hidden'});
+        $('body, html').css({'overflow-y':'hidden','overflow-x':'hidden'});*/
+
+        if ($('.block_menu').css('display') == 'none'){
+            $('.block_menu').show();
+            var top = $('.block_two_menu').offset().top-30;
+            var left = $('.block_two_menu').offset().left;
+            $('.block_menu').css({'top':top, 'left': left, "z-index": 999});
+            $('.block_menu').css({'opacity':'0', 'width': '0'});
+            $('.block_menu').animate({'opacity': 1, 'width': 1200, 'left': left-1165}, 1000);
+        } else {
+            var left = $('.block_two_menu').offset().left;
+            $('.block_menu').animate({'opacity': 0, 'width': 0, 'left': left}, 1000, () => {
+                $('.block_menu').hide();
+            });
+        }
+
     });
     // Закрытие меню!
     $('.modla_menu_ellips').on('click', (e) => {
@@ -262,9 +277,12 @@ $(document).ready(function(){
         var four = $('.block_four').offset().top;
         var five = $('.block_five').offset().top;
         var h_w = window.innerHeight-300;
+        if ($('.block_menu').css('display') != 'none'){
+            $('.block_menu').hide();
+        }
         if ($(this).scrollTop() >= two) {
-            $('.block_two_div_menu').show();
             $('.block_two_menu').show();
+            $('.block_two_div_menu').show();
         } else {
             $('.block_two_div_menu').hide();
         }
