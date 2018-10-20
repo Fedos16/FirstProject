@@ -1,11 +1,13 @@
 $(document).ready(function(){
 
     // Мобильная верста якобы
+    /*
     $(() => {
         var width = $(window).width();
         if (width < 780) {
 
             //$('body, html').css({'overflow-x':'hidden'});
+            $('#main_animation').hide();
             $('.block_five .block_five_universal .five_universal_left').html('<img src="images/landing/girl_mini.png">');
 
             $('.carousel_item').show();
@@ -77,7 +79,7 @@ $(document).ready(function(){
             
         }
     });
-    
+    */
     // Выпадающий многостроковый список! - Собственная разработка 
     $('.select_modal_button').on('click', (e) => {
         $('.select_modal_items').hide();
@@ -271,7 +273,7 @@ $(document).ready(function(){
         //анимируем переход на расстояние - top за 1500 мс
         $('body,html').animate({scrollTop: top}, 1500);
     });
-    
+    /*
     $(window).scroll(function() {
         var two = $('.block_two').offset().top;
         var three = $('.block_three').offset().top;
@@ -282,7 +284,7 @@ $(document).ready(function(){
             $('.block_menu').hide();
         }
         var width = $(window).width();
-        if (width >= 780) {
+        if (width > 780) {
             if ($(this).scrollTop() >= two) {
                 $('.block_two_menu').show();
                 $('.block_two_div_menu').show();
@@ -331,7 +333,7 @@ $(document).ready(function(){
 
         
     });
-    
+    */
     // Открытие модальных окон
     $('#get_consult').on('click', (e) => {
         $('.modal_block').show();

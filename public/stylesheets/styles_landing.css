@@ -1,4 +1,4 @@
-body{
+body, html{
     padding: 0px;
     margin: 0px;
     font-family: 'Montserrat', sans-serif;
@@ -3040,8 +3040,34 @@ input[type='file']{
         order: 3;
         font-size: 14px;
     }
-
-    #main_animation{
+    .block_two_div_menu{
         display: none;
+    }
+
+    .ellips{
+        left: 0px;
+        top: 0px;
+    }
+    .ellips_one{
+        width: 50vw;
+        height: 50vw;
+        left: 25vw;
+        top: 70vh;
+    }
+    .ellips_one img{
+        width: 30vw;
+        height: auto;
+    }
+    .ellips_two{
+        width: 66.28vw;
+        height: 66.28vw;
+        top: 65.5vh;
+        left: 16.86vw;
+    }
+    .ellips_three{
+        width: 82.56vw;
+        height: 82.56vw;
+        top: 61vh;
+        left: 8.72vw;
     }
 }
