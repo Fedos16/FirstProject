@@ -5,7 +5,8 @@ $(document).ready(function(){
         var width = $(window).width();
         if (width < 780) {
 
-            $('body, html').css({'overflow-x':'hidden'});
+            //$('body, html').css({'overflow-x':'hidden'});
+            $('.block_five .block_five_universal .five_universal_left').html('<img src="images/landing/girl_mini.png">');
 
             $('.carousel_item').show();
 
@@ -280,11 +281,14 @@ $(document).ready(function(){
         if ($('.block_menu').css('display') != 'none'){
             $('.block_menu').hide();
         }
-        if ($(this).scrollTop() >= two) {
-            $('.block_two_menu').show();
-            $('.block_two_div_menu').show();
-        } else {
-            $('.block_two_div_menu').hide();
+        var width = $(window).width();
+        if (width >= 780) {
+            if ($(this).scrollTop() >= two) {
+                $('.block_two_menu').show();
+                $('.block_two_div_menu').show();
+            } else {
+                $('.block_two_div_menu').hide();
+            }
         }
         // Анимация для третьего блока
         if ($(this).scrollTop() >= three-h_w && $(this).scrollTop() < four) {

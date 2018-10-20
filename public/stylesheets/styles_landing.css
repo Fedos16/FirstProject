@@ -683,7 +683,7 @@ a{
     padding-top: 20px;
     padding-bottom: 50px;
     border-top: none;
-    width: 93.75%;
+    width: 93%;
     margin: auto;
     border-bottom: none;
     height: 929px;
@@ -2689,7 +2689,7 @@ input[type='file']{
         width: 100%;
     }
     .five_universal_left img {
-        width: 133%;
+        width: 100%;
         height: auto;
     }
     .five_universal_right{
@@ -2762,7 +2762,7 @@ input[type='file']{
         margin: 0px;
         padding: auto;
     }
-    .six_white_block_table_bottom img:last-child{
+    .six_white_block_table_bottom img:nth-child(2){
         display: none;
     }
     .six_white_block_table_bottom img:first-child{
@@ -2868,6 +2868,7 @@ input[type='file']{
         margin: 0px auto;
         margin-top: 20px;
         height: auto;
+        display: none;
     }
     .eaght_statusbar{
         display: none;
@@ -3038,5 +3039,9 @@ input[type='file']{
         margin: 0px;
         order: 3;
         font-size: 14px;
+    }
+
+    #main_animation{
+        display: none;
     }
 }
