@@ -5,7 +5,8 @@ $(document).ready(function(){
     $(() => {
         var width = $(window).width();
         if (width < 780) {
-            $('#main_animation').hide();
+
+            
             $('.block_five .block_five_universal .five_universal_left').html('<img src="images/landing/girl_mini.png">');
 
             $('.carousel_item').show();
