@@ -2123,7 +2123,7 @@ input[type='file']{
 .delete_new_direction img:hover{
     transform: scale(1.2);
 }
-
+/*
 ::-webkit-scrollbar{ width:10px; height:9px;}
 ::-webkit-scrollbar-button:start:decrement, 
 ::-webkit-scrollbar-button:end:increment{ 
@@ -2148,6 +2148,7 @@ input[type='file']{
   -webkit-border-radius:15px;
 }
 
+*/
 /* Собственная разработка - выпадающие многовыборные списки */
 .select_modal_button{
     width: 100%;
@@ -2462,6 +2463,7 @@ input[type='file']{
         display: none;
     }
     .header{
+        position: inherit;
         padding-top: 14px;
         width: 100%;
     }
@@ -3069,5 +3071,21 @@ input[type='file']{
         height: 82.56vw;
         top: 61vh;
         left: 8.72vw;
+    }
+    #min_o_o{
+        animation: none;
+        display: none;
+    }
+    #min_o_t{
+        animation: none;
+        display: none;
+    }
+    #min_o_th{
+        animation: none;
+        display: none;
+    }
+    #min_o_f{
+        animation: none;
+        display: none;
     }
 }
