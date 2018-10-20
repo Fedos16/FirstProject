@@ -244,175 +244,156 @@ a{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("/images/landing/animation/men_w.png");
+    background-color: rgba(255, 255, 255, 0.795);
     background-repeat: no-repeat;
     background-position: center;
     z-index: 1000;
 }
+.o_min{
+    width: 20px;
+    height: 20px;
+}
+.o_mid{
+    width: 30px;
+    height: 30px;
+}
 #min_o_o{
-    background-image: url("/images/animation/landing/men_w.png");
     animation: o_o 30s linear infinite;
 }
 #min_o_t{
-    background-image: url("/images/landing/animation/girl_w.png");
+    
     animation: o_t 30s linear infinite;
-}
-#min_o_th{
-    background-image: url("/images/landing/animation/men_w.png");
-    animation: o_th 30s linear infinite;
-}
-#min_o_f{
-    background-image: url("/images/landing/animation/girl_w.png");
-    animation: o_f 30s linear infinite;
 }
 @keyframes o_o{
     from { 
-        transform: rotate(0deg) translateY(275px) rotate(0deg); 
+        transform: rotate(12deg) translateY(275px) rotate(12deg); 
     }
     to { 
         transform: rotate(-360deg) translateY(275px) rotate(360deg); 
     }
     0%{opacity: 0;}
     8.2%{opacity: 0;}
-    8.3%{opacity: 1;background-image: url("/images/landing/animation/men_w.png");}
-    28.2%{opacity: 0;background-image: url("/images/landing/animation/men_w.png");}
-    28.3%{opacity: 1;background-image: url("/images/landing/animation/4.png");}
-    48.2%{opacity: 0;background-image: url("/images/landing/animation/4.png");}
-    48.3%{opacity: 1;background-image: url("/images/landing/animation/men_w.png");}
-    68.2%{opacity: 0;background-image: url("/images/landing/animation/men_w.png");}
-    68.3%{opacity: 1;background-image: url("/images/landing/animation/3.png");}
-    88.2%{opacity: 0;background-image: url("/images/landing/animation/3.png");}
-    88.3%{opacity: 1;background-image: url("/images/landing/animation/men_w.png");}
+    8.3%{opacity: 1;}
+    28.2%{opacity: 0;}
+    28.3%{opacity: 1;}
+    48.2%{opacity: 0;}
+    48.3%{opacity: 1;}
+    68.2%{opacity: 0;}
+    68.3%{opacity: 1;}
+    88.2%{opacity: 0;}
+    88.3%{opacity: 1;}
 }
 @keyframes o_t{
     from { 
-        transform: rotate(0deg) translateY(-275px) rotate(0deg); 
+        transform: rotate(12deg) translateY(-275px) rotate(-12deg); 
     }
     to { 
         transform: rotate(-360deg) translateY(-275px) rotate(360deg); 
     }
     0%{opacity: 0;}
     8.2%{opacity: 0;}
-    8.3%{opacity: 1;background-image: url("/images/landing/animation/men_w.png");}
-    28.2%{opacity: 0;background-image: url("/images/landing/animation/men_w.png");}
-    28.3%{opacity: 1;background-image: url("/images/landing/animation/1.png");}
-    48.2%{opacity: 0;background-image: url("/images/landing/animation/1.png");}
-    48.3%{opacity: 1;background-image: url("/images/landing/animation/men_w.png");}
-    68.2%{opacity: 0;background-image: url("/images/landing/animation/men_w.png");}
-    68.3%{opacity: 1;background-image: url("/images/landing/animation/2.png");}
-    88.2%{opacity: 0;background-image: url("/images/landing/animation/2.png");}
-    88.3%{opacity: 1;background-image: url("/images/landing/animation/men_w.png");}
-}
-@keyframes o_th{
-    from { 
-        transform: rotate(0deg) translateX(275px) rotate(0deg); 
-    }
-    to { 
-        transform: rotate(-360deg) translateX(275px) rotate(360deg); 
-    }
-    0%{opacity: 0;}
-    8.2%{opacity: 0;}
-    8.3%{opacity: 1;background-image: url("/images/landing/animation/girl_w.png");}
-    28.2%{opacity: 0;background-image: url("/images/landing/animation/girl_w.png");}
-    28.3%{opacity: 1;background-image: url("/images/landing/animation/3.png");}
-    48.2%{opacity: 0;background-image: url("/images/landing/animation/3.png");}
-    48.3%{opacity: 1;background-image: url("/images/landing/animation/girl_w.png");}
-    68.2%{opacity: 0;background-image: url("/images/landing/animation/girl_w.png");}
-    68.3%{opacity: 1;background-image: url("/images/landing/animation/1.png");}
-    88.2%{opacity: 0;background-image: url("/images/landing/animation/1.png");}
-    88.3%{opacity: 1;background-image: url("/images/landing/animation/girl_w.png");}
-}
-@keyframes o_f{
-    from { 
-        transform: rotate(0deg) translateX(-275px) rotate(0deg); 
-    }
-    to { 
-        transform: rotate(-360deg) translateX(-275px) rotate(360deg); 
-    }
-    0%{opacity: 0;}
-    8.2%{opacity: 0;}
-    8.3%{opacity: 1;background-image: url("/images/landing/animation/girl_w.png");}
-    28.2%{opacity: 0;background-image: url("/images/landing/animation/girl_w.png");}
-    28.3%{opacity: 1;background-image: url("/images/landing/animation/2.png");}
-    48.2%{opacity: 0;background-image: url("/images/landing/animation/2.png");}
-    48.3%{opacity: 1;background-image: url("/images/landing/animation/girl_w.png");}
-    68.2%{opacity: 0;background-image: url("/images/landing/animation/girl_w.png");}
-    68.3%{opacity: 1;background-image: url("/images/landing/animation/4.png");}
-    88.2%{opacity: 0;background-image: url("/images/landing/animation/4.png");}
-    88.3%{opacity: 1;background-image: url("/images/landing/animation/girl_w.png");}
+    8.3%{opacity: 1;}
+    28.2%{opacity: 0;}
+    28.3%{opacity: 1;}
+    48.2%{opacity: 0;}
+    48.3%{opacity: 1;}
+    68.2%{opacity: 0;}
+    68.3%{opacity: 1;}
+    88.2%{opacity: 0;}
+    88.3%{opacity: 1;}
 }
 
 #min_t_o{
-    background-image: url("/images/landing/animation/girl_w.png");
     animation: t_o 30s linear infinite;
 }
 #min_t_t{
-    background-image: url("/images/landing/animation/girl_w.png");
     animation: t_t 30s linear infinite;
-}
-#min_t_th{
-    background-image: url("/images/landing/animation/girl_w.png");
-    animation: t_th 30s linear infinite;
 }
 
 @keyframes t_o{
     from { 
-        transform: rotate(-30deg) translateX(350px) rotate(30deg); 
+        transform: rotate(-50deg) translateX(350px) rotate(50deg); 
     }
     to { 
         transform: rotate(360deg) translateX(350px) rotate(-360deg); 
     }
     0%{opacity: 0;} 
     10.2%{opacity: 0;} 
-    10.3%{opacity: 1;background-image: url("/images/landing/animation/girl_w.png");} 
-    30.2%{opacity: 0;background-image: url("/images/landing/animation/girl_w.png");} 
-    30.3%{opacity: 1;background-image: url("/images/landing/animation/5.png");} 
-    50.2%{opacity: 0;background-image: url("/images/landing/animation/5_w.png");} 
-    50.3%{opacity: 1;background-image: url("/images/landing/animation/men_w.png");} 
-    70.2%{opacity: 0;background-image: url("/images/landing/animation/men_w.png");} 
-    70.3%{opacity: 1;background-image: url("/images/landing/animation/10_w.png");} 
-    90.2%{opacity: 0;background-image: url("/images/landing/animation/10_w.png");} 
-    90.3%{opacity: 1;background-image: url("/images/landing/animation/girl_w.png");}
+    10.3%{opacity: 1;} 
+    30.2%{opacity: 0;} 
+    30.3%{opacity: 1;} 
+    50.2%{opacity: 0;} 
+    50.3%{opacity: 1;} 
+    70.2%{opacity: 0;} 
+    70.3%{opacity: 1;} 
+    90.2%{opacity: 0;} 
+    90.3%{opacity: 1;}
 }
 @keyframes t_t{
     from { 
-        transform: rotate(30deg) translateX(-350px) rotate(-30deg); 
+        transform: rotate(50deg) translateX(-350px) rotate(-50deg); 
     }
     to { 
         transform: rotate(360deg) translateX(-350px) rotate(-360deg); 
     }
     0%{opacity: 0;} 
     10.2%{opacity: 0;} 
-    10.3%{opacity: 1;background-image: url("/images/landing/animation/girl_w.png");} 
-    30.2%{opacity: 0;background-image: url("/images/landing/animation/girl_w.png");} 
-    30.3%{opacity: 1;background-image: url("/images/landing/animation/6.png");} 
-    50.2%{opacity: 0;background-image: url("/images/landing/animation/6.png");} 
-    50.3%{opacity: 1;background-image: url("/images/landing/animation/men_w.png");} 
-    70.2%{opacity: 0;background-image: url("/images/landing/animation/men_w.png");} 
-    70.3%{opacity: 1;background-image: url("/images/landing/animation/5.png");} 
-    90.2%{opacity: 0;background-image: url("/images/landing/animation/5.png");} 
-    90.3%{opacity: 1;background-image: url("/images/landing/animation/girl_w.png");}
-}
-@keyframes t_th{
-    from { 
-        transform: rotate(0deg) translateY(350px) rotate(0deg); 
-    }
-    to { 
-        transform: rotate(360deg) translateY(350px) rotate(-360deg); 
-    }
-    0%{opacity: 0;} 
-    10.2%{opacity: 0;} 
-    10.3%{opacity: 1;background-image: url("/images/landing/animation/girl_w.png");} 
-    30.2%{opacity: 0;background-image: url("/images/landing/animation/girl_w.png");} 
-    30.3%{opacity: 1;background-image: url("/images/landing/animation/8.png");} 
-    50.2%{opacity: 0;background-image: url("/images/landing/animation/8.png");} 
-    50.3%{opacity: 1;background-image: url("/images/landing/animation/men_w.png");} 
-    70.2%{opacity: 0;background-image: url("/images/landing/animation/men_w.png");} 
-    70.3%{opacity: 1;background-image: url("/images/landing/animation/9.png");} 
-    90.2%{opacity: 0;background-image: url("/images/landing/animation/9.png");} 
-    90.3%{opacity: 1;background-image: url("/images/landing/animation/girl_w.png");}
+    10.3%{opacity: 1;} 
+    30.2%{opacity: 0;} 
+    30.3%{opacity: 1;} 
+    50.2%{opacity: 0;} 
+    50.3%{opacity: 1;} 
+    70.2%{opacity: 0;} 
+    70.3%{opacity: 1;} 
+    90.2%{opacity: 0;} 
+    90.3%{opacity: 1;}
 }
 
+#min_th_o{
+    animation: th_o 30s linear infinite;
+}
+#min_th_t{
+    animation: th_t 30s linear infinite;
+}
+
+@keyframes th_o{
+    from { 
+        transform: rotate(30deg) translateX(425px) rotate(-30deg); 
+    }
+    to { 
+        transform: rotate(-360deg) translateX(425px) rotate(-360deg); 
+    }
+    0%{opacity: 0;} 
+    12.2%{opacity: 0;} 
+    12.3%{opacity: 1;} 
+    32.2%{opacity: 0;} 
+    32.3%{opacity: 1;} 
+    52.2%{opacity: 0;} 
+    52.3%{opacity: 1;} 
+    72.2%{opacity: 0;} 
+    72.3%{opacity: 1;} 
+    92.2%{opacity: 0;} 
+    92.3%{opacity: 1;}
+}
+@keyframes th_t{
+    from { 
+        transform: rotate(80deg) translateX(-425px) rotate(-80deg); 
+    }
+    to { 
+        transform: rotate(-360deg) translateX(-425px) rotate(-360deg); 
+    }
+    0%{opacity: 0;} 
+    12.2%{opacity: 0;} 
+    12.3%{opacity: 1;} 
+    32.2%{opacity: 0;} 
+    32.3%{opacity: 1;} 
+    52.2%{opacity: 0;} 
+    52.3%{opacity: 1;} 
+    72.2%{opacity: 0;} 
+    72.3%{opacity: 1;} 
+    92.2%{opacity: 0;} 
+    92.3%{opacity: 1;}
+}
 
 @keyframes vawe{
     29%{
@@ -840,7 +821,7 @@ a{
     padding-top: 20px;
     padding-bottom: 50px;
     border-top: none;
-    width: 93.75%;
+    width: 93%;
     margin: auto;
     border-bottom: none;
     height: auto;
@@ -2550,10 +2531,14 @@ input[type='file']{
         align-items: center;
     }
     .consult h1{
-        margin-top: 25%;
+        margin-top: 15%;
         margin-bottom: 20%;
-        font-size: 45px;
+        font-size: 40px;
         text-align: center;
+    }
+    .consult button{
+        width: 80%;
+        height: 80px;
     }
 
     .block_two_title{
@@ -3132,25 +3117,25 @@ input[type='file']{
     .ellips_two{
         width: 50vw;
         height: 50vw;
-        top: 67.5vh;
+        top: calc(70vh - (50vw/2 - 40vw/2));
         left: 25vw;
     }
     .ellips_three{
         width: 60vw;
         height: 60vw;
-        top: 65vh;
+        top: calc(70vh - (60vw/2 - 40vw/2));
         left: 20vw;
     }
     .ellips_four{
         width: 70vw;
         height: 70vw;
-        top: 62.5vh;
+        top: calc(70vh - (70vw/2 - 40vw/2));
         left: 15vw;
     }
     .ellips_five{
         width: 95vw;
         height: 95vw;
-        top: 55.75vh;
+        top: calc(70vh - (95vw/2 - 40vw/2));
         left: 2.5vw;
     }
     #min_o_o{
@@ -3167,6 +3152,46 @@ input[type='file']{
     }
     #min_o_f{
         animation: none;
+        display: none;
+    }
+
+    .ellips_wave{
+        z-index: 1;
+        position: absolute;
+        width: 40vw;
+        height: 40vw;
+        left: 30vw;
+        top: 70vh;
+        background-color: rgba(255, 255, 255, 0.336);
+        box-sizing: border-box;
+        border-radius: 50%;
+        opacity: 0;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    @keyframes vawe{
+        29%{
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+        30%{
+            width: 40vw;
+            height: 40vw;
+            left: 30vw;
+            top: 70vh;
+            opacity: 1;
+            border: 10px solid rgba(255, 255, 255, 0.6);
+        }
+        50%{
+            border: 2px solid rgba(255, 255, 255, 0.05);
+        }
+        100%{
+            width: 95vw;
+            height: 95vw;
+            top: calc(70vh - (95vw/2 - 40vw/2));
+            left: 2.5vw;
+            opacity: 0;
+        }
+    }
+    .el_min{
         display: none;
     }
 }
