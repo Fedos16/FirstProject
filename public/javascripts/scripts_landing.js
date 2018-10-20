@@ -1,12 +1,10 @@
 $(document).ready(function(){
 
     // Мобильная верста якобы
-    /*
+    
     $(() => {
         var width = $(window).width();
         if (width < 780) {
-
-            //$('body, html').css({'overflow-x':'hidden'});
             $('#main_animation').hide();
             $('.block_five .block_five_universal .five_universal_left').html('<img src="images/landing/girl_mini.png">');
 
@@ -79,7 +77,6 @@ $(document).ready(function(){
             
         }
     });
-    */
     // Выпадающий многостроковый список! - Собственная разработка 
     $('.select_modal_button').on('click', (e) => {
         $('.select_modal_items').hide();
