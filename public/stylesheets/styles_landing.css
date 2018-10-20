@@ -2502,9 +2502,9 @@ input[type='file']{
 /* АДАПТИВНАЯ ВЕРСТКА */
 @media (max-width: 780px) {
     .block_one{
-        height: 95vh;
-        width: 88.9%;
-        padding: 5.55%;
+        height: 90vh;
+        width: 95vw;
+        padding: 2.5vw;
     }
     .header_right_menu{
         display: none;
@@ -2518,11 +2518,11 @@ input[type='file']{
         width: 100%;
     }
     .header_left{
-        width: 200px;
+        width: 55vw;
     }
     .header_left img{
-        height: 50px;
-        width: 160px;
+        width: 40vw;
+        height: calc(40vw*0.3125);
     }
     .consult{
         width: 100%;
@@ -2531,47 +2531,58 @@ input[type='file']{
         align-items: center;
     }
     .consult h1{
-        margin-top: 15%;
-        margin-bottom: 20%;
-        font-size: 40px;
+        margin-top: 8vh;
+        margin-bottom: 10vh;
+        font-size: calc((6vh + 10vw)/2);
         text-align: center;
     }
     .consult button{
-        width: 80%;
-        height: 80px;
+        width: 70vw;
+        height: 12vh;
+        min-height: 40px;
+        font-size: 4vw;
     }
 
     .block_two_title{
-        font-size: 22px;
+        font-size: calc((4vh + 5vw)/2);
     }
     .block_two_filter{
         flex-direction: column;
-        width: 85%;
+        width: 75vw;
         border: none;
         margin: 0px auto;
         padding: 0px;
+        margin-bottom: 20px;
+        height: auto;
     }
     .filter_item {
         display: none;
+        font-size: calc((2.5vh + 5vw)/2);
+        padding: 0px;
     }
     .filter_item:first-child{
         display: flex;
     }
+    .block_select{
+        width: 75vw;
+    }
     .mini_worksheet{
         flex-direction: column;
-        height: 500px;
+        min-height: 500px;
+        height: 70vh;
+        justify-content: center;
     }
     .mini_worksheet_one{
         width: 100%;
-        height: 30%;
+        height: 20vh;
     }
     .icon_user{
-        width: 50px;
-        height: 50px;
+        width: 20vw;
+        height: 20vw;
     }
     .icon_user img{
-        width: 20px;
-        height: 20px;
+        width: 8vw;
+        height: 8vw;
     }
     .mini_worksheet_two{
         width: 100%;
@@ -2579,19 +2590,23 @@ input[type='file']{
     }
     .mini_worksheet_two_title{
         text-align: center;
-        margin-bottom: 10px;
+        margin-bottom: 2vh;
+        margin-top: 10px;
+        font-size: 5vw;
     }
     .mini_worksheet_three{
         flex-direction: row;
         justify-content: center;
+        width: 100%;
+        font-size: 3vw;
     }
     .blue_money{
         margin-right: 10px;
-        font-size: 28px;
+        font-size: 8vw;
     }
     .mini_worksheet_splin{
         height: 2px;
-        width: 30%;
+        width: 50vw;
         margin: 35px auto;
         border: none;
         border-bottom: 1px solid rgba(196, 196, 196, 0.3);;
@@ -2607,10 +2622,16 @@ input[type='file']{
         display: flex;
         justify-content: center;
         align-items: center;
+        font-size: 4vw;
     }
     .mini_worksheet_two_social ul li:first-child img{
-        width: 36px;
-        height: 20px;
+        width: 9vw;
+        height: 6vw;
+    }
+    .mini_worksheet_four button{
+        width: 45vw;
+        min-height: 50px;
+        height: 8vh;
     }
     .mini_worksheet_button_line{
         flex-direction: column;
