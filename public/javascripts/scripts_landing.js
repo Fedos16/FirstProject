@@ -6,7 +6,6 @@ $(document).ready(function(){
         var width = $(window).width();
         if (width < 780) {
 
-            
             $('.block_five .block_five_universal .five_universal_left').html('<img src="images/landing/girl_mini.png">');
 
             $('.carousel_item').show();
@@ -218,10 +217,10 @@ $(document).ready(function(){
             var left = $('.block_two_menu').offset().left;
             $('.block_menu').css({'top':top, 'left': left, "z-index": 999});
             $('.block_menu').css({'opacity':'0', 'width': '0'});
-            $('.block_menu').animate({'opacity': 1, 'width': 1200, 'left': left-1165}, 1000);
+            $('.block_menu').animate({'opacity': 1, 'width': 1200, 'left': left-1165}, 500);
         } else {
             var left = $('.block_two_menu').offset().left;
-            $('.block_menu').animate({'opacity': 0, 'width': 0, 'left': left}, 1000, () => {
+            $('.block_menu').animate({'opacity': 0, 'width': 0, 'left': left}, 500, () => {
                 $('.block_menu').hide();
             });
         }
@@ -271,7 +270,7 @@ $(document).ready(function(){
         //анимируем переход на расстояние - top за 1500 мс
         $('body,html').animate({scrollTop: top}, 1500);
     });
-    /*
+    
     $(window).scroll(function() {
         var two = $('.block_two').offset().top;
         var three = $('.block_three').offset().top;
@@ -303,7 +302,7 @@ $(document).ready(function(){
             $('.block_four .universal_bottom').removeAttr('style');
         }
         var count = undefined;
-        var xxx = -1
+        var xxx = -1;
         $('.modal_window').each(function(){
             xxx ++;
             if ($(this).attr('style').indexOf('display: none;') == -1){
@@ -321,17 +320,17 @@ $(document).ready(function(){
                 $('.modal_window').eq(count).css('top', $(window).scrollTop()+50);
             }
         }
-
+        /*
         if ($(this).scrollTop() <= $('#show_thanks').offset().top+$('#show_thanks').height()){
             $('#show_thanks').css('top', $(window).scrollTop()+200);
         }
+        
         if ($(this).scrollTop() <= $('#show_thanks').offset().top-60){
             $('#show_thanks').css('top', $(window).scrollTop()+200);
-        }
+        }*/
 
         
     });
-    */
     // Открытие модальных окон
     $('#get_consult').on('click', (e) => {
         $('.modal_block').show();

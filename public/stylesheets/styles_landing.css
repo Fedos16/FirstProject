@@ -2502,7 +2502,7 @@ input[type='file']{
 /* АДАПТИВНАЯ ВЕРСТКА */
 @media (max-width: 780px) {
     .block_one{
-        height: 90vh;
+        height: 92vh;
         width: 95vw;
         padding: 2.5vw;
     }
@@ -2525,7 +2525,7 @@ input[type='file']{
         height: calc(40vw*0.3125);
     }
     .consult{
-        width: 100%;
+        width: 95%;
         height: 100%;
         margin: 0px;
         align-items: center;
@@ -2540,7 +2540,7 @@ input[type='file']{
         width: 70vw;
         height: 12vh;
         min-height: 40px;
-        font-size: 4vw;
+        font-size: 3vw;
     }
 
     .block_two_title{
@@ -2644,9 +2644,10 @@ input[type='file']{
     }
     .mini_worksheet_button_line button{
         width: 80%;
-        height: 60px;
+        height: 11vh;
         font-size: 10px;
         flex-flow: wrap;
+        font-size: 2vw;
     }
     .mini_worksheet_button_line button:first-child{
         order: 1;
@@ -2657,7 +2658,7 @@ input[type='file']{
     }
     #view_plus_mini{
         margin: 0px;
-        font-size: 10px;
+        font-size: 2vw;
     }
 
     .block_three{
@@ -2867,7 +2868,7 @@ input[type='file']{
 
     .block_seven{
         width: 84%;
-        margin: 0px auto;
+        margin: 30px auto;
         height: auto;
     }
     .block_seven .block_two_title{
@@ -3023,10 +3024,13 @@ input[type='file']{
         padding: 0px 10%;
         padding-top: 20px;
         flex-direction: column;
+        height: auto;
     }
     .block_nine_left{
         width: 100%;
         margin: 0px;
+        margin-bottom: 3vh;
+        height: auto;
     }
     .block_nine_left .block_two_title{
         width: 100%;
@@ -3053,48 +3057,52 @@ input[type='file']{
     }
     .news_subscription_title{
         font-size: 20px;
-        margin-bottom: 20px;
+        margin: 20px 0px;
     }
     .news_subscription{
-        margin-top: 60px;
+        align-items: center;
     }
     .news_subscription_form{
         width: 100%;
     }
     .news_subscription_form input{
-        width: 60%;
-        height: 40px;
-        font-size: 12px;
+        width: 50%;
+        min-height: 40px;
+        height: 6vh;
+        font-size: 2vw;
         padding-left: 10px;
-        padding-right: 20px;
+        padding-right: 10px;
+        text-align: center;
     }
     .news_subscription_form button{
-        width: 40%;
-        height: 44px;
-        margin-left: -40px;
-        font-size: 12px;
+        width: 37%;
+        min-height: 40px;
+        height: 6.5vh;
+        font-size: 2vw;
+        margin: 0px;
     }
     .block_nine_right{
         margin: 0px;
         width: 100%;
-        margin-top: 50px;
         border-radius: 20px;
         margin-bottom: 40px;
+        height: 40vh;
     }
     .nine_right_title{
         font-size: 20px;
-        margin-top: 20px;
         margin-bottom: 20px;
     }
     .block_nine_right input{
         width: 80%;
-        height: 40px;
-        font-size: 12px;
+        min-height: 40px;
+        height: 6vh;
+        font-size: 2vw;
     }
     .block_nine_right button{
         width: 80%;
-        height: 40px;
-        font-size: 12px;
+        min-height: 40px;
+        height: 6vh;
+        font-size: 2vw;
     }
     .footer{
         flex-direction: column;
@@ -3159,21 +3167,141 @@ input[type='file']{
         top: calc(70vh - (95vw/2 - 40vw/2));
         left: 2.5vw;
     }
+
     #min_o_o{
-        animation: none;
-        display: none;
+        animation: o_o 30s linear infinite;
     }
     #min_o_t{
-        animation: none;
-        display: none;
+        
+        animation: o_t 30s linear infinite;
     }
-    #min_o_th{
-        animation: none;
-        display: none;
+    @keyframes o_o{
+        from { 
+            transform: rotate(12deg) translateY(25vw) rotate(12deg); 
+        }
+        to { 
+            transform: rotate(-360deg) translateY(25vw) rotate(360deg); 
+        }
+        0%{opacity: 0;}
+        8.2%{opacity: 0;}
+        8.3%{opacity: 1;}
+        28.2%{opacity: 0;}
+        28.3%{opacity: 1;}
+        48.2%{opacity: 0;}
+        48.3%{opacity: 1;}
+        68.2%{opacity: 0;}
+        68.3%{opacity: 1;}
+        88.2%{opacity: 0;}
+        88.3%{opacity: 1;}
     }
-    #min_o_f{
-        animation: none;
-        display: none;
+    @keyframes o_t{
+        from { 
+            transform: rotate(12deg) translateY(-25vw) rotate(-12deg); 
+        }
+        to { 
+            transform: rotate(-360deg) translateY(-25vw) rotate(360deg); 
+        }
+        0%{opacity: 0;}
+        8.2%{opacity: 0;}
+        8.3%{opacity: 1;}
+        28.2%{opacity: 0;}
+        28.3%{opacity: 1;}
+        48.2%{opacity: 0;}
+        48.3%{opacity: 1;}
+        68.2%{opacity: 0;}
+        68.3%{opacity: 1;}
+        88.2%{opacity: 0;}
+        88.3%{opacity: 1;}
+    }
+    
+    #min_t_o{
+        animation: t_o 30s linear infinite;
+    }
+    #min_t_t{
+        animation: t_t 30s linear infinite;
+    }
+    @keyframes t_o{
+        from { 
+            transform: rotate(-50deg) translateX(30vw) rotate(50deg); 
+        }
+        to { 
+            transform: rotate(360deg) translateX(30vw) rotate(-360deg); 
+        }
+        0%{opacity: 0;} 
+        10.2%{opacity: 0;} 
+        10.3%{opacity: 1;} 
+        30.2%{opacity: 0;} 
+        30.3%{opacity: 1;} 
+        50.2%{opacity: 0;} 
+        50.3%{opacity: 1;} 
+        70.2%{opacity: 0;} 
+        70.3%{opacity: 1;} 
+        90.2%{opacity: 0;} 
+        90.3%{opacity: 1;}
+    }
+    @keyframes t_t{
+        from { 
+            transform: rotate(50deg) translateX(-30vw) rotate(-50deg); 
+        }
+        to { 
+            transform: rotate(360deg) translateX(-30vw) rotate(-360deg); 
+        }
+        0%{opacity: 0;} 
+        10.2%{opacity: 0;} 
+        10.3%{opacity: 1;} 
+        30.2%{opacity: 0;} 
+        30.3%{opacity: 1;} 
+        50.2%{opacity: 0;} 
+        50.3%{opacity: 1;} 
+        70.2%{opacity: 0;} 
+        70.3%{opacity: 1;} 
+        90.2%{opacity: 0;} 
+        90.3%{opacity: 1;}
+    }
+    
+    #min_th_o{
+        animation: th_o 30s linear infinite;
+    }
+    #min_th_t{
+        animation: th_t 30s linear infinite;
+    }
+    @keyframes th_o{
+        from { 
+            transform: rotate(30deg) translateX(35vw) rotate(-30deg); 
+        }
+        to { 
+            transform: rotate(-360deg) translateX(35vw) rotate(-360deg); 
+        }
+        0%{opacity: 0;} 
+        12.2%{opacity: 0;} 
+        12.3%{opacity: 1;} 
+        32.2%{opacity: 0;} 
+        32.3%{opacity: 1;} 
+        52.2%{opacity: 0;} 
+        52.3%{opacity: 1;} 
+        72.2%{opacity: 0;} 
+        72.3%{opacity: 1;} 
+        92.2%{opacity: 0;} 
+        92.3%{opacity: 1;}
+    }
+    @keyframes th_t{
+        from { 
+            transform: rotate(80deg) translateX(-35vw) rotate(-80deg); 
+        }
+        to { 
+            transform: rotate(-360deg) translateX(-35vw) rotate(-360deg); 
+        }
+        0%{opacity: 0;} 
+        12.2%{opacity: 0;} 
+        12.3%{opacity: 1;} 
+        32.2%{opacity: 0;} 
+        32.3%{opacity: 1;} 
+        52.2%{opacity: 0;} 
+        52.3%{opacity: 1;} 
+        72.2%{opacity: 0;} 
+        72.3%{opacity: 1;} 
+        92.2%{opacity: 0;} 
+        92.3%{opacity: 1;}
     }
 
     .ellips_wave{
@@ -3213,6 +3341,111 @@ input[type='file']{
         }
     }
     .el_min{
+        width: 4vw;
+        height: 4vw;
+    }
+
+    .modal_window{
+        width: 95vw;
+        left: 2.5vw;
+    }
+    .modal_window_white{
+        width: 93vw;
+        left: 1vw;
+        padding: 5vw;
+    }
+    .ellips_close{
+        left: 83vw;
+    }
+    .modal_window_title{
+        font-size: 7vw;
+        text-align: center;
+    }
+    .modal_window_white .modal_row{
+        align-items: center;
+    }
+    .modal_row{
+        flex-direction: column;
+        align-items: center;
+        justify-content:center;
+    }
+    .modal_row_other_variant{
+        flex-direction: column;
+        align-self: center;
+        height: auto;
+    }
+    .modal_column{
+        width: 100%;
+        margin: 0px;
+        margin-bottom: 20px;
+    }
+    #show_worksheet .modal_row:first-child .modal_column{
+        margin-bottom: 20px;
+    }
+    #show_worksheet .modal_row:first-child p{
+        margin: 0px;
+    }
+    .colum_split{
         display: none;
+    }
+    .modal_window_white h3,
+    .modal_window_white input{
+        font-size: 4vw;
+    }
+    .textarea_modal{
+        resize: vertical;
+    }
+    #calendar2{
+        width: 80%;
+    }
+    #show_worksheet .modal_row:last-child{
+        height: auto;
+        align-items: center;
+        text-align: center;
+        margin: 0px;
+    }
+    .modal_title_info{
+        flex-direction: column;
+        align-items: center;
+        margin: 0px;
+    }
+    .modal_title_icon{
+        margin: 0px;
+    }
+    .modal_title_icon .icon_user{
+        margin: 0px;
+        width: 20vw;
+        height: 20vw;
+    }
+    .modal_title_icon .icon_user img{
+        width: 10vw;
+        height: 10vw;
+    }
+    .modal_window_title{
+        height: 30vh;
+    }
+    .modal_window_white{
+        top: 30vh;
+    }
+    .modal_social{
+        display: none;
+    }
+
+    .modal_window_white .blue_button {
+        height: 9vh;
+        font-size: 13px;
+    }
+    .modal_window_white input{
+        height: 8vh;
+    }
+    .modal_thanks{
+        width: 95vw;
+        left: 2.5vw;
+    }
+    #thanks_close{
+        left: 85vw;
+    }
+    .modal_block{
+        height: 1610vh;
     }
 }
