@@ -2520,7 +2520,7 @@ input[type='file']{
     max-width: 100px;
     height: 15vw;
     max-height: 100px;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     z-index: 1020;
@@ -3498,5 +3498,9 @@ input[type='file']{
     }
     .modal_block{
         height: 1610vh;
+    }
+
+    .mobil_menu_btn{
+        display: flex;
     }
 }
