@@ -73,8 +73,6 @@ $(document).ready(function(){
                 left += 20;
             }
             
-        } else {
-            
         }
     });
     // Выпадающий многостроковый список! - Собственная разработка 
@@ -200,8 +198,8 @@ $(document).ready(function(){
     sessionStorage.removeItem('new_directions');
 
     // Открытие меню!
-    $('.block_two_menu').on('click', (e) => {
-        /*$('.block_two_menu').hide();
+    $('.mobil_menu_btn').on('click', (e) => {
+        $('.mobil_menu_btn').hide();
         $('.modal_menu_back').show();
         $('.modal_menu_back').css('opacity', '0');
         $('.modal_menu_back').animate({opacity: 1}, 500);
@@ -209,18 +207,20 @@ $(document).ready(function(){
         $('.modal_menu').show();
         $('.modal_menu').css('width','0px');
         $('.modal_menu').animate({width: '400px'}, 500);
-        $('body, html').css({'overflow-y':'hidden','overflow-x':'hidden'});*/
+        $('body, html').css({'overflow-y':'hidden','overflow-x':'hidden'});
+    });
+    $('.block_two_menu').on('click', (e) => {
 
         if ($('.block_menu').css('display') == 'none'){
             $('.block_menu').show();
             var top = $('.block_two_menu').offset().top-30;
             var left = $('.block_two_menu').offset().left;
-            $('.block_menu').css({'top':top, 'left': left, "z-index": 999});
+            $('.block_menu').css({'top':top, 'left': left, "z-index": 1000});
             $('.block_menu').css({'opacity':'0', 'width': '0'});
             $('.block_menu').animate({'opacity': 1, 'width': 1200, 'left': left-1165}, 500);
         } else {
             var left = $('.block_two_menu').offset().left;
-            $('.block_menu').animate({'opacity': 0, 'width': 0, 'left': left}, 500, () => {
+            $('.block_menu').animate({'opacity': 0, 'width': 0, 'left': 0}, 500, () => {
                 $('.block_menu').hide();
             });
         }
@@ -234,10 +234,10 @@ $(document).ready(function(){
         $('.modal_menu_back').animate({opacity: 0}, 500, ()=>{
             $('.modal_menu_back').hide();
             $('body, html').css({'overflow-y':'auto', 'overflow-x':'hidden'});
-            $('.block_two_menu').show();
+            $('.mobil_menu_btn').show();
         });
     });
-    $('.modal_menu_item').on('click', 'a', (e) => {
+    $('.block_menu').on('click', 'a', (e) => {
         //отменяем стандартную обработку нажатия по ссылке
         event.preventDefault();
 
@@ -254,6 +254,36 @@ $(document).ready(function(){
         //анимируем переход на расстояние - top за 1500 мс
         $('body,html').animate({scrollTop: top}, 1500);
 
+    });
+    $('.modal_menu_item').on('click', 'a', (e) => {
+        //отменяем стандартную обработку нажатия по ссылке
+        event.preventDefault();
+
+        $('.modal_menu').hide();
+        $('.modal_menu_back').hide();
+        $('.mobil_menu_btn').show();
+        $('body, html').css({'overflow-y':'auto', 'overflow-x':'hidden'});
+
+        //забираем идентификатор бока с атрибута href
+        var id  = $(e.target.parentElement).attr('href');
+ 
+        //узнаем высоту от начала страницы до блока на который ссылается якорь
+        var top = $(id).offset().top;
+         
+        //анимируем переход на расстояние - top за 1500 мс
+        $('body,html').animate({scrollTop: top}, 1500);
+
+    });
+
+    $('#view_all_filter').on('click', () => {
+        if ($('#view_all_filter').text() == 'Показать все фильтры'){
+            $('.filter_item').show(800);
+            $('#view_all_filter').text('Показать меньше фильтров');
+        } else{
+            $('.filter_item:not(:eq(0))').hide(800);
+            
+            $('#view_all_filter').text('Показать все фильтры');
+        }
     });
 
     $(".header_right_menu").on("click","a", function (event) {

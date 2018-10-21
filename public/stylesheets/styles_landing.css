@@ -453,8 +453,7 @@ a{
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    position: relative;
-    z-index: 1000;
+    z-index: 1001;
 }
 .block_two_menu img:nth-child(1){
     padding-right: 10px;
@@ -462,11 +461,8 @@ a{
 .block_two_menu:hover img:nth-child(1){
     transition: 0.5s;
     transform: rotate(360deg);
-    
 }
 .block_menu{
-    position: absolute;
-    top: 10px;
     width: 1200px;
     height: 60px;
     display: flex;
@@ -478,7 +474,7 @@ a{
     border: 1px solid rgba(44, 163, 240, 0.1);
     border-radius: 100px;
     margin-top: 30px;
-    z-index: 1000;
+    margin-right: -50px;
     color: #2C98F1;
 }
 .block_menu a{
@@ -497,10 +493,13 @@ a{
     cursor: pointer;
     margin-left: 40px;
     color: #2C98F1;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .block_menu ul li:hover{
     opacity: 0.5;
-    color: rebeccapurple;
 }
 .block_menu ul li:nth-child(7){
     margin-left: 70px;
@@ -531,6 +530,9 @@ a{
     line-height: normal;
     font-size: 18px;
     color: #363636;
+}
+.fliter_all{
+    display: none;
 }
 .block_select{
     width: 280px;
@@ -2413,8 +2415,8 @@ input[type='file']{
 
 /* Выдвигающееся меню */
 .modal_menu_back{
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background-color: rgba(39, 39, 39, 0.771);
     display: flex;
     justify-content: flex-end;
@@ -2423,30 +2425,30 @@ input[type='file']{
     z-index: 1001;
 }
 .modal_menu{
-    width: 400px;
-    height: 100%;
+    width: 90vw;
+    height: 100vh;
     background: linear-gradient(54.73deg, #005BEA 22.17%, #00C6FB 77.83%);
     display: flex;
     flex-direction: column;
-    padding-top: 50px;
-    padding-left: 50px;
+    padding-top: 20px;
+    padding-left: 30px;
 }
 .modal_menu_item{
-    height: 65%;
+    height: 70vh;
 }
 .modal_menu_language{
-    height: 10%;
+    height: 10vh;
 }
 .modal_menu_close{
     width: 100%;
-    height: 20%;
+    height: 10vh;
     display: flex;
     justify-content: flex-end;
 }
 .modla_menu_ellips{
-    width: 100px;
+    width: 18vw;
     height: 50px;
-    margin-right: 50px;
+    margin-right: 10vw;
     background-color: rgba(255, 255, 255, 0.301);
     box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
@@ -2486,6 +2488,15 @@ input[type='file']{
     justify-content: center;
     align-items: center;
 }
+.active_l_m{
+    width: 35px;
+    height: 30px;
+    border: 1px solid rgba(0, 83, 207, 0.377);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .modal_menu_item ul {
     display: flex;
     flex-direction: column;
@@ -2497,6 +2508,28 @@ input[type='file']{
 }
 .modal_menu_item ul li:hover {
     color: rgba(255, 255, 255, 0.642);
+}
+.mobil_menu_btn{
+    background-color: rgb(32, 159, 243);
+    box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    position: fixed;
+    top: 20px;
+    left: 80vw;
+    width: 15vw;
+    max-width: 100px;
+    height: 15vw;
+    max-height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1020;
+}
+.mobil_menu_btn img{
+    width: 6vw;
+    max-width: 50px;
+    height: 5vw;
+    max-height: 30px;
 }
 
 /* АДАПТИВНАЯ ВЕРСТКА */
@@ -2559,12 +2592,29 @@ input[type='file']{
         display: none;
         font-size: calc((2.5vh + 5vw)/2);
         padding: 0px;
+        margin-bottom: 30px;
     }
     .filter_item:first-child{
         display: flex;
     }
+    .fliter_all{
+        display: inherit;
+    }
+    .fliter_all .button_white{
+        background: #FFFFFF;
+        box-shadow: 0px 5px 40px rgba(44, 163, 240, 0.15);
+        border-radius: 50px;
+        width: 75vw;
+        min-height: 60px;
+        height: 7vh;
+    }
+    .fliter_all .button_white:hover{
+        color: #0054CF;
+        border: 1px solid lightgray;
+    }
     .block_select{
         width: 75vw;
+        height: 7vh;
     }
     .mini_worksheet{
         flex-direction: column;
@@ -3436,6 +3486,7 @@ input[type='file']{
         font-size: 13px;
     }
     .modal_window_white input{
+        min-height: 60px;
         height: 8vh;
     }
     .modal_thanks{

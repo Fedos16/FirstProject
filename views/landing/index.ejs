@@ -8,13 +8,28 @@
         <link rel="stylesheet" type="text/css" href="/stylesheets/styles_landing.css">
     </head>
     <body>
-        <div class="block_two_div_menu" style="display: none;">
+        <div class="block_two_div_menu">
+            <div class="block_menu" style="display: none;">
+                <ul>
+                    <a href="#item_one"><li>Консультация</li></a>
+                    <a href="#item_two"><li>База кандидатов</li></a>
+                    <a href="#item_three"><li>Генератор вакансий</li></a>
+                    <a href="#item_four"><li>Курсы онлайн</li></a>
+                    <a href="#item_five"><li>О нас</li></a>
+                    <a href="#item_six"><li>Контакты</li></a>
+                    <li><div class="active_l_m">RU</div></li>
+                    <li><div>EN</div></li>
+                </ul>
+            </div>
             <button class="block_two_menu">
                 <img src="images/landing/burger.png" alt="">
                 <img src="images/landing/MENU.png" alt="Меню">
             </button>
         </div>
         <div class="container">
+            <div class="mobil_menu_btn">
+                <img src="images/landing/burger_white.png" alt="">
+            </div>
             <div class="ellips" id="main_animation">
                 <div class="ellips_wave" id="one_wave"> </div>
                 <div class="ellips_one">
@@ -91,6 +106,9 @@
                         <select name="select_directions" id="period_filter" class="block_select">
                             <option value="Выбрать" selected>Выбрать</option>
                         </select>
+                    </div>
+                    <div class="fliter_all">
+                        <button class="button_white" id="view_all_filter">Показать все фильтры</button>
                     </div>
                 </div>
                 <div class="block_worksheets">
@@ -1409,18 +1427,6 @@
                     </table>
                 </div>
             </div>
-        </div>
-        <div class="block_menu" style="display: none;">
-            <ul>
-                <li>Консультация</li>
-                <li>База кандидатов</li>
-                <li>Генератор вакансий</li>
-                <li>Курсы онлайн</li>
-                <li>О нас</li>
-                <li> Контакты</li>
-                <li>RU</li>
-                <li>EN</li>
-            </ul>
         </div>
         <div id="session_status" hidden><%= data.session_status %></div>
         <div id="session_rec_id" hidden><%= data.session_rec_id %></div>
