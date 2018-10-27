@@ -1,7 +1,6 @@
 $(document).ready(function(){
 
     // Мобильная верста якобы
-    
     $(() => {
         var width = $(window).width();
         if (width < 780) {
@@ -341,13 +340,15 @@ $(document).ready(function(){
         });
         if (count != undefined){
             // Если модальное окно выше скролла, то оно перемещается так, чтобы было видно
-            if ($(this).scrollTop() > $('.modal_window').eq(count).height() + $('.modal_window').eq(count).offset().top) {
-                $('.modal_window').eq(count).css('top', $(window).scrollTop()+50);
+            if ($(this).scrollTop() >= $('.modal_window').eq(count).height() + $('.modal_window').eq(count).offset().top - window.innerHeight+50) {
+                $('body,html').animate({scrollTop: +$('.modal_window').eq(count).height() + $('.modal_window').eq(count).offset().top - window.innerHeight+50}, 0);
+                //$('.modal_window').eq(count).css('top', $(window).scrollTop()+50);
 
             }
             // При перемещении скролла вверх модаль двигается вместе со скролом
-            if ($(this).scrollTop() <= $('.modal_window').eq(count).offset().top-60){
-                $('.modal_window').eq(count).css('top', $(window).scrollTop()+50);
+            if ($(this).scrollTop() <= $('.modal_window').eq(count).offset().top-50){
+                $('body,html').animate({scrollTop: $('.modal_window').eq(count).offset().top-50}, 0);
+                //$('.modal_window').eq(count).css('top', $(window).scrollTop()+50);
             }
         }
         /*
@@ -367,6 +368,7 @@ $(document).ready(function(){
         $('#consultation').show(500);
         $('#consultation').css('top', $(window).scrollTop()+50);
         $('.modal_window_substrate').css('height', $('#consultation .modal_window_white').height()+20);
+        $('.mobil_menu_btn').hide();
     });
     $('#three_button_mini').on('click', (e) => {
         $('.modal_block').show();
@@ -374,8 +376,11 @@ $(document).ready(function(){
         $('#parameter_notifications').css('top', $(window).scrollTop()+50);
         $('.modal_window_substrate').css('height', $('#parameter_notifications .modal_window_white').height()+20);
         $('.select_modal_items').css('width', $('.select_modal_button').width()+40);
+        $('.mobil_menu_btn').hide();
     });
     $('#button_new_candidate').on('click', (e) => {
+
+        $('.mobil_menu_btn').hide();
 
         if ($('#session_status').text() && $('#session_status').text() != 'false') {
             $('.modal_block').show();
@@ -395,16 +400,19 @@ $(document).ready(function(){
         $('#it_recruiter').show(500);
         $('#it_recruiter').css('top', $(window).scrollTop()+50);
         $('.modal_window_substrate').css('height', $('#it_recruiter .modal_window_white').height()+20);
+        $('.mobil_menu_btn').hide();
     });
     $('#button_give_feedback').on('click', (e) => {
         $('.modal_block').show();
         $('#give_feedback').show(500);
         $('#give_feedback').css('top', $(window).scrollTop()+50);
         $('.modal_window_substrate').css('height', $('#give_feedback .modal_window_white').height()+20);
+        $('.mobil_menu_btn').hide();
     });
     // ВНУТРИ ЕСТЬ КАКАЯ ТО ПОДОЗРИТЕЛЬНАЯ ШТУКА, ЕСЛИ ЗАПРОС ОШИБОЧНЫЙ, ТО НИЧЕГО НЕ ДЕЛАЕТСЯ!!!
     $('.block_worksheets').on('click', (e) => {
         if (e.target.tagName == 'BUTTON'){
+            $('.mobil_menu_btn').hide();
             var data = {
                 id: e.target.id
             }
@@ -453,48 +461,6 @@ $(document).ready(function(){
             $('.modal_window_substrate').css('height', $('#show_worksheet .modal_window_white').height()+20);
         }
 
-    });
-    // Закрытие модальных окон
-    $('#consultation_close').on('click', (e) => {
-        $('.modal_block').hide();
-        $('#consultation').hide(500);
-    });
-    $('#parameter_notifications_close').on('click', (e) => {
-        $('.modal_block').hide();
-        $('#parameter_notifications').hide(500);
-    });
-    $('#new_candidate_close').on('click', (e) => {
-        $('.modal_block').hide();
-        $('#new_candidate').hide(500);
-    });
-    $('#it_recruiter_close').on('click', (e) => {
-        $('.modal_block').hide();
-        $('#it_recruiter').hide(500);
-    });
-    $('#give_feedback_close').on('click', (e) => {
-        $('.modal_block').hide();
-        $('#give_feedback').hide(500);
-    });
-    $('#show_worksheet_close').on('click', (e) => {
-        $('.modal_block').hide();
-        $('#show_worksheet').hide(500);
-    });
-    $('#thanks_close').on('click', (e) => {
-        $('.modal_block').hide();
-        $('#show_thanks').hide(500);
-        $('#show_thanks .thanks_title').text('Спасибо!');
-    });
-    $('#recruiter_login_close').on('click', (e) => {
-        $('.modal_block').hide();
-        $('#recruiter_login').hide(500);
-    });
-    $('#new_recruiter_close').on('click', (e) => {
-        $('.modal_block').hide();
-        $('#new_recruiter').hide(500);
-    });
-    $('#offer_job_close').on('click', (e) => {
-        $('.modal_block').hide();
-        $('#offer_job').hide(500);
     });
     //Показывает вариант с вводом своего мессенджера
     $('#view_other_messenger').on('click', (e) => {
@@ -1071,13 +1037,6 @@ $(document).ready(function(){
                                         <li><img src="/uploads${data.worksheets[i].flag_path}"></li>
                                         <li>${data.worksheets[i].residence_country}, ${data.worksheets[i].residence_city}</li>
                                         <li> </li>
-                                        <li><img src="images/landing/social/green.png" alt="" class="social_icon"></li>
-                                        <li><img src="images/landing/social/vk.png" alt="" class="social_icon"></li>
-                                        <li><img src="images/landing/social/git.png" alt="" class="social_icon"></li>
-                                        <li><img src="images/landing/social/LinkedIn.png" alt="" class="social_icon"></li>
-                                        <li><img src="images/landing/social/google.png" alt="" class="social_icon"></li>
-                                        <li><img src="images/landing/social/facebook.png" alt="" class="social_icon"></li>
-                                        <li><img src="images/landing/social/telegram.png" alt="" class="social_icon"></li>
                                     </ul>
                                 </div>
                             </div>
@@ -1279,25 +1238,9 @@ $(document).ready(function(){
         });
 
     });
+
     $('.ellips_close').on('click', () => {
-        $('input').removeClass('error');
-        $('textarea').removeClass('error');
-        $('#consultation #p_error_one').remove();
-        $('#give_feedback #p_error_one').remove();
-        $('.modal_row_status').css('opacity', '0');
-        $('input:not([type=checkbox])').val('');
-        $('textarea').val('');
-
-        $('.select_items_ckeck').prop("checked", false);
-        $('.select_items_ckeck_all').prop("checked", false);
-        $('input[type="checkbox"]').prop("checked", false);
-
-        $('#not_button_level span').text('Нажмите чтобы выбрать...');
-        $('#not_button_directions span').text('Нажмите чтобы выбрать...');
-
-        $('#calendar2 tbody td.ok_day').removeAttr('id');
-        $('#calendar-offer').text('dd.mm.yyyy');
-
+        close_modal_window();
     })
     $('#submit_not').on('click', (e) => {
         var residence = $('#not_residence').val().split(',');
@@ -1592,5 +1535,34 @@ $(document).ready(function(){
                     </table>`
         }
         return g_code;
+    };
+    var close_modal_window = () => {
+        $('input').removeClass('error');
+        $('textarea').removeClass('error');
+        $('#consultation #p_error_one').remove();
+        $('#give_feedback #p_error_one').remove();
+        $('.modal_row_status').css('opacity', '0');
+        $('input:not([type=checkbox])').val('');
+        $('textarea').val('');
+
+        $('.select_items_ckeck').prop("checked", false);
+        $('.select_items_ckeck_all').prop("checked", false);
+        $('input[type="checkbox"]').prop("checked", false);
+
+        $('#not_button_level span').text('Нажмите чтобы выбрать...');
+        $('#not_button_directions span').text('Нажмите чтобы выбрать...');
+
+        $('#calendar2 tbody td.ok_day').removeAttr('id');
+        $('#calendar-offer').text('dd.mm.yyyy');
+
+        $('.modal_block').hide();
+        $('.modal_window').hide(500);
+        $('#show_thanks').hide(500);
+        $('#show_thanks .thanks_title').text('Спасибо!');
+
+        var width = $(window).width();
+        if (width < 780) {
+            $('.mobil_menu_btn').show();
+        }
     };
 });

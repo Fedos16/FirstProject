@@ -3403,6 +3403,7 @@ input[type='file']{
         width: 93vw;
         left: 1vw;
         padding: 5vw;
+        top: 26vh;
     }
     .ellips_close{
         left: 83vw;
@@ -3474,11 +3475,16 @@ input[type='file']{
     .modal_window_title{
         height: 30vh;
     }
-    .modal_window_white{
-        top: 30vh;
-    }
     .modal_social{
         display: none;
+    }
+
+    #show_worksheet .modal_window_white {
+        top: 33vh;
+    }
+    #show_worksheet .modal_window_title{
+        align-items: flex-start;
+        padding-top: 30px;
     }
 
     .modal_window_white .blue_button {
@@ -3503,4 +3509,10 @@ input[type='file']{
     .mobil_menu_btn{
         display: flex;
     }
+
+    .modal_window_title {
+        padding-top: 0px;
+        align-items: center;
+    }
 }
+
