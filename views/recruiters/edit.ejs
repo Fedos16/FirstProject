@@ -24,6 +24,7 @@
                             <option value="all" selected >Все</option>
                             <option value="true">Активные</option>
                             <option value="false">Неактивные</option>
+                            <option value="edit">На Редактировании</option>
                         </select>
                     </div>
                     <div class="rec_column"></div>
@@ -78,6 +79,17 @@
                                         <td><img src="/images/basket.png" class="icon_delete"></td>
                                         <td style="display: none">true</td>
                                     </tr>
+                                <% } else if (data.rec[i].status == 'Редактирование') { %>
+                                    <tr class="edit_status_row" title="Анкета находится на редактировании">
+                                        <td style="display: none" class="id_for_line"><%= data.rec[i]._id %></td>
+                                        <td><%= data.rec[i].fio %></td>
+                                        <td><%= data.rec[i].residence %></td>
+                                        <td><%= data.rec[i].telephone %></td>
+                                        <td><%= data.rec[i].directions.split(', ').slice(0, 3).join(', ') %>...</td>
+                                        <td><img src="/images/landing/error.png"></td>
+                                        <td><img src="/images/basket.png" class="delete_rec_forever"></td>
+                                        <td style="display: none">edit</td>
+                                    </tr>
                                 <% } %>
                             <% } %>
                         <% } %>
@@ -90,14 +102,14 @@
 
 <div class="modla_back_remove" id="display_none">
     <div class="modal_remove">
-            <div class="modal_line_title"><h3>ВНИМАНИЕ!</h3></div>
-            <div class="modal_line_error" id="warning_text">
-                
-            </div>
-            <div class="modal_remove_line">
-                <button type="button" class="modal_button_remove_s" id="modal_button_remove_no">Нет</button>
-                <button type="button" class="modal_button_remove_e" id="modal_button_remove_yes">Да</button>
-            </div>
+        <div class="modal_line_title"><h3>ВНИМАНИЕ!</h3></div>
+        <div class="modal_line_error" id="warning_text">
+            
+        </div>
+        <div class="modal_remove_line">
+            <button type="button" class="modal_button_remove_s" id="modal_button_remove_no">Нет</button>
+            <button type="button" class="modal_button_remove_e" id="modal_button_remove_yes">Да</button>
+        </div>
     </div>
 </div>
 

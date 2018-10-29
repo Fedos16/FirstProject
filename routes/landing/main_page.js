@@ -105,6 +105,8 @@ router.post('/additionaldoc', (req, res) => {
 // ПРЕДЗАГРУЗОЧНЫЕ ДАННЫЕ
 router.post('/preloaddata', async (req, res) => {
 
+    const typePage = req.body.typePage;
+
     var dir = await models.Directions.find({}, {name: 1, _id: 0});
     var loc =  await models.Locations.find({}, {name: 1, _id: 0});
     var rew = await models.Rewiews.find({status: 'Активен'}, {fio: 1, company: 1, image_path: 1}).sort({'createdAt': -1}).limit(4);
@@ -112,7 +114,11 @@ router.post('/preloaddata', async (req, res) => {
     var count_work = await models.Worksheets.countDocuments({status: 'Открыта'});
     var messengers = await models.Messengers.find({}, {name: 1});
 
-    res.json({ok: true, dir, loc, rew, worksheets, count_work, messengers});
+    if (typePage == 'EditWorksheets'){
+        res.json({ok: true, dir, messengers});
+    } else {
+        res.json({ok: true, dir, loc, rew, worksheets, count_work, messengers});
+    }
 
 });
 router.post('/findworksheets', async (req, res) => {
@@ -345,13 +351,13 @@ router.post('/joboffer', (req, res) => {
             to: myEmail,
             subject: "Новое предложение для Кандидата",
             html: `
-            <h4>Имя: </h4><p>${name}</p>
-            <h4>Контакты: </h4><p>${contacts}</p>
-            <h4>Ссылка на вакансию: </h4><p>${link}</p>
-            <h4>Удобное время для связи: </h4><p>${date} - ${time}</p>
-            <h4>Сообщение: </h4><p>${message}</p>
+            <p><b>Имя:</b> ${name}</p>
+            <p><b>Контакты:</b> ${contacts}</p>
+            <p><b>Ссылка на вакансию:</b> ${link}</p>
+            <p><b>Удобное время для связи:</b> ${date} - ${time}</p>
+            <p><b>Сообщение:</b> <br>${message}</p>
 
-            <h3>ID Кандидата: </h3><p>${id}</p>
+            <p>Перейдите по <a href="http://localhost:3000/administration/worksheets/preview${id}">ссылке</a> для просмотра анкеты</p>
             `
         };
 

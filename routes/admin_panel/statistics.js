@@ -36,7 +36,6 @@ router.get('/', (req, res) => {
     }
   
 });
-
 router.post('/searchmonth', (req, res) => {
     const year = req.body.year;
 
@@ -116,7 +115,7 @@ router.post('/searcdatatwo', (req, res) => {
         count: []
     }
 
-    models.Recruiter.find({ $and: [{createdAt: {$lte: first}, status: 'true'}] }, (errs, recr) => {
+    models.Recruiter.find({status: 'true'}, (errs, recr) => {
         if (errs) res.json({ok: false, error: 'Попробуйте позже'});
 
         for (var x=0; x<recr.length; x++){

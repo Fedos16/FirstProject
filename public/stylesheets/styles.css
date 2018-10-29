@@ -151,7 +151,7 @@ body {
 }
 .main .container .content {
     flex: 4;
-    height: 880px;
+    height: 860px;
     min-height: 100px;
     padding: 15px;
     background-color: white;
@@ -325,7 +325,7 @@ p.error {
   font-weight: bold;
   text-align: center;
 }
-input.error{
+input.error, textarea.error{
     border: 1px solid #e82c0c;
     background-color: #ffc8bf;
 }
@@ -643,7 +643,12 @@ span.span_forexample{
     background-color: #86bf0a;
 }
 
-/* РЕДАКТИРОВАНИЕ РЕКРУТЕРА*/
+/* РЕДАКТИРОВАНИЕ*/
+.rec_row_filter{
+    width: 30%;
+    height: 66px;
+    margin: 0px auto;
+}
 .rec_bloc_edit{
     width: 90%;
     margin: auto;
@@ -657,7 +662,6 @@ span.span_forexample{
     text-align: left;
     background-color: #32353a;
     border-radius: 5px;
-    
 }
 .table_rec_edit thead th{
     height: 50px;
@@ -677,35 +681,33 @@ span.span_forexample{
     background-color: rgb(192, 210, 228, 0.5);
     cursor: default;
 }
-.icon_edit{
+.icon_edit,
+.edit_rew,
+.delete_rew,
+.icon_delete,
+.icon_cancel,
+.cancel_rew{
     width: 26px;
     cursor: pointer;
     transition: 0.5s;
 }
-.icon_edit:hover{
+.icon_edit:hover,
+.icon_delete:hover,
+.delete_rew:hover,
+.edit_rew:hover,
+.icon_cancel:hover,
+.cancel_rew:hover
+{
     transform: scale(1.3)
-}
-.icon_delete{
-    width: 26px;
-    cursor: pointer;
-    transition: 0.5s;
-}
-.icon_delete:hover{
-    transform: scale(1.3)
-}
-.icon_cancel{
-    width: 26px;
-    cursor: pointer;
-    transition: 0.5s;
-}
-.icon_cancel:hover{
-    transform: scale(1.3);
 }
 .false_status_row{
     background-color: rgba(255, 202, 202, 0.25);
 }
 .true_status_row{
     background-color: rgba(200, 248, 178, 0.459);
+}
+.edit_status_row{
+    background-color: rgba(255, 166, 0, 0.24); 
 }
 .open_recruiter, .open_rewiew, .open_worksheets{
     width: 30px;
@@ -739,7 +741,7 @@ span.span_forexample{
     display: flex;
     flex-direction: column;
 }
-#save_recruiter, #save_rewiew{
+#save_recruiter, #save_rewiew, #save_rewiew_edit{
     margin-top: 30px;
     height: 50px;
     width: 90%;
@@ -828,7 +830,7 @@ span.span_forexample{
 /* ОТОБРАЖЕНИЕ НОВЫХ КАНДИДАТОВ */
 .body_worksheets{
     width: 90%;
-    height: 850px;
+    height: auto;
     margin: auto;
     padding: 20px;
     display: flex;
@@ -957,6 +959,12 @@ span.span_forexample{
     width: 100%;
     height: 50%;
     margin: auto;
+    border: 1px solid lightgray;
+    background-color: rgb(240, 240, 240);
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .title_stat{
     width: 100%;

@@ -187,6 +187,7 @@ router.post('/worksheets', (req, res) => {
     const social = req.body.social;
     const linkedin = req.body.linkedin;
     const residence = req.body.residence;
+    const relocate = req.body.relocate;
     const level = req.body.level;
     const salary = req.body.salary;
     const experiences = req.body.experiences;
@@ -241,6 +242,7 @@ router.post('/worksheets', (req, res) => {
                     residence_country,
                     residence_city,
                     flag_path,
+                    relocate,
                     level,
                     salary,
                     experiences,
@@ -287,6 +289,7 @@ router.post('/worksheets', (req, res) => {
                     residence_country,
                     residence_city,
                     flag_path,
+                    relocate,
                     level,
                     salary,
                     experiences,

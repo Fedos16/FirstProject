@@ -66,18 +66,20 @@ router.get('/edit', (req, res) => {
                 company: [],
                 position: [],
                 rewiew: [],
-                id: []
+                id: [],
+                status: []
             }
 
             if (err) res.render('./rewiews/edit', {data});
             
             for (var i=0; i < rew.length; i++){
-                if (rew[i].status == "Активный"){
+                if (rew[i].status == "Активен" || rew[i].status == "Не Активен"){
                     data.fio.push(rew[i].fio);
                     data.company.push(rew[i].company);
                     data.position.push(rew[i].position);
                     data.rewiew.push(rew[i].rewiew);
                     data.id.push(rew[i]._id);
+                    data.status.push(rew[i].status);
                 }
             }
 
@@ -89,7 +91,6 @@ router.get('/edit', (req, res) => {
         res.redirect('/administration/');
     }
 });
-
 router.post('/findrewiew', (req, res) => {
     const id = req.body.id;
     

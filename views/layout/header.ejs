@@ -30,6 +30,14 @@
                             <a href="/administration/rewiews/moderation"><li>Модерация</li></a>
                             <li id="sm_item_act">Редактирование</li>
                         <% } %>
+                    <% } else if(data.page.main=="worksheets") {%>
+                        <% if (data.page.submain=="moderation") { %>
+                            <li id="sm_item_act">Модерация</li>
+                            <a href="/administration/worksheets/moderation"><li>Редактирование</li></a>
+                        <% } else { %>
+                            <a href="/administration/worksheets/moderation"><li>Модерация</li></a>
+                            <li id="sm_item_act">Редактирование</li>
+                    <% } %>
                     <% } else if(data.page.main=="users") {%>
                         <% if (data.typeUser=="Developer" || data.typeUser=="SuperAdmin") { %>
                             <% if (data.page.submain=="create") { %>

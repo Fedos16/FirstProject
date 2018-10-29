@@ -1,14 +1,152 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h3>Редактирование для:</h3> 
-    <h1> <%= rec.fio %></h1>
-    <h3> Email: <%= rec.email %></h3>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Редактирование рекрутера</title>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/styles_editing.css">
+    </head>
+    <body>
+        <h1 id="s1" style="width: 350px; margin: 0px auto; margin-top: 50px; text-align: center; display: none;">Данные сохранены!</h1>
+        <h4 id="s2" style="width: 350px; margin: 10px auto; text-align: center; display: none;">Вам на почту будет отправлено письмо о статусе модерации, ожидайте</h4>
+        <% if (rec == null) { %>
+            <h1 id="status_h" style="width: 350px; margin: 50px auto; text-align: center;">Анкета не найдена!</h1>
+        <% } else { %>
+            <p id="id_work" hidden><%= rec._id %></p>
+            
+            <div class="container">
+                <div class="modal_window" id="new_recruiter">
+                    <div class="modal_window_title">
+                        Анкета рекрутера
+                    </div>
+                    <div class="modal_window_white">
+                        <div class="modal_row">
+                            <div class="modal_column">
+                                <h3>Ф. И. О. </h3>
+                                <input type="text" class="input_modal" placeholder="Мой ответ" id="fio-r">
+                            </div>
+                            <div class="modal_column">
+                                <h3>Дата рождения</h3>
+                                <input type="text" class="input_modal" placeholder="Мой ответ" id="birthday-r">
+                            </div>
+                        </div>
+                        <div class="modal_row">
+                            <div class="modal_column">
+                                <h3>Место жительства<span> (Страна, город)</span></h3>
+                                <input type="text" class="input_modal" placeholder="Мой ответ" id="residence-r">
+                            </div>
+                            <div class="modal_column">
+                                <h3>Номер телефона для связи</h3>
+                                <input type="text" class="input_modal" placeholder="Мой ответ" id="phone-r">
+                            </div>
+                        </div>
+                        <div class="modal_row">
+                            <div class="modal_column">
+                                <h3>Skype ID</h3>
+                                <input type="text" class="input_modal" placeholder="Мой ответ" id="skype-r">
+                            </div>
+                            <div class="modal_column">
+                                <h3>Профиль Linkedin</h3>
+                                <input type="text" class="input_modal" placeholder="Мой ответ" id="linkedin-r">
+                            </div>
+                        </div>
+                        <div class="modal_row">
+                            <div class="modal_column">
+                                <h3>Предыдущее место работы / период</h3>
+                                <input type="text" class="input_modal" placeholder="Мой ответ" id="place_work-r">
+                            </div>
+                            <div class="modal_column">
+                                <h3>Как долго работаете в IT напрвлении</h3>
+                                <input type="text" class="input_modal" placeholder="Мой ответ" id="time_work_it-r">
+                            </div>
+                        </div>
+                        <div class="modal_row">
+                            <div class="modal_column_max">
+                                <h3>Адрес электронной почты<span> Для авторизации в системе</span></h3>
+                                <input type="text" class="input_modal" placeholder="Мой ответ" id="email-r">
+                            </div>
+                        </div>
+                        <div class="modal_row">
+                            <div class="modal_column">
+                                <h3>Новый пароль<span> Для авторизации в системе</span></h3>
+                                <input type="text" class="input_modal" placeholder="Мой ответ" id="password-r">
+                            </div>
+                            <div class="modal_column">
+                                <h3>Подтвердите пароль<span> Для авторизации в системе</span></h3>
+                                <input type="text" class="input_modal" placeholder="Мой ответ" id="password_confirm-r">
+                            </div>
+                        </div>
+                        <div class="modal_row">
+                            <div class="modal_column_max">
+                                <h3 class="modal_sub_title">Вакансии каких IT-направлений и уровней вы закрывали</h3>
+                                <span> По каким направлениям вам удобно работать?</span>
+                                <div class="modal_column_check">
+                                    <div class="modal_column_item">
+                                    </div>
+                                    <div class="modal_column_item">
+                                    </div>
+                                    <div class="modal_column_item">
+                                    </div>
+                                    <div class="modal_column_item">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal_row">
+                            <div class="modal_column">
+                                <input type="text" class="input_modal" placeholder="Чего то нет в списке? Напишите здесь!" id="other_directions-r">
+                            </div>
+                            <div class="modal_column">
+                                <button class="blue_button" style="margin: 0px; width: 200px; height: 50px;" id="add_new_direction">Добавить</button>
+                            </div>
+                        </div>
+                        <div class="modal_row">
+                            <div class="modal_column_max">
+                                <h3>Какие источники вы используете при подборе кандидата?</h3>
+                                <input type="text" class="input_modal" placeholder="Мой ответ" id="source-r">
+                            </div>
+                        </div>
+                        <div class="modal_row_textarea">
+                            <div class="modal_column_max">
+                                <h3>С какими компаниями сотрудничали? Готовы ли предоставить рекомендации? </h3>
+                                <textarea cols="30" rows="7" class="textarea_modal" placeholder="Мой ответ" id="coop_com-r"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal_row">
+                            <div class="modal_column_max">
+                                <h3>Учебное заведение / дата окончания</h3>
+                                <input type="text" class="input_modal" placeholder="Мой ответ" id="school-r">
+                            </div>
+                        </div>
+                        <div class="modal_row">
+                            <div class="modal_column_max">
+                                <h3 class="modal_sub_title">Уровень владения языками</h3>
+                                <span>Перечислите через запятую какими языками владеете: Украинский (родной) / Русский (общение) / Английский (fluent)</span>
+                                <input type="text" class="input_modal" placeholder="Мой ответ" id="language-r">
+                            </div>
+                        </div>
+                        <div class="modal_row">
+                            <div class="modal_column_max">
+                                <h3 class="modal_sub_title">Реквизиты для оплаты</h3>
+                                <span>Укажите ваши реквизиты, на которые вы хотите получать оплату за успешную работу</span>
+                                <input type="text" class="input_modal" placeholder="Мой ответ" id="pay_details-r">
+                            </div>
+                        </div>
+                        <div class="modal_row_status" id="status_new_recruiter" style="opacity: 0;">status</div>
+                        <div class="modal_row" id="new_recruiter_row">
+                            <button class="blue_button" id="save_new_recruiter">Сохранить</button>
+                        </div>
+                        <div class="modal_splin"></div>
+                        <div class="modal_row">
+                            <img src="/images/landing/logo_blue.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    </body>
+    <script src="/javascripts/jquery.min.js"></script>
+    <script src="/javascripts/scripts_editing.js"></script>
 </html>

@@ -16,14 +16,129 @@
             </div>
         </div>
         <div class="content">
+            <% if (data.typeUser != 'user') { %>
+                <div class="rec_row_filter">
+                    <select class="select_candidate" id="rew_filter">
+                        <option value="all" selected >Все</option>
+                        <option value="true">Активные</option>
+                        <option value="false">Неактивные</option>
+                    </select>
+                </div>
+            <% } %>
             <div class="body_worksheets">
-                
+                <table class="table_rec_edit">
+                    <thead style="display: block;">
+                        <tr>
+                            <th style="width: 20%">Компания</th>
+                            <th style="width: 20%">Должность</th>
+                            <th style="width: 60%">Текст отзыва</th>
+                            <th> </th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+                    <tbody style="display: block; height: 670px; overflow: auto;">
+                        <% for(var i=0;i<data.fio.length;i++) {%>
+                            <% if (data.status[i] == "Активен") { %>
+                                <tr class="true_status_row">
+                                    <td style="display: none" class="id_for_line"><%= data.id[i] %></td>
+                                    <td style="width: 20%"><%= data.company[i] %></td>
+                                    <td style="width: 20%"><%= data.position[i] %></td>
+                                    <td style="width: 60%""><%= data.rewiew[i] %></td>
+                                    <td><img src="/images/pencil.png" class="edit_rew"></td>
+                                    <td><img src="/images/basket.png" class="delete_rew"></td>
+                                    <td style="display:none"><%= data.status[i] %></td>
+                                </tr>
+                            <% }else { %>
+                                <tr class="false_status_row">
+                                        <td style="display: none" class="id_for_line"><%= data.id[i] %></td>
+                                        <td style="width: 20%"><%= data.company[i] %></td>
+                                        <td style="width: 20%"><%= data.position[i] %></td>
+                                        <td style="width: 60%""><%= data.rewiew[i] %></td>
+                                        <td><img src="/images/pencil.png" class="edit_rew"></td>
+                                        <td><img src="/images/cancel.png" class="cancel_rew"></td>
+                                        <td style="display:none"><%= data.status[i] %></td>
+                                    </tr>
+                            <% } %>
+                        <% } %>
+                    </tbody>
+                </table>
             </div>
         </div>
         
     </div>
 </div>
-<div class="modal_back_worksheets" id="display_none">
+<div class="modla_back_remove" id="display_none">
+    <div class="modal_remove">
+        <div class="modal_line_title"><h3>ВНИМАНИЕ!</h3></div>
+        <div class="modal_line_error" id="warning_text">
+            
+        </div>
+        <div class="modal_remove_line">
+            <button type="button" class="modal_button_remove_s" id="modal_button_remove_no">Нет</button>
+            <button type="button" class="modal_button_remove_e" id="modal_button_remove_yes">Да</button>
+        </div>
+    </div>
+</div>
+<div class="modal_back_edit" id="display_none">
+    <div class="modal_edit">
+        <img src="/images/close.png" class="close_modal_edit">
+        <div class="modal_edit_main">
+                <div class="rec_row">
+                    <div class="rec_column">
+                        <div class="column_title">
+                            <h3>Фото представителя компании</h3>
+                        </div>
+                        <div class="column_body" id="company_people_image">
+                            
+                        </div>
+                    </div>
+                </div>
+            <div class="rec_row">
+                <div class="rec_column">
+                    <div class="column_title">
+                        <h3>Ф. И. О.</h3>
+                    </div>
+                    <div class="column_body">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" id="fio">
+                    </div>
+                </div>
+            </div>
+            <div class="rec_row">
+                <div class="rec_column">
+                    <div class="column_title">
+                        <h3>Компания</h3>
+                    </div>
+                    <div class="column_body">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ"  id="company">
+                    </div>
+                </div>
+                <div class="rec_column">
+                    <div class="column_title">
+                        <h3>Должность</h3>
+                    </div>
+                    <div class="column_body">
+                        <input type="text" class="input_candidate" placeholder="Мой ответ" id="position">
+                    </div>
+                </div>
+            </div>
+            <div class="rec_row">
+                <div class="rec_column">
+                    <div class="column_title">
+                        <h3>Отзыв</h3>
+                    </div>
+                    <div class="column_body">
+                        <textarea class="textarea_candidate"  placeholder="Мой ответ" id="rewiew"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row_candidate">
+                <div class="column_candidate_center">
+                    <button type="submit" id="save_rewiew_edit">Сохранить</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <% include ../layout/modal.ejs %>
 <% include ../layout/footer.ejs %>

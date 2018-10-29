@@ -36,7 +36,7 @@ a{
 /* ПЕРВЫЙ БЛОК - ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ */
 .block_one{
     width: 100%;
-    height: 990px;
+    min-height: 990px;
     background: linear-gradient(69.25deg, #0031E0 0%, #07BDE3 53.04%, #00E887 100%);
     z-index: 1000;
 }
@@ -535,7 +535,7 @@ a{
     display: none;
 }
 .block_select{
-    width: 280px;
+    width: 320px;
     height: 50px;
     padding-left: 20px;
     margin-top: 20px;
@@ -603,22 +603,29 @@ a{
     padding: 0px;
 }
 .mini_worksheet_two_social ul li {
-    padding: 9px 15px;
+    padding: 9px 0px;
+    display: flex;
+    align-items: center;
 }
 .mini_worksheet_two_social ul li:nth-child(1) img {
     width:43px;
     height: 29px;
 }
 .mini_worksheet_two_social ul li:nth-child(1) {
-    padding: 0px 5px;
-}
-.mini_worksheet_two_social ul li:nth-child(1) {
     padding-left: 0px;
     padding-right: 5px;
+    width: 43px;
+}
+.mini_worksheet_two_social ul li:nth-child(2) {
+    width: 240px;
 }
 .mini_worksheet_two_social ul li:nth-child(3) {
     border-right: 1px solid rgba(196, 196, 196, 0.3);
     margin-right: 15px;
+}
+.mini_worksheet_two_social ul li:nth-child(4) {
+    width: 40%;
+    justify-content: center;
 }
 .mini_worksheet_three{
     display: flex;
@@ -1801,6 +1808,9 @@ a{
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    color: #e82c0c;
+    font-weight: bold;
+    font-size: 16px;
 }
 .modal_column{
     width: 48%;
@@ -2124,11 +2134,7 @@ p.error {
   font-weight: bold;
   text-align: center;
 }
-.modal_row_status{
-    color: #e82c0c;
-    font-weight: bold;
-    font-size: 16px;
-}
+
 input.error{
     border: 1px solid #e82c0c;
     background-color: #ffc8bf;
@@ -2175,7 +2181,7 @@ input[type='file']{
 .delete_new_direction img:hover{
     transform: scale(1.2);
 }
-/*
+
 ::-webkit-scrollbar{ width:10px; height:9px;}
 ::-webkit-scrollbar-button:start:decrement, 
 ::-webkit-scrollbar-button:end:increment{ 
@@ -2200,7 +2206,6 @@ input[type='file']{
   -webkit-border-radius:15px;
 }
 
-*/
 /* Собственная разработка - выпадающие многовыборные списки */
 .select_modal_button{
     width: 100%;
@@ -2536,6 +2541,7 @@ input[type='file']{
 @media (max-width: 780px) {
     .block_one{
         height: 92vh;
+        min-height: 96vh;
         width: 95vw;
         padding: 2.5vw;
     }
@@ -2616,6 +2622,11 @@ input[type='file']{
         width: 75vw;
         height: 7vh;
     }
+    .block_worksheets h2{
+        width: 80vw;
+        margin: 0px auto;
+        text-align: center;
+    }
     .mini_worksheet{
         flex-direction: column;
         min-height: 500px;
@@ -2650,6 +2661,7 @@ input[type='file']{
         width: 100%;
         font-size: 3vw;
     }
+
     .blue_money{
         margin-right: 10px;
         font-size: 8vw;
@@ -2673,6 +2685,8 @@ input[type='file']{
         justify-content: center;
         align-items: center;
         font-size: 4vw;
+        width: auto;
+        margin-left: 10px;
     }
     .mini_worksheet_two_social ul li:first-child img{
         width: 9vw;
@@ -3515,4 +3529,5 @@ input[type='file']{
         align-items: center;
     }
 }
+
 

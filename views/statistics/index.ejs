@@ -19,7 +19,7 @@
             <div class="main_stat">
                 <div class="title_stat">
                     <div class="left_title_stat">
-                        <h2 id="second_hh_stat">Количество анкет у рекрутера</h2>
+                        <h2 id="second_hh_stat" title="Нажмите, чтобы показать/скрыть диаграмму">Количество анкет у рекрутера</h2>
                     </div>
                     <div class="right_title_stat">
                         <div class="div_after_tooltip">
@@ -46,8 +46,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="first_diagramm" id="curve_chart_two"> </div>
-                <table class="table_rec_edit">
+                <div class="first_diagramm" id="curve_chart_two" style="display: none;">ЗДЕСЬ БУДЕТ ДИАГРАММА</div>
+                <table class="table_rec_edit" style="display: none;" id="table_data">
                     <thead>
                         <tr>
                             <th> # </th>
@@ -55,7 +55,7 @@
                             <th>Skype ID</th>
                             <th>E-mail</th>
                             <th>Номер телефона</th>
-                            <th>Количество анкет</th>
+                            <th id="bottom_f" style="cursor: pointer; display: flex; align-items: center;">Количество анкет<img src="/images/middle_f.png" alt="" width="16" height="16" style="margin-left: 10px;"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -65,7 +65,7 @@
                     
                 <div class="title_stat">
                     <div class="left_title_stat">
-                        <h2 id="first_hh_stat">Количесто новых анкет</h2>
+                        <h2 id="first_hh_stat" title="Нажмите, чтобы показать/скрыть диаграмму">Количесто новых анкет</h2>
                     </div>
                     <div class="right_title_stat">
                         <div class="div_after_tooltip">
@@ -91,7 +91,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="first_diagramm" id="curve_chart_one"> </div>
+                <div class="first_diagramm" id="curve_chart_one" style="display: none;">ЗДЕСЬ БУДЕТ ДИАГРАММА</div>
             </div>
         </div>
     </div>

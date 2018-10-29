@@ -1,8 +1,8 @@
-$(function(){
+$(document).ready(function(){
 
-    $('input').on('focus', function(){
+    $('input, textarea').on('focus', function(){
         $('p.error').remove();
-        $('input').removeClass('error');
+        $('input, textarea').removeClass('error');
     });
     
 
@@ -134,10 +134,9 @@ $(function(){
 
     $('#modal_button').on('click', ()=>{
         $('.modal_back').attr('id', 'display_none');
-        $('.modal_back_edit').attr('id', 'display_none');
         var status = sessionStorage.getItem('refresh');
         var logout = sessionStorage.getItem('logout');
-        if (status) {
+        if (status != null) {
             sessionStorage.removeItem('refresh');
             location.reload();
         }
@@ -266,12 +265,10 @@ $(function(){
         });
         
     });
-
     $('.close_modal_edit').on('click', () => {
         $('.modal_back_edit').attr('id', 'display_none');
         sessionStorage.setItem('refresh', 'true');
     })
-
     $('.open_recruiter').on('click', (e) => {
         var id = e.target.parentElement.parentElement.getElementsByClassName('id_for_line')[0].textContent;
 
@@ -380,17 +377,17 @@ $(function(){
             }
         });
     });
-
     $('#cancel_recruiter').on('click', (e) => {
-        alert('Пока не известно что делать! Удалять или заносить в базу как неактивного рекрутера');
-        $('.modal_back_edit').attr('id', 'display_none')
+        
+        $('.modal_back_edit').attr('id', 'display_none');
+        $('.modla_back_remove').attr('id', '');
 
     });
-
     $('#save_recruiter').on('click', (e) => {
 
         var data = {
-            id: sessionStorage.getItem('activ_id_recruiter')
+            id: sessionStorage.getItem('activ_id_recruiter'),
+            status: 'true'
         }
 
         $.ajax({
@@ -415,19 +412,70 @@ $(function(){
             }
         });
 
-    })
+    });
+    $('#rec_mod_ed_yes').on('click', (e) => {
+        var data = {
+            id: sessionStorage.getItem('activ_id_recruiter'),
+            status: 'Редактирование',
+            reason: $('#reason').val()
+        }
 
-    // ВСЕ, ЧТО КАСАЕТСЯ УДАЛЕНИЕ (СТАВИТСЯ СТАТУС False) РЕКРУТЕРА ИЗ БАЗЫ ДАННЫХ
-    $('#modal_button_remove_no').on('click', () => {
-        $('.modla_back_remove').attr('id', 'display_none');
+        if ($('#reason').val() != ''){
+            $.ajax({
+                type: 'POST',
+                data: JSON.stringify(data),
+                contentType: 'application/json',
+                url: '/api/updatedata/recruitermoderation'
+            }).done(function(data){
+                if(!data.ok){
+                    $('.modal_back').attr('id', '');
+                    $('#modal_line').attr('class', 'modal_line_error');
+                    $('#modal_line').text(data.error);
+                    $('#modal_button').text('Понятно!');
+                    $('#modal_button').attr('class', 'modal_button_e');
+                } else{
+                    $('.modal_back').attr('id', '');
+                    $('#modal_line').attr('class', 'modal_line_success');
+                    $('#modal_line').text("Данные успешно сохранены");
+                    $('#modal_button').text('Хорошо');
+                    $('#modal_button').attr('class', 'modal_button_s');
+                    sessionStorage.setItem('refresh', 'true');
+                }
+            });
+        } else {
+            $('.modal_back').attr('id', '');
+            $('#modal_line').attr('class', 'modal_line_error');
+            $('#modal_line').text('Укажите причину!');
+            $('#modal_button').text('Понятно');
+            $('#modal_button').attr('class', 'modal_button_s');
+            sessionStorage.removeItem('refresh');
+        }
     });
 
+    // ВСЕ, ЧТО КАСАЕТСЯ УДАЛЕНИЕ (СТАВИТСЯ СТАТУС False) РЕКРУТЕРА ИЗ БАЗЫ ДАННЫХ
+    $('#modal_button_remove_no, #rec_mod_ed_no').on('click', () => {
+        $('.modla_back_remove').attr('id', 'display_none');
+    });
     $('.icon_delete').on('click', (e) => {
         var id = e.target.parentElement.parentElement.getElementsByClassName('id_for_line')[0].textContent;
-        $('#warning_text').text('Уверены, что хотетие удалить рекрутера?');
+        $('#warning_text').text('Уверены, что хотетие уволить рекрутера?');
         $('#warning_text').attr('class', 'modal_line_error');
-        sessionStorage.setItem('id_remove_recruiter', id);
+        sessionStorage.setItem('id_remove_doc', id);
         sessionStorage.setItem('type_update', false);
+        sessionStorage.setItem('type_status_doc', 'recruiters');
+
+        $('#modal_button_remove_no').attr('class', 'modal_button_remove_s');
+        $('#modal_button_remove_yes').attr('class', 'modal_button_remove_e');
+
+        $('.modla_back_remove').removeAttr('id');
+    });
+    $('.delete_rew').on('click', (e) => {
+        var id = e.target.parentElement.parentElement.getElementsByClassName('id_for_line')[0].textContent;
+        $('#warning_text').text('Уверены, что хотетие убрать отзыв с сайта?');
+        $('#warning_text').attr('class', 'modal_line_error');
+        sessionStorage.setItem('id_remove_doc', id);
+        sessionStorage.setItem('type_update', 'Не Активен');
+        sessionStorage.setItem('type_status_doc', 'rewiew');
 
         $('#modal_button_remove_no').attr('class', 'modal_button_remove_s');
         $('#modal_button_remove_yes').attr('class', 'modal_button_remove_e');
@@ -438,8 +486,22 @@ $(function(){
         var id = e.target.parentElement.parentElement.getElementsByClassName('id_for_line')[0].textContent;
         $('#warning_text').text('Уверены, что хотетие вернуть рекрутера?');
         $('#warning_text').attr('class', 'modal_line_success');
-        sessionStorage.setItem('id_remove_recruiter', id);
+        sessionStorage.setItem('id_remove_doc', id);
         sessionStorage.setItem('type_update', true);
+        sessionStorage.setItem('type_status_doc', 'recruiters');
+
+        $('#modal_button_remove_no').attr('class', 'modal_button_remove_e');
+        $('#modal_button_remove_yes').attr('class', 'modal_button_remove_s');
+
+        $('.modla_back_remove').removeAttr('id');
+    });
+    $('.cancel_rew').on('click', (e) => {
+        var id = e.target.parentElement.parentElement.getElementsByClassName('id_for_line')[0].textContent;
+        $('#warning_text').text('Уверены, что хотетие вернуть рекрутера?');
+        $('#warning_text').attr('class', 'modal_line_success');
+        sessionStorage.setItem('id_remove_doc', id);
+        sessionStorage.setItem('type_update', "Активен");
+        sessionStorage.setItem('type_status_doc', 'rewiew');
 
         $('#modal_button_remove_no').attr('class', 'modal_button_remove_e');
         $('#modal_button_remove_yes').attr('class', 'modal_button_remove_s');
@@ -449,9 +511,10 @@ $(function(){
 
     $('#modal_button_remove_yes').on('click', () => {
         
+        var url = sessionStorage.getItem('type_status_doc');
 
         var data = {
-            id: sessionStorage.getItem('id_remove_recruiter'),
+            id: sessionStorage.getItem('id_remove_doc'),
             status: sessionStorage.getItem('type_update')
         }
 
@@ -459,7 +522,7 @@ $(function(){
             type: 'POST',
             data: JSON.stringify(data),
             contentType: 'application/json',
-            url: '/api/removedata/recruiters'
+            url: '/api/removedata/'+url
         }).done(function(data){
 
             $('.modla_back_remove').attr('id', 'display_none');
@@ -486,7 +549,6 @@ $(function(){
     $('.close_modal_worksheets').on('click', ()=> {
         $('.modal_back_worksheets').attr('id', 'display_none');
     });
-
     $('.open_worksheets').on('click', (e)=> {
 
         var id = e.target.parentElement.parentElement.getElementsByClassName('id_for_line')[0].textContent;
@@ -548,7 +610,6 @@ $(function(){
 
         $('.modal_back_worksheets').removeAttr('id');
     });
-
     $('#save_worksheets').on('click', () => {
         var data = {
             id: sessionStorage.getItem('worksheets_id'),
@@ -559,7 +620,7 @@ $(function(){
             type: 'POST',
             data: JSON.stringify(data),
             contentType: 'application/json',
-            url: '/api/updatedata/worksheets'
+            url: '/api/updatedata/worksheetmoderation'
         }).done(function(data){
             if(!data.ok){
 
@@ -584,41 +645,48 @@ $(function(){
             }
         });
     });
-
     $('#cancel_worksheets').on('click', () => {
+        $('.modal_back_worksheets').attr('id', 'display_none');
+        $('.modla_back_remove').attr('id', '');
+    });
+    $('#work_mod_ed_yes').on('click', (e) => {
+        
         var data = {
             id: sessionStorage.getItem('worksheets_id'),
-            status: "Отклонена"
+            status: "Редактирование",
+            reason: $('#reason').val()
         };
-
-        $.ajax({
-            type: 'POST',
-            data: JSON.stringify(data),
-            contentType: 'application/json',
-            url: '/api/updatedata/worksheets'
-        }).done(function(data){
-            if(!data.ok){
-
-                $('.modal_back').attr('id', '');
-                $('#modal_line').attr('class', 'modal_line_error');
-                $('#modal_line').text(data.error);
-                $('#modal_button').text('Плохо')
-                $('#modal_button').attr('class', 'modal_button_e')
-                
-                if (data.fields){
-                    data.fields.forEach(function(item){
-                        $('input[name=' + item + ']').addClass('error');
-                    });
+        if ($('#reason').val() != ''){
+            $.ajax({
+                type: 'POST',
+                data: JSON.stringify(data),
+                contentType: 'application/json',
+                url: '/api/updatedata/worksheetmoderation'
+            }).done(function(data){
+                if(!data.ok){
+                    $('.modal_back').attr('id', '');
+                    $('#modal_line').attr('class', 'modal_line_error');
+                    $('#modal_line').text(data.error);
+                    $('#modal_button').text('Понятно!');
+                    $('#modal_button').attr('class', 'modal_button_e');
+                } else{
+                    $('.modal_back').attr('id', '');
+                    $('#modal_line').attr('class', 'modal_line_success');
+                    $('#modal_line').text("Данные успешно сохранены");
+                    $('#modal_button').text('Хорошо');
+                    $('#modal_button').attr('class', 'modal_button_s');
+                    sessionStorage.setItem('refresh', 'true');
                 }
-            }else{
-                $('.modal_back').removeAttr('id');
-                $('#modal_line').attr('class', 'modal_line_success');
-                $('#modal_line').text("Данные успешно сохранены");
-                $('#modal_button').text('Хорошо')
-                $('#modal_button').attr('class', 'modal_button_s')
-                sessionStorage.setItem('refresh', 'true');
-            }
-        });
+            });
+        } else {
+            $('.modal_back').attr('id', '');
+            $('#modal_line').attr('class', 'modal_line_error');
+            $('#modal_line').text('Укажите причину!');
+            $('#modal_button').text('Понятно');
+            $('#modal_button').attr('class', 'modal_button_s');
+            sessionStorage.removeItem('refresh');
+        }
+        
     });
 
     // КНОПКА ДЛЯ ЗАГРУЗКИ ДАННЫХ ИЗ ГУГЛ ТАБЛИЦ
@@ -864,7 +932,7 @@ $(function(){
     });
 
     // РАЗДЕЛ TOOLTIP СТАТИСТИКА
-    //---- Для первой диаграммы
+    //---- Для второй диаграммы
     //месяц
     $('#tooltip_month_one').on('click', (e) => {
         var text = e.target.textContent;
@@ -890,6 +958,9 @@ $(function(){
                 console.log('Error!');
             }
             else{
+
+                $('#curve_chart_two, .table_rec_edit').hide();
+                $('#curve_chart_one').show();
 
                 var arr = [['Day', 'Новые']];
 
@@ -987,7 +1058,7 @@ $(function(){
         $('#tooltip_year_one').css('display', 'none');
     });
 
-    //---- Для второй диаграммы
+    //---- Для первой диаграммы
     //месяц
     $('#tooltip_month').on('click', (e) => {
         var text = e.target.textContent;
@@ -1015,9 +1086,17 @@ $(function(){
                 console.log('Error!');
             }
             else{
+
+                $('#curve_chart_two, .table_rec_edit').show();
+                $('#curve_chart_one').hide();
+                
+
                 $('.table_rec_edit').append('<tbody></tbody>');
 
                 var arr = [['Рекрутер', 'Анкет', { role: 'style' } ]]
+
+                var winner = 0;
+                var looser = 100;
 
                 for (var x=0; x < data.data.fio.length; x++){
 
@@ -1029,12 +1108,37 @@ $(function(){
                     $('.table_rec_edit tbody tr:last-child').append('<td>' + data.data.telephone[x] + '</td>');
                     $('.table_rec_edit tbody tr:last-child').append('<td>' + data.data.count[x].length + '</td>');
 
-                    arr.push([ 
-                        data.data.fio[x].split(' ')[0] +' '+ data.data.fio[x].split(' ')[1].charAt(0)+ '. ' + data.data.fio[x].split(' ')[2].charAt(0) + '.', 
-                        data.data.count[x].length,  
-                        'color: #76A7FA'
-                    ])
+                    if (data.data.count[x].length > winner){
+                        winner = data.data.count[x].length;
+                    }
+                    if (data.data.count[x].length <= looser){
+                        looser = data.data.count[x].length;
+                    }
+
+                    try{
+                        arr.push([ 
+                            data.data.fio[x].split(' ')[0] +' '+ data.data.fio[x].split(' ')[1].charAt(0).toUpperCase()+ '. ' + data.data.fio[x].split(' ')[2].charAt(0).toUpperCase() + '.', 
+                            data.data.count[x].length,  
+                            'color: #76A7FA'
+                        ])
+                    } catch (e) {
+                        arr.push([ 
+                            data.data.fio[x], 
+                            data.data.count[x].length,  
+                            'color: #76A7FA'
+                        ])
+                    }
                 }
+
+                //WINNER
+                $(".table_rec_edit tbody tr td").filter(function() {
+                    return $(this).text() == winner;
+                }).parent('tr').css('background-color','rgba(200, 248, 178, 0.659)');
+
+                //LOOSER
+                $(".table_rec_edit tbody tr td").filter(function() {
+                    return $(this).text() == looser;
+                }).parent('tr').css('background-color','rgba(255, 202, 202, 0.5)');
 
                 google.charts.load('current', {packages: ['corechart', 'bar']});
                 google.charts.setOnLoadCallback(drawBasic);
@@ -1051,6 +1155,42 @@ $(function(){
             }
         });
 
+    });
+    //SORT TABLE
+    $('#table_data').on('click', (e) => {
+        if (e.target.tagName == 'TH' && e.target.cellIndex == 5){
+            var tbody = $('.table_rec_edit tbody')[0];
+            var rowsArray = [].slice.call(tbody.rows);
+            if (e.target.id == 'bottom_f'){
+                $(e.target).html('Количество анкет<img src="/images/top_f.png" alt="" width="16" height="16" style="margin-left: 10px;">');
+                e.target.id = 'top_f'
+                sort_type = function(rowA, rowB) {
+                    return rowB.cells[5].innerHTML - rowA.cells[5].innerHTML;
+                };
+            } else if (e.target.id == 'top_f') {
+                $(e.target).html('Количество анкет<img src="/images/bottom_f.png" alt="" width="16" height="16" style="margin-left: 10px;">');
+                e.target.id = 'middle_f'
+                sort_type = function(rowA, rowB) {
+                    return rowA.cells[5].innerHTML - rowB.cells[5].innerHTML;
+                };
+            } else{
+                e.target.id = 'bottom_f'
+                $(e.target).html('Количество анкет<img src="/images/middle_f.png" alt="" width="16" height="16" style="margin-left: 10px;">');
+                sort_type = function(rowA, rowB) {
+                    return rowA.cells[0].innerHTML - rowB.cells[0].innerHTML;
+                };
+            }
+            
+            rowsArray.sort(sort_type);
+            $('.table_rec_edit tbody').remove();
+
+            for (var i = 0; i < rowsArray.length; i++) {
+                tbody.appendChild(rowsArray[i]);
+            }
+
+            $('.table_rec_edit').append(tbody);
+
+        }
     });
     $('#tooltip_month').on('mouseleave', (e) => {
         $('#tooltip_month').css('display', 'none');
@@ -1140,7 +1280,30 @@ $(function(){
         }
     });
 
-    // Фильтрация кандидатов, которые на модерации
+    // Фильтрация "Активен - Неактивен - Все"
+    
+    $('#rew_filter').on('change', (e) => {
+        var row = document.getElementsByClassName('table_rec_edit')[0].rows
+        var recFilter = $('#rew_filter').val();
+
+        for (var i=1; i < row.length; i++){
+            row[i].removeAttribute('style');
+        }
+
+        if (recFilter == 'true') {
+            for (var i=1; i < row.length; i++){
+                if (row[i].cells[6].textContent == 'Не Активен'){
+                    row[i].setAttribute('style', 'display: none;');
+                }
+            }
+        } else if (recFilter == 'false') {
+            for (var i=1; i < row.length; i++){
+                if (row[i].cells[6].textContent == 'Активен'){
+                    row[i].setAttribute('style', 'display: none;');
+                }
+            }
+        }
+    });
     $('#rec_filter').on('change', (e) => {
         var row = document.getElementsByClassName('table_rec_edit')[0].rows
         var recFilter = $('#rec_filter').val();
@@ -1151,13 +1314,19 @@ $(function(){
 
         if (recFilter == 'true') {
             for (var i=1; i < row.length; i++){
-                if (row[i].cells[7].textContent == 'false'){
+                if (row[i].cells[7].textContent == 'false' || row[i].cells[7].textContent == 'edit'){
                     row[i].setAttribute('style', 'display: none;');
                 }
             }
         } else if (recFilter == 'false') {
             for (var i=1; i < row.length; i++){
-                if (row[i].cells[7].textContent == 'true'){
+                if (row[i].cells[7].textContent == 'true' || row[i].cells[7].textContent == 'edit'){
+                    row[i].setAttribute('style', 'display: none;');
+                }
+            }
+        } else if (recFilter == 'edit'){
+            for (var i=1; i < row.length; i++){
+                if (row[i].cells[7].textContent == 'true' || row[i].cells[7].textContent == 'false'){
                     row[i].setAttribute('style', 'display: none;');
                 }
             }
@@ -1165,7 +1334,7 @@ $(function(){
     });
 
     // ОТЗЫВЫ И ВСЕ ЧТО С НИМИ СВЯЗАНО!!!
-    $('.open_rewiew').on('click', (e) => {
+    $('.open_rewiew, .edit_rew').on('click', (e) => {
         var id = e.target.parentElement.parentElement.getElementsByClassName('id_for_line')[0].textContent;
         sessionStorage.setItem('rewiew_id', id); // Зачем записываем это сюда??? - Чтобы сохранить изменения по этому ID
 
@@ -1231,7 +1400,7 @@ $(function(){
             type: 'POST',
             data: JSON.stringify(data),
             contentType: 'application/json',
-            url: '/api/updatedata/rewiew'
+            url: '/api/updatedata/rewiewmoderation'
         }).done(function(data){
             if (!data.ok){
                 $('.modal_back').attr('id', '');
@@ -1249,7 +1418,42 @@ $(function(){
             }
         });
     });
+    $('#save_rewiew_edit').on('click', () => {
+        var data = {
+            id: sessionStorage.getItem('rewiew_id'),
+            fio: $('#fio').val(),
+            company: $('#company').val(),
+            position: $('#position').val(),
+            rewiew: $('#rewiew').val()
+        };
+        $.ajax({
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            url: '/api/updatedata/rewiew'
+        }).done(function(data){
+            if (!data.ok){
+                $('.modal_back').attr('id', '');
+                $('#modal_line').attr('class', 'modal_line_error');
+                $('#modal_line').text(data.error);
+                $('#modal_button').text('Плохо');
+                $('#modal_button').attr('class', 'modal_button_e');
+                sessionStorage.removeItem('refresh');
+                for (i=0; i < data.fields.length; i++){
+                    $('#'+data.fields[i]).addClass('error');
+                }
+            }else{
+                $('.modal_back').attr('id', '');
+                $('#modal_line').attr('class', 'modal_line_success');
+                $('#modal_line').text("Данные успешно сохранены!");
+                $('#modal_button').text('Хорошо');
+                $('#modal_button').attr('class', 'modal_button_s');
+                sessionStorage.setItem('refresh', 'true');
+            }
+        });
+    });
     
+    // ДОПОЛНИТЕЛЬНЫЕ ПОЛЯ
     $('.addytional_item').on('mouseenter', (e) => {
 
         var text = $(e.target).find('p:last').text();
@@ -1258,7 +1462,7 @@ $(function(){
             $(e.target.children[0]).after('<img src="/images/basket.png" alt="" id="additional_remove" style="cursor: pointer;" title="Для удаления сделайте двойной клик">');
             $(e.target.children[0]).before('<img src="/images/basket.png" alt="" class="additional_edit" style="opacity:0;">');
         } else {
-            $(e.target.children[1]).after('<img src="/images/basket.png" alt="" id="additional_remove" style="cursor: pointer; position: absolute; margin-left: 9%;" title="Для удаления сделайте двойной клик">');
+            $(e.target.children[1]).after('<img src="/images/basket.png" alt="" id="additional_remove" style="cursor: pointer;" title="Для удаления сделайте двойной клик">');
         }
 
     });

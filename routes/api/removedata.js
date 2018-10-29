@@ -37,11 +37,24 @@ router.post('/user', (req, res) => {
 });
 router.post('/rewiew', (req, res) => {
     const id = req.body.id;
+    const status = req.body.status
 
-    models.Rewiews.findByIdAndRemove(id, (err) => {
-        if (err) res.json({ok: false, error: 'Попробуйте позже!'});
-        res.json({ok: true});
-    });
+    if (!id){
+        res.json( { ok: false, error: 'Очень странно! Обратитесь к разработчику' } );
+    }
+    else{
+        models.Rewiews.findById(id, (err, rew) => {
+            if (err) res.json( { ok: false, error: 'Попробуйте позже'} );
+
+            rew.status = status;
+
+            rew.save((errs) => {
+                if (errs) res.json({ ok: false, error: 'Попробуйте позже' });
+                
+                res.json({ ok: true });
+              });
+        })
+    }
 });
 router.post('/additional', (req, res) => {
     const id = req.body.id;

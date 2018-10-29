@@ -77,13 +77,12 @@ router.get('/id:id', async (req, res) => {
 
     const id = req.params.id;
 
-    var rec
+    var rec = {}
     try {
         rec = await models.Recruiter.findOne( {_id: id, status: 'Редактирование'});
     } catch (e) {
-        rec = {};
+        res.redirect('/');
     }
-
     res.render('./recruiters/editing_user', {rec});
 
 });

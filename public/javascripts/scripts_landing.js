@@ -610,11 +610,7 @@ $(document).ready(function(){
             language: $('#language-c').val(),
             recommendations: recommendations,
             additional: $('#additional-c').val(),
-            download: $('#download-c').val(),
-            beforeSend: function() {
-                $('#save_new_candidate').before('<img src="images/landing/loading.gif" alt="" id="loading_gif">');
-                $('#save_new_candidate').hide();
-            }
+            download: $('#download-c').val()
         }
 
         $.ajax({
@@ -772,7 +768,12 @@ $(document).ready(function(){
                 for (i=0; i < directions.length; i++){
                     for (x=0; x < 4; x++){
                         for (y=start; y < directions.length; y++){
-                            $('.modal_column_item:eq('+x+')').html($('.modal_column_item:eq('+x+')').html()+'<label class="modal_label"><input type="checkbox" name="modal_checkbox-r" value="'+directions[y].name+'" class="modal_checkbox">'+directions[y].name+'</label>');
+                            if (directions[y].name.length > 14){
+                                var short = directions[y].name.substr(0, 14)+'...';
+                            } else { 
+                                var short = directions[y].name 
+                            }
+                            $('.modal_column_item:eq('+x+')').html($('.modal_column_item:eq('+x+')').html()+'<label class="modal_label" title="'+directions[y].name+'"><input type="checkbox" name="modal_checkbox-r" value="'+directions[y].name+'" class="modal_checkbox">'+short+'</label>');
                             arr.push(directions[y].name.toLowerCase());
                             break;
                         }
@@ -912,7 +913,7 @@ $(document).ready(function(){
             }
         });
     });
-    // ФУНКЦИЯ ЗАГРУЗКИ ВСЕХ АНКЕТ НА ГЛАВНОЙ СТРАНИЦЕ
+    // ПРЕДЗАГРУЗКА ДАННЫХ
     $(() => {
 
         sessionStorage.setItem('arrow_item', 0);

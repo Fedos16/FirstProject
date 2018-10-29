@@ -44,6 +44,9 @@ const schema = new Schema(
     flag_path: {
         type: String
     },
+    relocate: {
+        type: String
+    },
     level: {
         type: String
     },

@@ -9,7 +9,7 @@ router.get('/moderation', (req, res) => {
     const userType = req.session.userType;
     const page = {
         main: 'worksheets',
-        submain: 'none'
+        submain: 'moderation'
     }
     if (login){
 
@@ -27,12 +27,12 @@ router.get('/moderation', (req, res) => {
                 id: []
             }
 
-            if (err) res.render('./worksheets/index', {data});
+            if (err) res.render('./worksheets/moderation', {data});
             
             for (var i=0; i < worksheets.length; i++){
                 if (worksheets[i].status == "Модерация"){
                     data.name.push(worksheets[i].name);
-                    data.residence.push(worksheets[i].residence);
+                    data.residence.push(worksheets[i].residence_country + ', ' + worksheets[i].residence_city);
                     data.telephone.push(worksheets[i].phone);
                     data.directions.push(worksheets[i].directions);
                     data.experience.push(worksheets[i].experiences);
@@ -40,7 +40,7 @@ router.get('/moderation', (req, res) => {
                 }
             }
 
-            res.render('./worksheets/index', {data});
+            res.render('./worksheets/moderation', {data});
         
         });
     }
@@ -48,7 +48,6 @@ router.get('/moderation', (req, res) => {
         res.redirect('/administration/');
     }
 });
-
 router.get('/new', (req, res) => {
 
     const login = req.session.userLogin;
@@ -80,7 +79,37 @@ router.get('/new', (req, res) => {
     }
 
 });
+router.get('/id:id', async (req, res) => {
 
+    const id = req.params.id;
+
+    var work = {}
+    try {
+        work = await models.Worksheets.findOne( {_id: id, status: 'Редактирование'});
+    } catch (e) {
+        res.redirect('/');
+    }
+    res.render('./worksheets/editing_worksheet', {work});
+
+});
+router.get('/preview:id', async (req, res) => {
+
+    const id = req.params.id;
+    const login = req.session.userLogin;
+
+    if (login) {
+        var work = {}
+        try {
+            work = await models.Worksheets.findOne( {_id: id});
+        } catch (e) {
+            res.redirect('/administration/');
+        }
+        res.render('./worksheets/prewiew_worksheet', {work});
+    } else {
+        res.redirect('/administration/');
+    }
+
+});
 router.post('/findworksheets', (req, res) => {
     const id = req.body.id;
     

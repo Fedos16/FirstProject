@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Анкета кандидата</title>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/styles_editing.css">
+    </head>
+    <body>
+        <h1 id="s1" style="width: 350px; margin: 0px auto; margin-top: 50px; text-align: center; display: none;">Данные сохранены!</h1>
+        <h4 id="s2" style="width: 350px; margin: 10px auto; text-align: center; display: none;">Вам на почту будет отправлено письмо о статусе модерации, ожидайте</h4>
+        <% if (work == null) { %>
+            <h1 id="status_w" style="width: 350px; margin: 50px auto; text-align: center;">Анкета не найдена!</h1>
+        <% } else { %>
+            <p id="id_work_w" hidden><%= work._id %></p>
+            
+            <div class="container">
+                <div class="modal_window" id="new_recruiter">
+                    <div class="modal_window_title">
+                        Анкета Кандидата
+                    </div>
+                    <div class="modal_window_white">
+                        <div class="modal_row">
+                            <div class="modal_column">
+                                <h3>Рекрутер анкеты</h3>
+                                <input type="text" class="input_modal" placeholder="Мой ответ" id="recr-c" readonly>
+                            </div>
+                            <div class="modal_column">
+                                <h3>Статус анкеты</h3>
+                                <input type="text" class="input_modal" placeholder="Мой ответ" id="status-c" readonly>
+                            </div>
+                        </div>
+                        <div class="modal_row">
+                            <div class="modal_column">
+                                <h3>Имя кандидата</h3>
+                                <input type="text" class="input_modal" placeholder="Мой ответ" id="name-c" readonly>
+                            </div>
+                            <div class="modal_column">
+                                <h3>Специальность кандидата</h3>
+                                <select id="directions-c" class="select_modal" disabled>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal_row">
+                            <div class="modal_column">
+                                <h3>Номер телефона кандидата</h3>
+                                <input type="text" class="input_modal" placeholder="Мой ответ" id="phone-c" readonly>
+                            </div>
+                            <div class="modal_column">
+                                <h3>Адрес электронной почты кандидата</h3>
+                                <input type="text" class="input_modal" placeholder="Мой ответ" id="email-c" readonly>
+                            </div>
+                        </div>
+                        <div class="modal_row_other_variant">
+                            <div class="modal_column">
+                                <h3>Мессенджер</h3>
+                                <select class="select_modal" id="all_messenger_new" disabled>
+                                </select>
+                                <input type="text" class="input_modal" placeholder="Название мессенджера" style="display: none;" id="other_messenger_new" readonly>
+                                <div class="other_messenger" id="view_other_messenger_new">
+                                    <img src="/images/landing/plus_messenger.png" alt="" id="img_messenger_other_new">
+                                    <img src="/images/landing/view_all.png" alt="" style="display: none;" id="img_messenger_all_new">
+                                    <div id="text_messenger_new">Добавить свой вариант</div>
+                                </div>
+                            </div>
+                            <div class="modal_column">
+                                <h3>Данные мессенджера</h3>
+                                <input type="text" class="input_modal" placeholder="Мой ответ" id="data_messenger-c" readonly>
+                            </div>
+                        </div>
+                        <div class="modal_row">
+                            <div class="modal_column">
+                                <h3>Профиль в соц. сетях кандидата</h3>
+                                <input type="text" class="input_modal" placeholder="Мой ответ" id="social-c" readonly>
+                            </div>
+                            <div class="modal_column">
+                                <h3>Профиль Linkedin кандидата</h3>
+                                <input type="text" class="input_modal" placeholder="Мой ответ" id="linkedin-c" readonly>
+                            </div>
+                        </div>
+                        <div class="modal_row">
+                            <div class="modal_column">
+                                <h3>Место жительства<span> (Страна, город)</span></h3>
+                                <input type="text" class="input_modal" placeholder="Мой ответ" id="residence-c" readonly>
+                            </div>
+                            <div class="modal_column">
+                                <h3>Готовность к переезду в <span>(Страна, город)</span></h3>
+                                <input type="text" class="input_modal" placeholder="Мой ответ" id="relocate-c" readonly>
+                            </div>
+                        </div>
+                        <div class="modal_row">
+                            <div class="modal_column_max">
+                                <h3>Уровень кандидата</h3>
+                                <label class="modal_label"><input type="checkbox" value="Middle" name="level-c" id="middle_level" class="modal_checkbox" disabled>Middle</label>
+                                <label class="modal_label"><input type="checkbox" value="Senior" name="level-c" id="senior_level" class="modal_checkbox" disabled>Senior</label>
+                                <label class="modal_label"><input type="checkbox" value="Lead" name="level-c" id="lead_level" class="modal_checkbox" disabled>Lead</label>
+                                <label class="modal_label"><input type="checkbox" value="Ready Team" name="level-c" id="team_level" class="modal_checkbox" disabled>Ready Team</label>
+                            </div>
+                        </div>
+                        <div class="modal_row">
+                            <div class="modal_column">
+                                <h3>Уровень заработной платы</h3>
+                                <select class="select_modal" id="salary-c" disabled>
+                                    <option value="2000">2000$</option>
+                                    <option value="3000">3000$</option>
+                                    <option value="4000">4000$</option>
+                                </select>
+                            </div>
+                            <div class="modal_column">
+                                <h3>Опыт работы кандидата</h3>
+                                <select class="select_modal" id="experiences-c" disabled>
+                                    <option value="0-3 года">0-3 года</option>
+                                    <option value="4-6 лет">4-6 лет</option>
+                                    <option value="7-10 лет">7-10 лет</option>
+                                    <option value="11-14 лет">11-14 лет</option>
+                                    <option value="15+ лет">15+ лет</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal_row_textarea">
+                            <div class="modal_column_max">
+                                <h3 class="modal_sub_title">На каких должностях работал</h3>
+                                <span>Например: Старший Java Разработчик (5 лет 11 месяцев) ... и тд. Перечисляйте через знак "/"</span>
+                                <textarea cols="30" rows="7" class="textarea_modal" placeholder="Мой ответ" id="w_experiences-c" readonly></textarea>
+                            </div>
+                        </div>
+                        <div class="modal_row_textarea">
+                            <div class="modal_column_max">
+                                <h3 class="modal_sub_title">Лучшие навыки</h3>
+                                <span>Перечислите навыки через знак "/": OOP/Linux ... и тд.</span>
+                                <textarea cols="30" rows="7" class="textarea_modal" placeholder="Мой ответ" id="best_skills-c" readonly></textarea>
+                            </div>
+                        </div>
+                        <div class="modal_row">
+                            <div class="modal_column">
+                                <h3>Ссылка на портфолио</h3>
+                                <input type="text" class="input_modal" placeholder="Мой ответ" id="portfolio-c" readonly>
+                            </div>
+                            <div class="modal_column">
+                                <h3 class="modal_sub_title">Уровень владения языками</h3>
+                                <span>Например: Русский (родной) ... и тд.</span>
+                                <input type="text" class="input_modal" placeholder="Мой ответ" id="language-c" readonly>
+                            </div>
+                        </div>
+                        <div class="modal_row_textarea">
+                            <div class="modal_column_max">
+                                <h3 class="modal_sub_title">Дополнительная информация о кандидате</h3>
+                                <span>Образование, сертификаты, курсы, хобби ... и тд.</span>
+                                <textarea cols="30" rows="7" class="textarea_modal" placeholder="Мой ответ" id="additional-c" readonly></textarea>
+                            </div>
+                        </div>
+                        <div class="modal_row">
+                            <div class="modal_column">
+                            <h3 class="modal_sub_title">Загрузка резюме</h3>
+                                <span>Вставьте ссылку на документ из Google Drive</span>
+                                <input type="text" class="input_modal" placeholder="Мой ответ" id="download-c" readonly>
+                            </div>
+                            <div class="modal_column">
+                                <h3>Рекомендации</h3>
+                                <label class="modal_label"><input type="checkbox" value="Yes" name="recomendation" id="recomendations-c" class="modal_checkbox" disabled>Yes</label>
+                            </div>
+                        </div>
+                        <div class="modal_splin"></div>
+                        <div class="modal_row">
+                            <img src="/images/landing/logo_blue.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    </body>
+    <script src="/javascripts/jquery.min.js"></script>
+    <script src="/javascripts/scripts_editing.js"></script>
+</html>
